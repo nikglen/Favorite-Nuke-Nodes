@@ -1,0 +1,172 @@
+set cut_paste_input [stack 0]
+version 14.1 v2
+push $cut_paste_input
+Group {
+ name DN_Screen_diff_v2
+ tile_color 0xff0fff
+ selected true
+ xpos 560
+ ypos -1
+ addUserKnob {20 DNscreendifftab l DN_Screen_diff_v2}
+ addUserKnob {41 satur l Saturation T Saturation_overall1.satur}
+ addUserKnob {41 lows_multiply l "Lows multiply" T Multiply2.lows_multiply}
+ addUserKnob {41 multiply_highs l "Highs multiply" T Multiply1.multiply_highs}
+}
+ Input {
+  inputs 0
+  name BG
+  xpos 978
+  ypos -760
+ }
+ OCIOLogConvert {
+  operation "lin to log"
+  name OCIOLogConvert1
+  xpos 978
+  ypos -721
+ }
+ Dot {
+  name Dot2
+  xpos 1012
+  ypos -404
+ }
+set N11cf7bc0 [stack 0]
+ Input {
+  inputs 0
+  name FG
+  xpos 1213
+  ypos -762
+  number 1
+ }
+ OCIOLogConvert {
+  operation "lin to log"
+  name OCIOLogConvert3
+  xpos 1213
+  ypos -724
+ }
+ Input {
+  inputs 0
+  name CLEAN_PLATE
+  xpos 1113
+  ypos -762
+  number 2
+ }
+ OCIOLogConvert {
+  operation "lin to log"
+  name OCIOLogConvert2
+  xpos 1113
+  ypos -722
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  Achannels rgb
+  Bchannels rgb
+  output rgb
+  name Merge4
+  xpos 1156
+  ypos -675
+ }
+ Saturation {
+  saturation {{satur}}
+  name Saturation_overall1
+  xpos 1156
+  ypos -624
+  addUserKnob {20 User}
+  addUserKnob {7 satur l Saturation R 0 4}
+  satur 0.2
+ }
+set N12667c80 [stack 0]
+ Clamp {
+  channels rgb
+  maximum_enable false
+  MinClampTo_enable true
+  name Clamp2
+  xpos 1113
+  ypos -576
+ }
+ Multiply {
+  channels rgb
+  value {{multiply_highs}}
+  name Multiply1
+  xpos 1113
+  ypos -538
+  addUserKnob {20 User}
+  addUserKnob {7 multiply_highs l "Highs multiply" R 0 4}
+  multiply_highs 1
+ }
+push $N12667c80
+ Clamp {
+  channels rgb
+  minimum_enable false
+  maximum 0
+  MaxClampTo 0
+  MaxClampTo_enable true
+  name Clamp1
+  xpos 1211
+  ypos -575
+ }
+ Multiply {
+  channels rgb
+  value {{lows_multiply}}
+  name Multiply2
+  xpos 1211
+  ypos -538
+  addUserKnob {20 User}
+  addUserKnob {7 lows_multiply l "Lows multiply" R 0 4}
+  lows_multiply 1
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge1
+  xpos 1160
+  ypos -479
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge3
+  xpos 1160
+  ypos -408
+ }
+push $N11cf7bc0
+ Dot {
+  name Dot1
+  xpos 1012
+  ypos -361
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  output {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Merge2
+  xpos 1160
+  ypos -365
+ }
+ OCIOLogConvert {
+  operation "log to lin"
+  name OCIOLogConvert4
+  xpos 1160
+  ypos -307
+ }
+ Clamp {
+  channels rgb
+  maximum_enable false
+  name Clamp3
+  xpos 1160
+  ypos -245
+ }
+ Output {
+  name Output1
+  xpos 1160
+  ypos -182
+ }
+end_group
