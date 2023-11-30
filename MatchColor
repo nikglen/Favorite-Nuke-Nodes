@@ -1,0 +1,309 @@
+set cut_paste_input [stack 0]
+version 14.1 v2
+push $cut_paste_input
+Group {
+ name MatchColor
+ knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\n\nif k.name() == \"method\":\n\n\tif k.getValue()==0:\n\n\t\tn.knob('checkSelect').setVisible(False)\n\n\t\tn.knob('snap').setEnabled(False)\n\n\t\tn.knob('onscreenlocater').setEnabled(False)\n\n\t\tn.knob('radius').setEnabled(False)\n\n\telse:\n\n\t\tn.knob('checkSelect').setVisible(True)\n\n\t\tn.knob('snap').setEnabled(True)\n\n\t\tn.knob('onscreenlocater').setEnabled(True)\n\n\t\tn.knob('radius').setEnabled(True)"
+ tile_color 0xff3402ff
+ note_font "Bitstream Vera Sans Bold"
+ note_font_size 12
+ selected true
+ xpos 513
+ ypos -153
+ addUserKnob {20 Match_color l "Match Color"}
+ addUserKnob {4 method l Method M {Multiply Colorspace "" "" "" "" "" "" ""}}
+ addUserKnob {6 checkSelect l saturation +HIDDEN +STARTLINE}
+ checkSelect true
+ addUserKnob {7 blur_size l "Blur Size" R 0 100}
+ addUserKnob {7 dissolve l Dissolve}
+ dissolve 1
+}
+ Input {
+  inputs 0
+  name FG_Image
+  xpos 1095
+  ypos -959
+ }
+ Dot {
+  name Dot74
+  xpos 1129
+  ypos -845
+ }
+set N148a62e0 [stack 0]
+ Dot {
+  name Dot5
+  xpos 1129
+  ypos -252
+ }
+set N148acc90 [stack 0]
+ Dot {
+  name Dot8
+  xpos 968
+  ypos -252
+ }
+ Dot {
+  name Dot7
+  xpos 968
+  ypos 149
+ }
+push $N148acc90
+ Dot {
+  name Dot15
+  xpos 1129
+  ypos -13
+ }
+set N148bbb60 [stack 0]
+ Input {
+  inputs 0
+  name mask
+  xpos 1703
+  ypos -10
+  number 2
+ }
+ Input {
+  inputs 0
+  name Background
+  xpos 1959
+  ypos -955
+  number 1
+ }
+ Blur {
+  channels rgba
+  size {{parent.blur_size}}
+  name Blur21
+  xpos 1959
+  ypos -766
+ }
+ Dot {
+  name Dot1
+  xpos 1987
+  ypos -407
+ }
+set N148d7c30 [stack 0]
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace2
+  xpos 1959
+  ypos -335
+ }
+set N148dde50 [stack 0]
+push $N148a62e0
+ Dot {
+  name Dot3
+  xpos 1390
+  ypos -845
+ }
+set N148f6840 [stack 0]
+ Dot {
+  name Dot2
+  xpos 1528
+  ypos -845
+ }
+set N148fbe00 [stack 0]
+ Dot {
+  name Dot4
+  xpos 1847
+  ypos -845
+ }
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace1
+  xpos 1819
+  ypos -338
+ }
+set N149060c0 [stack 0]
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  alpha alpha2
+  name ShuffleCopy1
+  xpos 1819
+  ypos -278
+ }
+push $N148dde50
+push $N149060c0
+ ShuffleCopy {
+  inputs 2
+  red red
+  alpha alpha2
+  name ShuffleCopy2
+  xpos 1959
+  ypos -278
+ }
+ Switch {
+  inputs 2
+  which {{parent.checkSelect}}
+  name Switch2
+  xpos 1819
+  ypos -221
+ }
+ Colorspace {
+  colorspace_in HSV
+  name Colorspace3
+  xpos 1819
+  ypos -162
+ }
+ Dot {
+  name Dot17
+  xpos 1847
+  ypos -107
+ }
+push $N148acc90
+push $N148f6840
+ Dot {
+  name Dot13
+  xpos 1390
+  ypos -676
+ }
+set N149685c0 [stack 0]
+ Dot {
+  name Dot10
+  xpos 1306
+  ypos -676
+ }
+ Dot {
+  name Dot14
+  xpos 1306
+  ypos -552
+ }
+push $N149685c0
+ Expression {
+  expr0 "r < 0 ? 1 : r"
+  expr1 "g < 0 ? 1 : g"
+  expr2 "b < 0 ? 1 : b"
+  name Expression2
+  xpos 1362
+  ypos -631
+ }
+ Switch {
+  inputs 2
+  which {{"parent.blur_size == 0 ? 0 : 1"}}
+  name Switch4
+  xpos 1362
+  ypos -549
+ }
+ Unpremult {
+  name Unpremult2
+  xpos 1362
+  ypos -490
+ }
+ Dot {
+  name Dot6
+  xpos 1390
+  ypos -360
+ }
+push $N148d7c30
+push $N148fbe00
+ Blur {
+  channels rgba
+  size {{parent.blur_size}}
+  name Blur10
+  xpos 1500
+  ypos -757
+ }
+ Dot {
+  name Dot11
+  xpos 1528
+  ypos -682
+ }
+set N149a9360 [stack 0]
+ Dot {
+  name Dot9
+  xpos 1622
+  ypos -682
+ }
+ Dot {
+  name Dot12
+  xpos 1622
+  ypos -554
+ }
+push $N149a9360
+ Expression {
+  expr0 "r < 0 ? 1 : r"
+  expr1 "g < 0 ? 1 : g"
+  expr2 "b < 0 ? 1 : b"
+  name Expression1
+  xpos 1500
+  ypos -629
+ }
+ Switch {
+  inputs 2
+  which {{"parent.blur_size == 0 ? 0 : 1"}}
+  name Switch3
+  xpos 1500
+  ypos -551
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 1500
+  ypos -491
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  name Merge33
+  xpos 1500
+  ypos -404
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge34
+  xpos 1500
+  ypos -357
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  bbox B
+  name Copy2
+  xpos 1500
+  ypos -255
+ }
+ Premult {
+  name Premult1
+  xpos 1500
+  ypos -197
+ }
+ Switch {
+  inputs 2
+  which {{method}}
+  name Switch1
+  xpos 1500
+  ypos -104
+ }
+push $N148bbb60
+ Dissolve {
+  inputs 2+1
+  which {{parent.dissolve+0.0000001}}
+  name Dissolve1
+  xpos 1500
+  ypos -16
+ }
+ Dot {
+  name Dot18
+  xpos 1528
+  ypos 95
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos 1095
+  ypos 85
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 1095
+  ypos 145
+ }
+ Output {
+  name Output1
+  xpos 1095
+  ypos 295
+ }
+end_group
