@@ -1,0 +1,200 @@
+set cut_paste_input [stack 0]
+version 13.2 v8
+push $cut_paste_input
+Group {
+ name IBK_GIZMO_Despill
+ selected true
+ xpos 293
+ ypos -140
+ addUserKnob {20 User}
+ addUserKnob {41 st l "screen type" T Group1.st}
+ addUserKnob {41 colour l "colour " T Group1.colour}
+ addUserKnob {41 colour_panelDropped l "panel dropped state" T Group1.colour_panelDropped}
+ addUserKnob {26 ""}
+ addUserKnob {41 red_weight l "red weight" T Group1.red_weight}
+ addUserKnob {41 blue_green_weight l "blue/green weight" T Group1.blue_green_weight}
+ addUserKnob {26 ""}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos 1060
+  ypos -9
+  number 3
+ }
+ Dot {
+  name Dot1
+  xpos 1094
+  ypos 15
+ }
+ Input {
+  inputs 0
+  name BG
+  xpos 730
+  ypos -9
+  number 1
+ }
+ Dot {
+  name Dot45
+  xpos 764
+  ypos 15
+ }
+set N1181dc00 [stack 0]
+ Input {
+  inputs 0
+  name Clean_Screen
+  xpos 950
+  ypos -9
+  number 2
+ }
+ Input {
+  inputs 0
+  name Plate
+  xpos 840
+  ypos -9
+ }
+ Group {
+  inputs 3
+  name Group1
+  help "There are 2 basic approaches to pull a key with IBK. One is to use IBKColour and the C input and the other is to pick a colour which best represents the area you are trying to key.\n\nThe colour weights deal with the hardness of the matte. If you view the output (with screen subtraction ticked on) you will typically see areas where edges have a slight discolouration\ndue to the background not being fully removed from the original plate. This is not spill but a result of the matte being too strong. Lowering one of the weights will correct that particular edge. If it's\na red foreground image with an edge problem bring down the red weight - same idea for the other weight. This may affect other edges so the use of multiple IBKGizmo's with different weights split with KeyMixes is recommended.\n\nThe 'luminance match' feature adds a luminance factor to the keying algorithm which helps to capture transparent areas of the foreground which are brighter than the backing screen. It will also allow you to lessen some of the garbage area noise by bringing down the screen range - \npushing this control too far will also eat into some of your foreground blacks. 'Luminance level' allows you to make the overall effect stronger or weaker.\n\n'autolevels' will perform a colour correction before the image is pulled so that hard edges from a foreground subject with saturated colours are reduced. The same can be achieved with the weights but here only those saturated colours are affected whereas the use of weights will\naffect the entire image. When using this feature it's best to have this as a separate node which you can then split with other IBKGizmos as the weights will no longer work as expected. You can override some of the logic for when you actually have particular foreground colours you want to keep.\nFor example when you have a saturated red subject against bluescreen you'll get a magenta transition area. Autolevels will eliminate this but if you have a magenta foreground object then this control will make the magenta more red unless you check the magenta box to keep it.\n\n'screen subtraction' will remove the backing from the rgb via a subtraction process. Unchecking this will simply premultiply the original fg with the generated matte.\n\n'use bkg luminance' and 'use bkg chroma' allow you to affect the output rgb by the new bg. These controls are best used with the 'luminance match' sliders above. This feature can also sometimes really help with screens that exhibit some form of fringing artifact - usually a darkening or\nlightening of an edge on one of the colour channels on the screen. You can offset the effect by grading the bg input up or down with a grade node just before input. If it's just an area which needs help then just bezier that area and locally grade the\nbg input  up or down to remove the artifact."
+  tile_color 0x990000
+  selected true
+  xpos 946
+  ypos 39
+  addUserKnob {20 "" l IBK}
+  addUserKnob {4 st l "screen type" t "use the C input  to define the screen colour on a per pixel basis or use 'pick' and the colour tab below" M {C-blue C-green pick}}
+  addUserKnob {18 colour l "colour " t "use this colour instead of the C input when 'pick' is enabled above"}
+  colour {0 0 1}
+  addUserKnob {6 colour_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {6 colour_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {26 ""}
+  addUserKnob {41 red_weight l "red weight" T IBK1.red_weight}
+  addUserKnob {41 blue_green_weight l "blue/green weight" T IBK1.blue_green_weight}
+  addUserKnob {26 ""}
+  addUserKnob {41 lm_enable l "luminance match" T IBK1.lm_enable}
+  addUserKnob {41 level l "screen range" T IBK1.level}
+  addUserKnob {41 luma l "luminance level" T IBK1.luma}
+  addUserKnob {41 ll_enable l enable T IBK1.ll_enable}
+  addUserKnob {26 ""}
+  addUserKnob {41 autolevels T IBK1.autolevels}
+  addUserKnob {41 yellow T IBK1.yellow}
+  addUserKnob {41 cyan T IBK1.cyan}
+  addUserKnob {41 magenta T IBK1.magenta}
+  addUserKnob {26 ""}
+  addUserKnob {41 ss l "screen subtraction" T IBK1.ss}
+  addUserKnob {6 ublu l "use bkg luminance" t "have the brightness of the edge be affected by the brightness of the bg input" -STARTLINE}
+  addUserKnob {6 ubcr l "use bkg chroma" t "have the colour of the edge be affected by the colour of the bg input" -STARTLINE}
+ }
+  Input {
+   inputs 0
+   name bg
+   xpos 559
+   ypos 175
+   number 2
+  }
+set Nf9e36f0 [stack 0]
+  Input {
+   inputs 0
+   name fg
+   xpos 48
+   ypos 178
+  }
+set N105e6fb0 [stack 0]
+  Grade {
+   multiply 0
+   add {{colour.r i} {colour.g i} {colour.b i} {curve}}
+   black_clamp false
+   name Grade1
+   xpos 158
+   ypos 178
+  }
+  Input {
+   inputs 0
+   name c
+   xpos 423
+   ypos 178
+   number 1
+  }
+  Switch {
+   inputs 2
+   which {{st==2}}
+   name Switch1
+   xpos 293
+   ypos 178
+  }
+set N1028cd80 [stack 0]
+push $N105e6fb0
+push $N105e6fb0
+  IBK {
+   inputs 4
+   screen_type green
+   red_weight {{IBK1.red_weight}}
+   blue_green_weight {{IBK1.blue_green_weight}}
+   lm_enable {{IBK1.lm_enable}}
+   level {{IBK1.level}}
+   luma {{IBK1.luma}}
+   ll_enable {{IBK1.ll_enable}}
+   autolevels {{IBK1.autolevels}}
+   yellow {{IBK1.yellow}}
+   cyan {{IBK1.cyan}}
+   magenta {{IBK1.magenta}}
+   ss {{IBK1.ss}}
+   clamp_alpha {{IBK1.clamp_alpha}}
+   rgbal {{IBK1.rgbal}}
+   ubl {{IBK1.ubl}}
+   ubc {{IBK1.ubc}}
+   name IBK3
+   note_font_color 0xff0000
+   xpos 48
+   ypos 306
+  }
+push $Nf9e36f0
+push $N1028cd80
+push $N105e6fb0
+push $N105e6fb0
+  IBK {
+   inputs 4
+   red_weight 0.5
+   blue_green_weight 0.5
+   luma 0
+   rgbal true
+   ubl {{ublu}}
+   ubc {{ubcr}}
+   name IBK1
+   note_font_color 0xff00
+   xpos 293
+   ypos 302
+  }
+  Switch {
+   inputs 2
+   which {{st==2?colour.g>colour.b:st}}
+   name Switch6
+   xpos 48
+   ypos 396
+  }
+  Output {
+   name Output1
+   xpos 48
+   ypos 466
+  }
+ end_group
+push $N1181dc00
+ Merge2 {
+  inputs 2
+  name Merge19
+  xpos 946
+  ypos 89
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge1
+  xpos 1060
+  ypos 89
+ }
+ Output {
+  name Output1
+  xpos 1060
+  ypos 138
+ }
+end_group
