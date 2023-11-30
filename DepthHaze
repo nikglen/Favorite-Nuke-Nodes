@@ -1,0 +1,333 @@
+set cut_paste_input [stack 0]
+version 13.2 v8
+push $cut_paste_input
+add_layer {Zdepth Zdepth.red Zdepth.green Zdepth.blue}
+Group {
+ name DepthHaze
+ note_font "Bitstream Vera Sans"
+ selected true
+ xpos 206
+ ypos -126
+ addUserKnob {20 User}
+ addUserKnob {4 output l Output t "Choice of Output:\n- Result returns FG + Haze\n- HazeCard returns only the Haze Image\n- DepthMatte returns only the resulting depthMatte" M {Result "Haze Card" "Depth Matte" "" ""}}
+ addUserKnob {68 Combine l "           Combine" t "Choice of how the haze will be combined with your rgba." -STARTLINE M {Over Plus "" "" "" ""}}
+ Combine Plus
+ addUserKnob {41 DepthChannel T Shuffle3.in}
+ addUserKnob {7 nearDistance l "Near Distance" t "Output Depth Alpha will be black at this distance" R 0 1000}
+ nearDistance 100
+ addUserKnob {7 farDistance l "Far Distance" t "Output Depth Alpha will be white at this distance" R 0 1000}
+ farDistance 1000
+ addUserKnob {7 Gamma t "For adjusting the middle gray values in the resulting depth matte.\n\nGamma is applied after black/white points are set." R 0 4}
+ Gamma 1
+ addUserKnob {6 unPremultZ l "unPremult Depth" t "Un-premultiplies depth values before black/white points are set." +STARTLINE}
+ unPremultZ true
+ addUserKnob {6 limitHazetoRgba l "Obey Alpha" t "For those times when you are using a depth channel that contains more depth information than the rgba, this contains the depthHaze to the input rgba alpha." -STARTLINE}
+ addUserKnob {7 blurBG l "Blur BG" t "Amount to Blur the hazeBG by." R 0 1000}
+ blurBG 200
+ addUserKnob {41 HazeColor l "Constant Haze Color" t "Haze color to be added." T Constant2.color}
+ addUserKnob {7 constantMix l "Constant Mix" t "Dissolve between the Constant Haze color and the Blurred Haze Card\n\n1 is only the Constant Haze Color\n0 is the Bg (with blur)"}
+ constantMix 1
+ addUserKnob {7 hazeAmount l "Haze Amount" t "Multiplier on the Haze RGBA"}
+ hazeAmount 0.5
+}
+ Input {
+  inputs 0
+  name depthpass
+  label ZDepth
+  selected true
+  xpos 730
+  ypos 9
+ }
+ Dot {
+  name Dot5
+  xpos 764
+  ypos 90
+ }
+set N10db5750 [stack 0]
+ Dot {
+  name Dot2
+  xpos 764
+  ypos 594
+ }
+set N10e754e0 [stack 0]
+ Dot {
+  name Dot7
+  xpos 764
+  ypos 738
+ }
+set N1067dbe0 [stack 0]
+ Dot {
+  name Dot6
+  xpos 764
+  ypos 906
+ }
+set N10e9d430 [stack 0]
+ Dot {
+  name Dot10
+  xpos 764
+  ypos 1026
+ }
+push $N10db5750
+ Shuffle {
+  in Zdepth
+  out depth
+  name Shuffle3
+  label "\[value in]-->\[value out]"
+  xpos 840
+  ypos 81
+ }
+ Unpremult {
+  channels depth
+  name Unpremult2
+  xpos 840
+  ypos 129
+  disable {{1-parent.unPremultZ}}
+ }
+ Grade {
+  channels depth
+  blackpoint {{parent.nearDistance}}
+  whitepoint {{parent.farDistance}}
+  gamma {{parent.Gamma}}
+  name Grade1
+  xpos 840
+  ypos 177
+ }
+ Clamp {
+  name Clamp1
+  xpos 840
+  ypos 225
+ }
+ Dot {
+  name Dot16
+  xpos 874
+  ypos 306
+ }
+ Dot {
+  name Dot8
+  xpos 984
+  ypos 306
+ }
+set N1171d370 [stack 0]
+ Shuffle {
+  in depth
+  name Shuffle4
+  label "\[value in]-->\[value out]"
+  xpos 950
+  ypos 825
+ }
+ Dot {
+  name Dot4
+  xpos 984
+  ypos 978
+ }
+ Constant {
+  inputs 0
+  color {1 1 1 1}
+  name Constant2
+  xpos 1280
+  ypos -9
+ }
+ Shuffle {
+  alpha white
+  name Shuffle1
+  label "\[value in]-->\[value out]"
+  xpos 1280
+  ypos 153
+ }
+ Input {
+  inputs 0
+  name hazebg
+  label BG
+  xpos 1060
+  ypos 15
+  number 1
+ }
+ Shuffle {
+  alpha white
+  name Shuffle2
+  label "\[value in]-->\[value out]"
+  xpos 1060
+  ypos 177
+ }
+ Blur {
+  channels rgb
+  size {{parent.blurBG}}
+  name Blur3
+  xpos 1060
+  ypos 231
+ }
+ Dot {
+  name Dot17
+  xpos 1094
+  ypos 258
+ }
+ Dissolve {
+  inputs 2
+  which {{parent.constantMix}}
+  name Dissolve2
+  xpos 1280
+  ypos 249
+ }
+set N10b0f770 [stack 0]
+ Dot {
+  name Dot3
+  xpos 1534
+  ypos 258
+ }
+ Dot {
+  name Dot1
+  xpos 1534
+  ypos 978
+ }
+push $N10e9d430
+push $N10e754e0
+ Dot {
+  name Dot9
+  xpos 1094
+  ypos 594
+ }
+set N109c3e10 [stack 0]
+push $N1171d370
+ Dot {
+  name Dot11
+  xpos 1094
+  ypos 306
+ }
+set N10db6140 [stack 0]
+ Premult {
+  channels depth
+  name Premult3
+  xpos 1170
+  ypos 345
+  disable {{1-parent.unPremultZ}}
+ }
+push $N10b0f770
+ Copy {
+  inputs 2
+  from0 depth.Z
+  to0 rgba.alpha
+  name Copy2
+  xpos 1170
+  ypos 417
+ }
+ Premult {
+  name Premult2
+  xpos 1170
+  ypos 471
+ }
+ Multiply {
+  value {{parent.hazeAmount}}
+  name Multiply2
+  xpos 1170
+  ypos 513
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name In1
+  xpos 1170
+  ypos 639
+  disable {{parent.limitHazetoRgba==0 x1039 1}}
+ }
+push $N1067dbe0
+ Dot {
+  name Dot14
+  xpos 1094
+  ypos 738
+ }
+set N11749980 [stack 0]
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  name Plus2
+  xpos 1170
+  ypos 783
+ }
+push $N109c3e10
+ Dot {
+  name Dot13
+  xpos 1314
+  ypos 594
+ }
+push $N10db6140
+ Dot {
+  name Dot12
+  xpos 1314
+  ypos 306
+ }
+push $N10b0f770
+ Copy {
+  inputs 2
+  from0 depth.Z
+  to0 rgba.alpha
+  name Copy3
+  xpos 1390
+  ypos 345
+ }
+ Premult {
+  name Premult4
+  xpos 1390
+  ypos 471
+ }
+ Multiply {
+  value {{parent.hazeAmount}}
+  name Multiply1
+  xpos 1390
+  ypos 513
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name In
+  xpos 1390
+  ypos 639
+  disable {{parent.limitHazetoRgba==0}}
+ }
+push $N11749980
+ Dot {
+  name Dot15
+  xpos 1314
+  ypos 738
+ }
+ Merge2 {
+  inputs 2
+  operation atop
+  name Plus4
+  xpos 1390
+  ypos 783
+ }
+ Switch {
+  inputs 2
+  which {{parent.Combine}}
+  name Switch3
+  xpos 1280
+  ypos 855
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos 1280
+  ypos 897
+ }
+ Switch {
+  inputs 3
+  which {{parent.output}}
+  name Switch1
+  xpos 1280
+  ypos 975
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 1280
+  ypos 1023
+ }
+ Output {
+  name Output1
+  xpos 1280
+  ypos 1143
+ }
+end_group
