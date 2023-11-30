@@ -1,0 +1,18 @@
+set cut_paste_input [stack 0]
+version 14.1 v2
+push $cut_paste_input
+Grade {
+ white {{((random(seed,frame*speed))+range)*size}}
+ name Random_Flicker
+ selected true
+ xpos 255
+ ypos 16
+ addUserKnob {20 User}
+ addUserKnob {7 size}
+ size 1
+ addUserKnob {7 seed}
+ seed 1
+ addUserKnob {7 speed}
+ speed 1
+ addUserKnob {7 range}
+}
