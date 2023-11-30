@@ -1,0 +1,18 @@
+set cut_paste_input [stack 0]
+version 13.2 v8
+push $cut_paste_input
+NoOp {
+ name What_camera_is_this
+ knobChanged "data = nuke.thisNode().metadata()\r\n                  cam = data\[\"exr/reelName\"]\r\n                  if \"ALFOGE1A\" in cam:\r\n                      nuke.thisNode().knob('c').setValue(\"Alexa LF/Mini LF Open Gate Anamorphic\")\r\n                  elif \"ALFOGE1S\" in cam:\r\n                      nuke.thisNode().knob('c').setValue(\"Alexa LF/Mini LF Open Gate Spherical\")\r\n                  # Add more camera type conditions here...\r\n                  else:\r\n                      nuke.thisNode().knob('c').setValue(\"I don't know\")\r\n                  nuke.thisNode().knob('t').setValue(cam)"
+ label eh?
+ selected true
+ xpos 289
+ ypos -141
+ addUserKnob {20 What_camera l "What camera eh?"}
+ addUserKnob {26 t l "exr/reelName = " T "please connect to a read node"}
+ addUserKnob {26 c l "suggested cam = " T "I don't know yet"}
+ addUserKnob {20 TechSpecs l "Tech Specs"}
+ addUserKnob {26 Info l "     " T "Camera recognition based on tech specs:\nJersey_VFX_Tech_Specs_v003_20210218.pdf"}
+ addUserKnob {26 ""}
+ addUserKnob {22 OpenDocs l "Open tech spec folder" T "import os\nimport platform\nimport subprocess\n\noperatingSystem = platform.system()\n\nfor i in nuke.selectedNodes():\n\n    path =  os.path.dirname(\"/jobs/jersey_s01/REFERENCE/data_library/9_production/Tech_Specs/\")\n\n    if os.path.exists(path):\n\n        if operatingSystem == \"Windows\":\n            os.startfile(path)\n        elif operatingSystem == \"Darwin\":\n            subprocess.Popen(\[\"open\", path])\n        else:\n            subprocess.Popen(\[\"xdg-open\", path])" +STARTLINE}
+}
