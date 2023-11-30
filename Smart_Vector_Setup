@@ -1,0 +1,33 @@
+set cut_paste_input [stack 0]
+version 14.1 v2
+push $cut_paste_input
+Reformat {
+ name Reformat47
+ selected true
+ xpos 1016
+ ypos -186
+}
+Crop {
+ box {0 0 4096 2160}
+ name Crop13
+ selected true
+ xpos 1016
+ ypos -140
+}
+SmartVector {
+ vectorDetailReg 1
+ name SmartVector4
+ selected true
+ xpos 1016
+ ypos -68
+}
+VectorDistort {
+ referenceFrame 1001
+ reference_frame_set true
+ outputMode st-map
+ last_output_mode st-map
+ name VectorDistort4
+ selected true
+ xpos 1016
+ ypos 13
+}
