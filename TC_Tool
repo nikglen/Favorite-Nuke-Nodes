@@ -1,0 +1,842 @@
+set cut_paste_input [stack 0]
+version 13.2 v8
+push $cut_paste_input
+Group {
+ name TC_Tool
+ help "QC Node to check technical comp issues.\n\nDeveloped by Tor Andreassen"
+ onCreate "nuke.thisNode()\['missingFrames'].setValue('')\nnuke.thisNode()\['meName'].setValue(nuke.thisNode().name())\n"
+ knobChanged "if nuke.thisKnob().name()=='mode':\n    n=nuke.thisNode()\n\n    val=n\['mode'].value()\n\n    if val == 'negative values':\n        n.knob('negative_values_over').setVisible(True)\n        n.knob('negative_values_over').setValue(False)\n    else:\n        n.knob('negative_values_over').setValue(False)\n        n.knob('negative_values_over').setVisible(False)"
+ tile_color 0xf8ff00ff
+ label "\[value mode]"
+ selected true
+ xpos -3835
+ ypos -3520
+ addUserKnob {20 fxT_compQCTAB l compQC}
+ addUserKnob {1 meName l "" +STARTLINE +INVISIBLE}
+ meName Group2
+ addUserKnob {26 aboutNode l "" +STARTLINE T "<font color='grey'>Node to Help You Tech Check Your Shot</font><br /><br />\n<font color='light cyan'>PS: it's reccomended to render your comp<br /> before running this node<br /></font>"}
+ addUserKnob {26 ""}
+ addUserKnob {4 mode l Mode t "choose QC mode from this dropdown menu" M {Comp Difference "Difference Over Plate" Grain "Negative Values" "Clipping Values" "NAN || INF" "Gamma Up" "Gamma Down" Saturation "Log View" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {41 multiply l "Comp Difference Brightness" T Grade5.multiply}
+ addUserKnob {41 multiply_1 l "Grain Brightness" T Grade6.multiply}
+ addUserKnob {7 clippingValue l "Clipping Value"}
+ clippingValue 10
+ addUserKnob {41 size l "NAN || INF Size" T Dilate1.size}
+ addUserKnob {41 gamma l "Gamma Up" T Grade2.gamma}
+ addUserKnob {41 gamma_1 l "Gamma Down" T Grade3.gamma}
+ addUserKnob {41 saturation l Saturation T Saturation1.saturation}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {20 aboutTAB l about}
+ addUserKnob {26 ""}
+ addUserKnob {26 aboutInfo l "" +STARTLINE T "This is a QC node to check your comp for technical issues.\n\nGo through the stages in the drop down menu and check that there\nare no obvious issues.\n\nPS: Negative or over bright values is not always a technical issue if the plate\ncontains negative values. \nHowever, it gives you an indication you have negative values \nif you did not intend to introduce them"}
+ addUserKnob {26 ""}
+ addUserKnob {26 copyright l "" +STARTLINE T "<font color='#454545'>Altered form of Gizmo from // fxT_compQC v1.2 © Tor Andreassen</font>"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x505a6101
+  label nan/infs
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -5347
+  ypos 6
+  bookmark false
+  bdwidth 506
+  bdheight 629
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode2
+  tile_color 0x505a6101
+  label "Gamma Slam"
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -4668
+  bookmark false
+  bdwidth 2499
+  bdheight 1278
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode3
+  tile_color 0x505a6101
+  label "clipping values (overbrights)"
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -1754
+  ypos 22
+  bookmark false
+  bdwidth 714
+  bdheight 441
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode4
+  tile_color 0x505a6101
+  label log
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -5676
+  ypos 40
+  bookmark false
+  bdwidth 191
+  bdheight 194
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode5
+  tile_color 0x505a6101
+  label saturation
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -863
+  ypos 49
+  bookmark false
+  bdwidth 254
+  bdheight 193
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode6
+  tile_color 0x505a6101
+  label "negative\npixels"
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -487
+  ypos 18
+  bookmark false
+  bdwidth 236
+  bdheight 286
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode7
+  tile_color 0x5b4b7100
+  label "FLOP COMP"
+  note_font "Arial Black"
+  note_font_size 20
+  note_font_color 0xffffff01
+  xpos 283
+  ypos -429
+  bookmark false
+  bdwidth 1050
+  bdheight 219
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode8
+  tile_color 0x505a6101
+  label "grain check"
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -74
+  ypos 22
+  bookmark false
+  bdwidth 420
+  bdheight 492
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode9
+  tile_color 0x505a6101
+  label "mode\n(dropdown menu)"
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos -3040
+  ypos 2201
+  bookmark false
+  bdwidth 4359
+  bdheight 1053
+  z_order 1
+ }
+ Input {
+  inputs 0
+  name comp
+  label "\[value number]"
+  xpos 1039
+  ypos -640
+ }
+ Remove {
+  operation keep
+  channels rgba
+  name Remove1
+  label "rgba only"
+  xpos 1039
+  ypos -535
+ }
+ Dot {
+  name Dot26
+  label comp
+  note_font_size 40
+  xpos 1073
+  ypos -346
+ }
+ Dot {
+  name Dot79
+  label comp
+  note_font_size 40
+  xpos 1073
+  ypos -99
+ }
+set N34aec170 [stack 0]
+ Dot {
+  name Dot57
+  label "\n\ncomp"
+  note_font_size 40
+  xpos 72
+  ypos -99
+ }
+set N34af0770 [stack 0]
+ Dot {
+  name Dot4
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -386
+  ypos -99
+ }
+set N34af4d70 [stack 0]
+ Dot {
+  name Dot21
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -753
+  ypos -99
+ }
+set N34af9370 [stack 0]
+ Dot {
+  name Dot23
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -1417
+  ypos -99
+ }
+set N3557f9e0 [stack 0]
+ Dot {
+  name Dot20
+  note_font_size 50
+  xpos -2248
+  ypos -99
+ }
+ Dot {
+  name Dot49
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -2831
+  ypos -99
+ }
+set N35588450 [stack 0]
+ Dot {
+  name Dot6
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -3597
+  ypos -99
+ }
+set N2fdf5a40 [stack 0]
+ Dot {
+  name Dot56
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -5098
+  ypos -97
+ }
+set N2fdfa040 [stack 0]
+ Dot {
+  name Dot1
+  label "\n\ncomp"
+  note_font_size 40
+  xpos -5560
+  ypos -97
+ }
+ OCIOColorSpace {
+  in_colorspace scene_linear
+  out_colorspace compositing_log
+  name OCIOColorSpace2
+  label "\[value out_colorspace]"
+  xpos -5594
+  ypos 127
+ }
+ Dot {
+  name Dot29
+  note_font_size 50
+  xpos -5575
+  ypos 2952
+ }
+ Dot {
+  name Dot10
+  label "\n\nblacks / log"
+  note_font_size 25
+  xpos -2471
+  ypos 2952
+ }
+push $N34af9370
+ Saturation {
+  saturation 3
+  name Saturation1
+  label "Value:\[value saturation]"
+  xpos -787
+  ypos 162
+ }
+ Dot {
+  name Dot16
+  label saturation
+  note_font_size 25
+  xpos -762
+  ypos 1401
+ }
+ Dot {
+  name Dot34
+  label saturation
+  note_font_size 25
+  xpos -1240
+  ypos 2382
+ }
+push $N35588450
+ Grade {
+  gamma 0.2
+  name Grade3
+  xpos -2865
+  ypos 530
+ }
+ Dot {
+  name Dot14
+  label "Gamma Down"
+  note_font_size 50
+  xpos -2831
+  ypos 1150
+ }
+ Dot {
+  name Dot18
+  label "gamma down"
+  note_font_size 25
+  xpos -1785
+  ypos 2337
+ }
+push $N2fdf5a40
+ Grade {
+  gamma 3
+  name Grade2
+  xpos -3633
+  ypos 578
+ }
+ Dot {
+  name Dot58
+  label "Gamma Up"
+  note_font_size 50
+  xpos -3599
+  ypos 1200
+ }
+ Dot {
+  name Dot59
+  note_font_size 50
+  xpos -3599
+  ypos 1819
+ }
+ Dot {
+  name Dot12
+  label "gamma up"
+  note_font_size 25
+  xpos -2008
+  ypos 2488
+ }
+push $N2fdfa040
+ Dot {
+  name Dot9
+  xpos -5098
+  ypos 210
+ }
+set N38e26a10 [stack 0]
+ Expression {
+  expr0 (isnan(r)||isinf(r))?400:0
+  expr1 (isnan(g)||isinf(g))?400:0
+  expr2 (isnan(b)||isinf(b))?400:0
+  expr3 (isnan(a)||isinf(a))?1000:0
+  name Expression1
+  label "NAN || INF"
+  xpos -4950
+  ypos 201
+ }
+ Dilate {
+  size 20
+  name Dilate1
+  xpos -4950
+  ypos 255
+ }
+ Expression {
+  channel3 alpha
+  expr3 clamp(r+g+b+a)
+  name Expression7
+  xpos -4950
+  ypos 344
+ }
+push $N38e26a10
+ Expression {
+  channel0 rgb
+  expr0 "(floor(x/10)+floor(y/10)) % 2 == 0 ? 0.05 : 0.5"
+  channel1 none
+  channel2 none
+  channel3 alpha
+  expr3 1
+  name checkerBoardExpression
+  xpos -5273
+  ypos 207
+ }
+ Grade {
+  multiply {0 1 1 1}
+  black_clamp false
+  name Grade1
+  xpos -5273
+  ypos 248
+ }
+ Dot {
+  name Dot2
+  note_font_size 50
+  xpos -5237
+  ypos 347
+ }
+push $N38e26a10
+ Keymix {
+  inputs 3
+  bbox B
+  name Keymix1
+  xpos -5132
+  ypos 338
+ }
+ Dot {
+  name Dot3
+  note_font_size 50
+  xpos -5098
+  ypos 1794
+ }
+ Dot {
+  name Dot11
+  label "\n\nnan / infs"
+  note_font_size 25
+  xpos -2320
+  ypos 2632
+ }
+push $N3557f9e0
+ Dot {
+  name Dot75
+  note_font_size 50
+  xpos -1417
+  ypos 106
+ }
+set N3b296b50 [stack 0]
+ Dot {
+  name Dot76
+  note_font_size 50
+  xpos -1201
+  ypos 106
+ }
+ Expression {
+  temp_name0 maxVal
+  temp_expr0 parent.clippingValue
+  channel0 rgba
+  expr0 r>maxVal||g>maxVal||b>maxVal?sin(x)*10:0
+  channel1 {-rgba.red rgba.green -rgba.blue none}
+  expr1 0
+  channel2 {-rgba.red -rgba.green rgba.blue none}
+  name Expression2
+  xpos -1235
+  ypos 190
+ }
+ Dot {
+  name Dot28
+  note_font_size 50
+  xpos -1201
+  ypos 289
+ }
+set N35a4a380 [stack 0]
+ Position {
+  translate {2 2}
+  name Position1
+  xpos -1235
+  ypos 362
+ }
+push $N3b296b50
+ Dot {
+  name Dot77
+  note_font_size 50
+  xpos -1686
+  ypos 106
+ }
+ Remove {
+  name Remove2
+  label "kill all channels"
+  xpos -1720
+  ypos 168
+ }
+ Shuffle {
+  name Shuffle5
+  label "bring back rgba"
+  xpos -1720
+  ypos 225
+ }
+ Dot {
+  name Dot25
+  note_font_size 50
+  xpos -1686
+  ypos 292
+ }
+set N34ac55e0 [stack 0]
+ Dot {
+  name Dot27
+  note_font_size 50
+  xpos -1686
+  ypos 366
+ }
+ Add {
+  value {0 1 0 1}
+  name Add2
+  tile_color 0xff00ff
+  xpos -1595
+  ypos 356
+ }
+push $N35a4a380
+push $N34ac55e0
+ Add {
+  value {1 0 0 1}
+  name Add1
+  tile_color 0xff0000ff
+  xpos -1594
+  ypos 282
+ }
+push $N3b296b50
+ Multiply {
+  value 0.3
+  name Multiply1
+  label "mult down comp"
+  xpos -1451
+  ypos 160
+ }
+ Merge2 {
+  inputs 2+1
+  name Merge1
+  label "mix:\[value mix]"
+  xpos -1451
+  ypos 282
+ }
+ Merge2 {
+  inputs 2+1
+  name Merge4
+  label "mix:\[value mix]"
+  xpos -1451
+  ypos 356
+ }
+ Dot {
+  name Dot19
+  label "clipping pixels"
+  note_font_size 25
+  xpos -1417
+  ypos 2317
+ }
+push $N34af4d70
+ Dot {
+  name Dot31
+  note_font "Verdana Bold"
+  note_font_size 30
+  xpos -386
+  ypos -1
+ }
+set N2e5f6d40 [stack 0]
+ Expression {
+  temp_name0 negDisplay
+  temp_expr0 1
+  expr0 r<0?negDisplay:0
+  expr1 g<0?negDisplay:0
+  expr2 b<0?negDisplay:0
+  name Expression4
+  label "display negative pixels\n"
+  xpos -420
+  ypos 135
+ }
+ Saturation {
+  saturation 0
+  name Saturation2
+  label "Value:\[value saturation]"
+  xpos -420
+  ypos 175
+ }
+ Grade {
+  channels {rgba.red rgba.green rgba.blue none}
+  white {2.3 0.7 1.8 1}
+  name Grade13
+  label "make pixels more visible"
+  xpos -420
+  ypos 233
+ }
+ Dot {
+  name Dot82
+  note_font "Arial Black"
+  note_font_size 24
+  xpos -386
+  ypos 328
+ }
+set N359904b0 [stack 0]
+push $N2e5f6d40
+ Dot {
+  name Dot35
+  note_font "Arial Black"
+  note_font_size 24
+  xpos -207
+  ypos -1
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name Merge11
+  label "mix: \[value mix]"
+  xpos -241
+  ypos 319
+ }
+ Dot {
+  name Dot40
+  note_font "Arial Black"
+  note_font_size 24
+  xpos -207
+  ypos 506
+ }
+push $N359904b0
+ Switch {
+  inputs 2
+  which {{parent.negative_values_over}}
+  name Switch3
+  label "diplay negative values over input\n(option when negative values are chosen in dropdown)\n"
+  xpos -420
+  ypos 491
+ }
+ Dot {
+  name Dot17
+  label "negative values"
+  note_font_size 25
+  xpos -386
+  ypos 1555
+ }
+ Dot {
+  name Dot33
+  label "negative values"
+  note_font_size 25
+  xpos -897
+  ypos 2483
+ }
+push $N34af0770
+ Dot {
+  name Dot47
+  xpos 72
+  ypos 169
+ }
+set N326ca320 [stack 0]
+ Dot {
+  name Dot48
+  xpos -17
+  ypos 169
+ }
+ Blur {
+  channels rgba
+  size 1
+  name Blur3
+  xpos -51
+  ypos 209
+ }
+ Dot {
+  name Dot51
+  xpos -23
+  ypos 250
+ }
+push $N326ca320
+ Merge2 {
+  inputs 2
+  operation from
+  bbox B
+  output rgb
+  name Merge3
+  xpos 38
+  ypos 253
+ }
+ Grade {
+  white 140
+  multiply 3
+  name Grade6
+  xpos 38
+  ypos 318
+ }
+ Dot {
+  name Dot54
+  xpos 72
+  ypos 391
+ }
+push $N326ca320
+ Dot {
+  name Dot55
+  xpos 164
+  ypos 169
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  bbox B
+  output rgb
+  name Merge6
+  xpos 130
+  ypos 388
+ }
+ Dot {
+  name Dot30
+  label grain
+  note_font_size 25
+  xpos 164
+  ypos 1719
+ }
+ Dot {
+  name Dot32
+  label grain
+  note_font_size 25
+  xpos -588
+  ypos 2612
+ }
+push $N34aec170
+ Dot {
+  name Dot39
+  label comp
+  note_font_size 40
+  xpos 1082
+  ypos 2343
+ }
+set N3102f400 [stack 0]
+ Input {
+  inputs 0
+  name plate
+  label "\[value number]"
+  xpos 447
+  ypos -621
+  number 1
+ }
+ Remove {
+  operation keep
+  channels rgba
+  name Remove4
+  label "rgba only"
+  xpos 447
+  ypos -518
+ }
+ Dot {
+  name Dot37
+  label plate
+  note_font_size 40
+  xpos 488
+  ypos -333
+ }
+ Dot {
+  name Dot80
+  label plate
+  note_font_size 40
+  xpos 488
+  ypos 2250
+ }
+ MergeExpression {
+  inputs 2
+  expr3 (abs(Ar-Br)+abs(Ag-Bg)+abs(Ab-Bb))/3
+  name MergeExpression1
+  xpos 454
+  ypos 2530
+  addUserKnob {20 User}
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle4
+  tile_color 0xffffffff
+  label allToAlpha
+  xpos 454
+  ypos 2575
+ }
+ Clamp {
+  name Clamp4
+  xpos 454
+  ypos 2636
+ }
+set N37f14530 [stack 0]
+push $N3102f400
+ Dot {
+  name Dot13
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 31
+  ypos 2343
+ }
+ Grade {
+  inputs 1+1
+  white {4 1 1 2}
+  name Grade4
+  xpos -3
+  ypos 2642
+ }
+ Grade {
+  name Grade5
+  xpos -3
+  ypos 2712
+ }
+ Dot {
+  name Dot24
+  label "\ncomp difference with plate"
+  note_font_size 25
+  xpos 31
+  ypos 2793
+ }
+push $N37f14530
+ Dot {
+  name Dot8
+  label "\ncomp difference "
+  note_font_size 25
+  xpos 488
+  ypos 2867
+ }
+push $N3102f400
+ Dot {
+  name Dot38
+  label comp
+  note_font_size 25
+  xpos 1082
+  ypos 3201
+ }
+ Dot {
+  name Dot36
+  label "\n\ncomp"
+  note_font_size 25
+  xpos 148
+  ypos 3201
+ }
+ Switch {
+  inputs 11
+  which {{parent.mode}}
+  name Switch1
+  xpos -1451
+  ypos 3197
+ }
+ Output {
+  name Output1
+  xpos -1451
+  ypos 3405
+ }
+end_group
