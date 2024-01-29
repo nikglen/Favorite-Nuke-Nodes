@@ -1,0 +1,16 @@
+set cut_paste_input [stack 0]
+version 13.2 v8
+push $cut_paste_input
+push 0
+MergeExpression {
+ inputs 2
+ expr0 "Ar == 0 ? Br : Br/Ar"
+ expr1 "Ag == 0 ? Bg : Bg/Ag"
+ expr2 "Ab == 0 ? Bb : Bb/Ab"
+ expr3 "Aa == 0 ? Ba : Ba/Aa"
+ name MergeDivide
+ label B/A
+ selected true
+ xpos -4493
+ ypos -3664
+}
