@@ -3,9 +3,6 @@ version 13.2 v8
 push $cut_paste_input
 Group {
  name TC_Tool
- help "QC Node to check technical comp issues.\n\nDeveloped by Tor Andreassen"
- onCreate "nuke.thisNode()\['missingFrames'].setValue('')\nnuke.thisNode()\['meName'].setValue(nuke.thisNode().name())\n"
- knobChanged "if nuke.thisKnob().name()=='mode':\n    n=nuke.thisNode()\n\n    val=n\['mode'].value()\n\n    if val == 'negative values':\n        n.knob('negative_values_over').setVisible(True)\n        n.knob('negative_values_over').setValue(False)\n    else:\n        n.knob('negative_values_over').setValue(False)\n        n.knob('negative_values_over').setVisible(False)"
  tile_color 0xf8ff00ff
  label "\[value mode]"
  selected true
