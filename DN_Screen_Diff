@@ -1,12 +1,12 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name DN_Screen_diff_v2
+ name DN_Screen_diff
  tile_color 0xff0fff
  selected true
- xpos 560
- ypos -1
+ xpos 9054
+ ypos -16299
  addUserKnob {20 DNscreendifftab l DN_Screen_diff_v2}
  addUserKnob {41 satur l Saturation T Saturation_overall1.satur}
  addUserKnob {41 lows_multiply l "Lows multiply" T Multiply2.lows_multiply}
@@ -29,7 +29,7 @@ Group {
   xpos 1012
   ypos -404
  }
-set N11cf7bc0 [stack 0]
+set N2557de80 [stack 0]
  Input {
   inputs 0
   name FG
@@ -75,7 +75,7 @@ set N11cf7bc0 [stack 0]
   addUserKnob {7 satur l Saturation R 0 4}
   satur 0.2
  }
-set N12667c80 [stack 0]
+set N255b68b0 [stack 0]
  Clamp {
   channels rgb
   maximum_enable false
@@ -94,7 +94,7 @@ set N12667c80 [stack 0]
   addUserKnob {7 multiply_highs l "Highs multiply" R 0 4}
   multiply_highs 1
  }
-push $N12667c80
+push $N255b68b0
  Clamp {
   channels rgb
   minimum_enable false
@@ -135,7 +135,7 @@ push $N12667c80
   xpos 1160
   ypos -408
  }
-push $N11cf7bc0
+push $N2557de80
  Dot {
   name Dot1
   xpos 1012
