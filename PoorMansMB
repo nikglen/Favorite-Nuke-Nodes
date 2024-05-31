@@ -1,11 +1,11 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name PoorMansMotionBlur
+ name PoorMansMotionBlur1
  selected true
- xpos 459
- ypos -85
+ xpos 9895
+ ypos -15883
  addUserKnob {20 Motionblur}
  addUserKnob {41 samples T MBLUR_CTRL.samples}
  addUserKnob {41 shuttertime T MBLUR_CTRL.shuttertime}
