@@ -1,11 +1,11 @@
 set cut_paste_input [stack 0]
-version 12.2 v3
+version 14.1 v4
 push $cut_paste_input
 Group {
  name DespillToBG
  selected true
- xpos -555
- ypos 36
+ xpos 8870
+ ypos -15994
  addUserKnob {20 User l main}
  addUserKnob {68 sto l "screen type" t "- auto - The screen type will be controlled by \n  the screen color.\n- picking a primary color acts as an override so for example you can pick a blue-ish screen color but still despill green tones.\n" M {auto green blue red "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""}}
  sto green
@@ -54,7 +54,7 @@ Group {
   ypos 718
   number 1
  }
-set N5efab000 [stack 0]
+set N25a0bf20 [stack 0]
  Input {
   inputs 0
   name Clean_Plate
@@ -70,7 +70,7 @@ set N5efab000 [stack 0]
   xpos 733
   ypos -187
  }
-set N5efaa800 [stack 0]
+set N25a25e60 [stack 0]
  Switch {
   inputs 2
   which {{"\[exists input3]"}}
@@ -78,7 +78,7 @@ set N5efaa800 [stack 0]
   xpos 535
   ypos -163
  }
-push $N5efaa800
+push $N25a25e60
  Dissolve {
   inputs 2
   which 1
@@ -91,13 +91,13 @@ push $N5efaa800
   xpos 569
   ypos -45
  }
-set N393c0400 [stack 0]
+set N25a43160 [stack 0]
  Dot {
   name Dot12
   xpos 569
   ypos 40
  }
-set N5efa9c00 [stack 0]
+set N25a483a0 [stack 0]
  Expression {
   temp_name0 avr
   temp_expr0 r*clamp(0.1,parent.gain,inf)-(g*(1-(parent.balance-1))+b*parent.balance)/2
@@ -110,15 +110,15 @@ set N5efa9c00 [stack 0]
   xpos 535
   ypos 85
  }
-set N5efa9800 [stack 0]
+set N25a4d530 [stack 0]
  Expression {
   expr3 1/a
   name Expression2
   xpos 399
   ypos 85
  }
-set N5efa9400 [stack 0]
-push $N393c0400
+set N25a5bdf0 [stack 0]
+push $N25a43160
  Input {
   inputs 0
   name source
@@ -130,7 +130,7 @@ push $N393c0400
   xpos -50
   ypos -45
  }
-set N5efa8c00 [stack 0]
+set N2586f7e0 [stack 0]
  MergeExpression {
   inputs 2
   temp_name0 which
@@ -165,14 +165,14 @@ set N5efa8c00 [stack 0]
   ypos 185
   disable {{1-parent.enableErode}}
  }
-set N5ef3f400 [stack 0]
+set N2589dc00 [stack 0]
  Expression {
   expr3 a>=1?0:1
   name exp4
   xpos 384
   ypos 226
  }
-push $N5ef3f400
+push $N2589dc00
  Grade {
   channels alpha
   gamma {{parent.falloff}}
@@ -181,8 +181,8 @@ push $N5ef3f400
   xpos 255
   ypos 232
  }
-set N5ef3ec00 [stack 0]
-push $N5ef3ec00
+set N258b92d0 [stack 0]
+push $N258b92d0
  Merge2 {
   inputs 2+1
   operation copy
@@ -190,9 +190,9 @@ push $N5ef3ec00
   xpos 255
   ypos 277
  }
-set N5ef3e800 [stack 0]
-push $N5efab000
-push $N5efa9800
+set N258ca620 [stack 0]
+push $N25a0bf20
+push $N25a4d530
  Dot {
   name Dot9
   xpos 569
@@ -205,7 +205,7 @@ push $N5efa9800
   xpos 417
   ypos 386
  }
-push $N5ef3e800
+push $N258ca620
  Clamp {
   name Clamp1
   xpos 255
@@ -218,7 +218,7 @@ push $N5ef3e800
   xpos 255
   ypos 380
  }
-push $N5efa9400
+push $N25a5bdf0
  Dot {
   name Dot10
   xpos 433
@@ -229,8 +229,8 @@ push $N5efa9400
   xpos 748
   ypos 147
  }
-set N5ef3d000 [stack 0]
-push $N5efa9c00
+set N25911c60 [stack 0]
+push $N25a483a0
  Dot {
   name Dot14
   xpos 914
@@ -250,7 +250,7 @@ push $N5efa9c00
   xpos 914
   ypos 339
  }
-push $N5ef3d000
+push $N25911c60
  Expression {
   channel0 rgb
   expr0 clamp(1/clamp((1/a)/(parent.ir+1)),0,inf)
@@ -307,13 +307,13 @@ push $N5ef3d000
   xpos 1128
   ypos 610
  }
-push $N5efa8c00
+push $N2586f7e0
  Dot {
   name Dot3
   xpos -50
   ypos 414
  }
-set N5eed5c00 [stack 0]
+set N257836e0 [stack 0]
  Dot {
   name Dot4
   xpos 166
@@ -345,7 +345,7 @@ set N5eed5c00 [stack 0]
   xpos 166
   ypos 721
  }
-push $N5eed5c00
+push $N257836e0
  Merge2 {
   inputs 2+1
   operation copy
