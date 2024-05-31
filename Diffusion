@@ -1,302 +1,252 @@
 set cut_paste_input [stack 0]
-version 11.3 v5
+version 14.1 v4
 push $cut_paste_input
-
 Group {
-    name Diffusion
-    tile_color 0xffbb9eff
-    selected true
-    xpos 4458
-    ypos 3262
-
-    addUserKnob {20 Diffusion}
-    addUserKnob {7 diffusion_size R 0 100}
-    diffusion_size 54.5
-    addUserKnob {7 diffusion_amount}
-    diffusion_amount 0.33
-    addUserKnob {26 ""}
-    addUserKnob {
-        22 mask_input l "Toggle Mask Input" T "# Toggle Mask Input\nfrom __future__ import with_statement\nn = nuke.thisNode()\n# Disconnect Mask Input\nn.setInput(1, None)\nwith n:\n  mask_input = nuke.toNode('InputMask')\n  if mask_input:\n    nuke.delete(mask_input)\n  else:\n    mask_input = nuke.nodes.Input()\n    mask_input['name'].setValue('InputMask')\n    mask_input.setXpos(1280)\n    mask_input.setYpos(-177)\n    mdot = nuke.toNode('mask_dot')\n    mdot.setInput(0, mask_input)" +STARTLINE
-    }
-    addUserKnob {41 mix T NodeWrapper1.mix}
+ name Diffusion2
+ tile_color 0xffbb9eff
+ selected true
+ xpos 8922
+ ypos -15922
+ addUserKnob {20 Diffusion}
+ addUserKnob {7 diffusion_size R 0 100}
+ diffusion_size 54.5
+ addUserKnob {7 diffusion_amount}
+ diffusion_amount 0.33
+ addUserKnob {26 ""}
+ addUserKnob {22 mask_input l "Toggle Mask Input" T "# Toggle Mask Input\nfrom __future__ import with_statement\nn = nuke.thisNode()\n# Disconnect Mask Input\nn.setInput(1, None)\nwith n:\n  mask_input = nuke.toNode('InputMask')\n  if mask_input:\n    nuke.delete(mask_input)\n  else:\n    mask_input = nuke.nodes.Input()\n    mask_input\['name'].setValue('InputMask')\n    mask_input.setXpos(1280)\n    mask_input.setYpos(-177)\n    mdot = nuke.toNode('mask_dot')\n    mdot.setInput(0, mask_input)" +STARTLINE}
+ addUserKnob {41 mix T NodeWrapper1.mix}
 }
-
-Dot {
-    inputs 0
-    name mask_dot
-    label "Mask Input"
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1314
-    ypos -44
-}
-
-Input {
-    inputs 0
-    name Input
-    label "\[value number]"
-    xpos 1940
-    ypos -162
-}
-
-Dot {
-    name Dot17
-    label "BG INPUT"
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1974
-    ypos -80
-}
-
-Dot {
-    name Dot4
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1974
-    ypos 64
-}
-
-set N77179ae0 [stack 0]
-
-Dot {
-    name Dot12
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1754
-    ypos 64
-}
-
-set N80dd2450 [stack 0]
-
-Shuffle {
-    red white
-    green white
-    blue white
-    alpha white
-    name WHITE
-    tile_color 0xfefefeff
-    xpos 1500
-    ypos 60
-}
-
-Switch {
-    inputs 2
-    which {{"\[exists parent.input1]"}}
-    name MaskSwitch
-    xpos 1280
-    ypos 60
-}
-
-Dot {
-    name Dot15
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1314
-    ypos 604
-}
-
-Dot {
-    name Dot1
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1314
-    ypos 892
-}
-
-push $N77179ae0
-
-Dot {
-    name Dot10
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2414
-    ypos 64
-}
-
-set N70004400 [stack 0]
-
-Keyer {
-    invert true
-    operation "luminance key"
-    name Keyer1
-    xpos 2380
-    ypos 702
-}
-
-Dot {
-    name Dot11
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2414
-    ypos 892
-}
-
-push $N77179ae0
-
-Dot {
-    name Dot2
-    label Diffusion
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1974
-    ypos 136
-}
-
-Dot {
-    name Dot3
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1974
-    ypos 208
-}
-
-set N7702a220 [stack 0]
-
-Blur {
-    channels {{{parent.NodeWrapper1.channels}}}
-    size {{parent.diffusion_size}}
-    name Diffusion_Blur
-    xpos 2050
-    ypos 204
-}
-
-push $N7702a220
-
-Dissolve {
-    inputs 2
-    channels {{{parent.NodeWrapper1.channels}}}
-    which {{parent.diffusion_amount}}
-    name Diffusion_Dissolve
-    xpos 1940
-    ypos 276
-}
-
-Dot {
-    name Dot7
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 1974
-    ypos 604
-}
-
-set N77038c90 [stack 0]
-
-Dot {
-    name Dot8
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2084
-    ypos 604
-}
-
-set N70005310 [stack 0]
-
-Dot {
-    name Dot9
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2194
-    ypos 604
-}
-
-Dot {
-    name Dot18
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2194
-    ypos 820
-}
-
-push $N70005310
-
-Defocus {
-    channels {{{parent.NodeWrapper1.channels}}}
-    defocus 10
-    name Defocus1
-    xpos 2050
-    ypos 672
-}
-
-Blur {
-    channels {{{parent.NodeWrapper1.channels}}}
-    size 10
-    name Blur1
-    xpos 2050
-    ypos 744
-}
-
-Merge2 {
-    inputs 2
-    operation min
-    name Merge17
-    xpos 2050
-    ypos 816
-}
-
-push $N77038c90
-
-Keymix {
-    inputs 3
-    channels rgba
-    mix 0.4
-    bbox B
-    name Keymix1
-    xpos 1940
-    ypos 888
-}
-
-push $N80dd2450
-
-Keymix {
-    inputs 3
-    channels rgba
-    bbox B
-    name Keymix2
-    xpos 1720
-    ypos 890
-}
-
-set N80c6b380 [stack 0]
-
-push $N70004400
-
-Dot {
-    name Dot5
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2854
-    ypos 64
-}
-
-Dot {
-    name Dot6
-    note_font_size 42
-    note_font_color 0x7f7f7f01
-    xpos 2854
-    ypos 1216
-}
-
-NodeWrapper {
-    inputs 2
-    channels rgb
-    name NodeWrapper1
-    xpos 1720
-    ypos 1212
-}
-
-Output {
-    name Output1
-    xpos 1720
-    ypos 1500
-}
-
-push $N80c6b380
-
-Viewer {
-    input_process false
-    name Viewer1
-    xpos 1940
-    ypos 1047
-}
-
+ Dot {
+  inputs 0
+  name mask_dot
+  label "Mask Input"
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1314
+  ypos -44
+ }
+ Input {
+  inputs 0
+  name Input
+  label "\[value number]"
+  xpos 1940
+  ypos -162
+ }
+ Dot {
+  name Dot17
+  label "BG INPUT"
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1974
+  ypos -80
+ }
+ Dot {
+  name Dot4
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1974
+  ypos 64
+ }
+set N25805a00 [stack 0]
+ Dot {
+  name Dot12
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1754
+  ypos 64
+ }
+set N2580ac30 [stack 0]
+ Shuffle {
+  red white
+  green white
+  blue white
+  alpha white
+  name WHITE
+  tile_color 0xfefefeff
+  xpos 1500
+  ypos 60
+ }
+ Switch {
+  inputs 2
+  which {{"\[exists parent.input1]"}}
+  name MaskSwitch
+  xpos 1280
+  ypos 60
+ }
+ Dot {
+  name Dot15
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1314
+  ypos 604
+ }
+ Dot {
+  name Dot1
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1314
+  ypos 892
+ }
+push $N25805a00
+ Dot {
+  name Dot10
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2414
+  ypos 64
+ }
+set N25833070 [stack 0]
+ Keyer {
+  invert true
+  operation "luminance key"
+  name Keyer1
+  xpos 2380
+  ypos 702
+ }
+ Dot {
+  name Dot11
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2414
+  ypos 892
+ }
+push $N25805a00
+ Dot {
+  name Dot2
+  label Diffusion
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1974
+  ypos 136
+ }
+ Dot {
+  name Dot3
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1974
+  ypos 208
+ }
+set N2584cc00 [stack 0]
+ Blur {
+  channels {{{parent.NodeWrapper1.channels}}}
+  size {{parent.diffusion_size}}
+  name Diffusion_Blur
+  xpos 2050
+  ypos 204
+ }
+push $N2584cc00
+ Dissolve {
+  inputs 2
+  channels {{{parent.NodeWrapper1.channels}}}
+  which {{parent.diffusion_amount}}
+  name Diffusion_Dissolve
+  xpos 1940
+  ypos 276
+ }
+ Dot {
+  name Dot7
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 1974
+  ypos 604
+ }
+set N2566bdb0 [stack 0]
+ Dot {
+  name Dot8
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2084
+  ypos 604
+ }
+set N25670ff0 [stack 0]
+ Dot {
+  name Dot9
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2194
+  ypos 604
+ }
+ Dot {
+  name Dot18
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2194
+  ypos 820
+ }
+push $N25670ff0
+ Defocus {
+  channels {{{parent.NodeWrapper1.channels}}}
+  defocus 10
+  name Defocus1
+  xpos 2050
+  ypos 672
+ }
+ Blur {
+  channels {{{parent.NodeWrapper1.channels}}}
+  size 10
+  name Blur1
+  xpos 2050
+  ypos 744
+ }
+ Merge2 {
+  inputs 2
+  operation min
+  name Merge17
+  xpos 2050
+  ypos 816
+ }
+push $N2566bdb0
+ Keymix {
+  inputs 3
+  channels rgba
+  mix 0.4
+  bbox B
+  name Keymix1
+  xpos 1940
+  ypos 888
+ }
+push $N2580ac30
+ Keymix {
+  inputs 3
+  channels rgba
+  bbox B
+  name Keymix2
+  xpos 1720
+  ypos 890
+ }
+set N256b55b0 [stack 0]
+push $N25833070
+ Dot {
+  name Dot5
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2854
+  ypos 64
+ }
+ Dot {
+  name Dot6
+  note_font_size 42
+  note_font_color 0x7f7f7f01
+  xpos 2854
+  ypos 1216
+ }
+ NodeWrapper {
+  inputs 2
+  channels rgb
+  name NodeWrapper1
+  xpos 1720
+  ypos 1212
+ }
+ Output {
+  name Output1
+  xpos 1720
+  ypos 1500
+ }
+push $N256b55b0
+ Viewer {
+  input_process false
+  name Viewer1
+  xpos 1940
+  ypos 1047
+ }
 end_group
