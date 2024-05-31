@@ -1,15 +1,15 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name MatchColor
+ name MatchColor1
  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\n\nif k.name() == \"method\":\n\n\tif k.getValue()==0:\n\n\t\tn.knob('checkSelect').setVisible(False)\n\n\t\tn.knob('snap').setEnabled(False)\n\n\t\tn.knob('onscreenlocater').setEnabled(False)\n\n\t\tn.knob('radius').setEnabled(False)\n\n\telse:\n\n\t\tn.knob('checkSelect').setVisible(True)\n\n\t\tn.knob('snap').setEnabled(True)\n\n\t\tn.knob('onscreenlocater').setEnabled(True)\n\n\t\tn.knob('radius').setEnabled(True)"
  tile_color 0xff3402ff
  note_font "Bitstream Vera Sans Bold"
  note_font_size 12
  selected true
- xpos 513
- ypos -153
+ xpos 9239
+ ypos -15562
  addUserKnob {20 Match_color l "Match Color"}
  addUserKnob {4 method l Method M {Multiply Colorspace "" "" "" "" "" "" ""}}
  addUserKnob {6 checkSelect l saturation +HIDDEN +STARTLINE}
@@ -29,13 +29,13 @@ Group {
   xpos 1129
   ypos -845
  }
-set N148a62e0 [stack 0]
+set N244fc9c0 [stack 0]
  Dot {
   name Dot5
   xpos 1129
   ypos -252
  }
-set N148acc90 [stack 0]
+set N24501900 [stack 0]
  Dot {
   name Dot8
   xpos 968
@@ -46,13 +46,13 @@ set N148acc90 [stack 0]
   xpos 968
   ypos 149
  }
-push $N148acc90
+push $N24501900
  Dot {
   name Dot15
   xpos 1129
   ypos -13
  }
-set N148bbb60 [stack 0]
+set N24510cc0 [stack 0]
  Input {
   inputs 0
   name mask
@@ -79,27 +79,27 @@ set N148bbb60 [stack 0]
   xpos 1987
   ypos -407
  }
-set N148d7c30 [stack 0]
+set N2452e0d0 [stack 0]
  Colorspace {
   colorspace_out HSV
   name Colorspace2
   xpos 1959
   ypos -335
  }
-set N148dde50 [stack 0]
-push $N148a62e0
+set N24533260 [stack 0]
+push $N244fc9c0
  Dot {
   name Dot3
   xpos 1390
   ypos -845
  }
-set N148f6840 [stack 0]
+set N2454c9e0 [stack 0]
  Dot {
   name Dot2
   xpos 1528
   ypos -845
  }
-set N148fbe00 [stack 0]
+set N24551f90 [stack 0]
  Dot {
   name Dot4
   xpos 1847
@@ -111,7 +111,7 @@ set N148fbe00 [stack 0]
   xpos 1819
   ypos -338
  }
-set N149060c0 [stack 0]
+set N2455c230 [stack 0]
  ShuffleCopy {
   inputs 2
   red red
@@ -121,8 +121,8 @@ set N149060c0 [stack 0]
   xpos 1819
   ypos -278
  }
-push $N148dde50
-push $N149060c0
+push $N24533260
+push $N2455c230
  ShuffleCopy {
   inputs 2
   red red
@@ -149,14 +149,14 @@ push $N149060c0
   xpos 1847
   ypos -107
  }
-push $N148acc90
-push $N148f6840
+push $N24501900
+push $N2454c9e0
  Dot {
   name Dot13
   xpos 1390
   ypos -676
  }
-set N149685c0 [stack 0]
+set N243bf5c0 [stack 0]
  Dot {
   name Dot10
   xpos 1306
@@ -167,7 +167,7 @@ set N149685c0 [stack 0]
   xpos 1306
   ypos -552
  }
-push $N149685c0
+push $N243bf5c0
  Expression {
   expr0 "r < 0 ? 1 : r"
   expr1 "g < 0 ? 1 : g"
@@ -193,8 +193,8 @@ push $N149685c0
   xpos 1390
   ypos -360
  }
-push $N148d7c30
-push $N148fbe00
+push $N2452e0d0
+push $N24551f90
  Blur {
   channels rgba
   size {{parent.blur_size}}
@@ -207,7 +207,7 @@ push $N148fbe00
   xpos 1528
   ypos -682
  }
-set N149a9360 [stack 0]
+set N24400f70 [stack 0]
  Dot {
   name Dot9
   xpos 1622
@@ -218,7 +218,7 @@ set N149a9360 [stack 0]
   xpos 1622
   ypos -554
  }
-push $N149a9360
+push $N24400f70
  Expression {
   expr0 "r < 0 ? 1 : r"
   expr1 "g < 0 ? 1 : g"
@@ -274,7 +274,7 @@ push $N149a9360
   xpos 1500
   ypos -104
  }
-push $N148bbb60
+push $N24510cc0
  Dissolve {
   inputs 2+1
   which {{parent.dissolve+0.0000001}}
