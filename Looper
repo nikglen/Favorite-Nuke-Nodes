@@ -1,5 +1,5 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
  name Looper
@@ -9,8 +9,8 @@ Group {
  note_font_size 12
  note_font_color 0xb79d63ff
  selected true
- xpos 457
- ypos -164
+ xpos 9007
+ ypos -15913
  icon Looper_Node.png
  addUserKnob {20 Looper}
  addUserKnob {41 channels l Channels T Dissolve1.channels}
@@ -53,7 +53,7 @@ Group {
   ypos 89
   disable {{clamp(!parent.avoidclipend)}}
  }
-set N1420f7e0 [stack 0]
+set N24606cc0 [stack 0]
  Input {
   inputs 0
   name Source
@@ -73,7 +73,7 @@ set N1420f7e0 [stack 0]
   xpos 798
   ypos -73
  }
-set N14241710 [stack 0]
+set N2461ebd0 [stack 0]
  Dot {
   name Dot4
   xpos 1256
@@ -105,7 +105,7 @@ add_layer {fake_alpha fake_alpha.alpha}
   xpos 1222
   ypos 248
  }
-push $N1420f7e0
+push $N24606cc0
  TimeOffset {
   time_offset {{"-(parent.fromframe - parent.toframe)+1"}}
   time ""
@@ -113,7 +113,7 @@ push $N1420f7e0
   xpos 876
   ypos 89
  }
-push $N14241710
+push $N2461ebd0
  TimeOffset {
   time_offset {{"-(parent.fromframe - parent.toframe)+1"}}
   time ""
@@ -126,7 +126,7 @@ push $N14241710
   xpos 798
   ypos 253
  }
-set N1427bcf0 [stack 0]
+set N2465a420 [stack 0]
  Copy {
   inputs 2
   from0 rgba.alpha
@@ -159,7 +159,7 @@ set N1427bcf0 [stack 0]
   xpos 1125
   ypos 360
  }
-set N1429da70 [stack 0]
+set N2447cd30 [stack 0]
  Dot {
   name Dot6
   xpos 1288
@@ -173,7 +173,7 @@ set N1429da70 [stack 0]
   xpos 1254
   ypos 457
  }
-push $N1429da70
+push $N2447cd30
  Kronos {
   inputs 2
   timing2 Frame
@@ -197,8 +197,8 @@ push $N1429da70
   xpos 1125
   ypos 552
  }
-push $N1427bcf0
-push $N14241710
+push $N2465a420
+push $N2461ebd0
  Dot {
   name Dot1
   xpos 352
