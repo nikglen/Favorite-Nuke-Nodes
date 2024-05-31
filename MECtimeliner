@@ -1,11 +1,13 @@
+set cut_paste_input [stack 0]
+version 14.1 v4
 Group {
  inputs 0
  name MECtimeliner
  knobChanged "import nuke\nmectimeliner = nuke.thisNode().name()\nnuke.toNode(mectimeliner).knob(0, nuke.toNode(mectimeliner).knob('Startframe')).clearFlag(0)\n\n\nif int(nuke.toNode(mectimeliner).knob('activeInputs').getValue())!=0:\n    nuke.toNode(mectimeliner).knob('MEC1_up').setEnabled(False)\n    for x in range(int(nuke.toNode(mectimeliner).knob('activeInputs').getValue())):\n        nuke.toNode(mectimeliner).knob('MEC'+str(x+1)+'_down').setEnabled(True)\n        if (x+1)==int(nuke.toNode(mectimeliner).knob('activeInputs').getValue()):\n            nuke.toNode(mectimeliner).knob('MEC'+str(int(nuke.toNode(mectimeliner).knob('activeInputs').getValue()))+'_down').setEnabled(False)\n\n\n   "
  tile_color 0xff00ffff
  selected true
- xpos -14
- ypos 75
+ xpos 9339
+ ypos -15475
  addUserKnob {20 User l Controls}
  addUserKnob {26 credit l "" +STARTLINE T "Matthias Eckhardt @poly-by-poly.com"}
  addUserKnob {26 ""}
