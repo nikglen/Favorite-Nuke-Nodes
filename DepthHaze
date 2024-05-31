@@ -1,13 +1,13 @@
 set cut_paste_input [stack 0]
-version 13.2 v8
+version 14.1 v4
 push $cut_paste_input
 add_layer {Zdepth Zdepth.red Zdepth.green Zdepth.blue}
 Group {
  name DepthHaze
  note_font "Bitstream Vera Sans"
  selected true
- xpos 206
- ypos -126
+ xpos 8971
+ ypos -16368
  addUserKnob {20 User}
  addUserKnob {4 output l Output t "Choice of Output:\n- Result returns FG + Haze\n- HazeCard returns only the Haze Image\n- DepthMatte returns only the resulting depthMatte" M {Result "Haze Card" "Depth Matte" "" ""}}
  addUserKnob {68 Combine l "           Combine" t "Choice of how the haze will be combined with your rgba." -STARTLINE M {Over Plus "" "" "" ""}}
@@ -43,31 +43,31 @@ Group {
   xpos 764
   ypos 90
  }
-set N10db5750 [stack 0]
+set N25a61090 [stack 0]
  Dot {
   name Dot2
   xpos 764
   ypos 594
  }
-set N10e754e0 [stack 0]
+set N25a65f70 [stack 0]
  Dot {
   name Dot7
   xpos 764
   ypos 738
  }
-set N1067dbe0 [stack 0]
+set N25a6b110 [stack 0]
  Dot {
   name Dot6
   xpos 764
   ypos 906
  }
-set N10e9d430 [stack 0]
+set N25a702a0 [stack 0]
  Dot {
   name Dot10
   xpos 764
   ypos 1026
  }
-push $N10db5750
+push $N25a61090
  Shuffle {
   in Zdepth
   out depth
@@ -107,7 +107,7 @@ push $N10db5750
   xpos 984
   ypos 306
  }
-set N1171d370 [stack 0]
+set N25ab9720 [stack 0]
  Shuffle {
   in depth
   name Shuffle4
@@ -168,7 +168,7 @@ set N1171d370 [stack 0]
   xpos 1280
   ypos 249
  }
-set N10b0f770 [stack 0]
+set N25b17b50 [stack 0]
  Dot {
   name Dot3
   xpos 1534
@@ -179,21 +179,21 @@ set N10b0f770 [stack 0]
   xpos 1534
   ypos 978
  }
-push $N10e9d430
-push $N10e754e0
+push $N25a702a0
+push $N25a65f70
  Dot {
   name Dot9
   xpos 1094
   ypos 594
  }
-set N109c3e10 [stack 0]
-push $N1171d370
+set N25b2da90 [stack 0]
+push $N25ab9720
  Dot {
   name Dot11
   xpos 1094
   ypos 306
  }
-set N10db6140 [stack 0]
+set N25b32bf0 [stack 0]
  Premult {
   channels depth
   name Premult3
@@ -201,7 +201,7 @@ set N10db6140 [stack 0]
   ypos 345
   disable {{1-parent.unPremultZ}}
  }
-push $N10b0f770
+push $N25b17b50
  Copy {
   inputs 2
   from0 depth.Z
@@ -229,13 +229,13 @@ push $N10b0f770
   ypos 639
   disable {{parent.limitHazetoRgba==0 x1039 1}}
  }
-push $N1067dbe0
+push $N25a6b110
  Dot {
   name Dot14
   xpos 1094
   ypos 738
  }
-set N11749980 [stack 0]
+set N25975010 [stack 0]
  Merge2 {
   inputs 2
   operation plus
@@ -244,19 +244,19 @@ set N11749980 [stack 0]
   xpos 1170
   ypos 783
  }
-push $N109c3e10
+push $N25b2da90
  Dot {
   name Dot13
   xpos 1314
   ypos 594
  }
-push $N10db6140
+push $N25b32bf0
  Dot {
   name Dot12
   xpos 1314
   ypos 306
  }
-push $N10b0f770
+push $N25b17b50
  Copy {
   inputs 2
   from0 depth.Z
@@ -284,7 +284,7 @@ push $N10b0f770
   ypos 639
   disable {{parent.limitHazetoRgba==0}}
  }
-push $N11749980
+push $N25975010
  Dot {
   name Dot15
   xpos 1314
