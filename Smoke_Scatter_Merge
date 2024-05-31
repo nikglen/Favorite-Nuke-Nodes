@@ -1,0 +1,3482 @@
+set cut_paste_input [stack 0]
+version 14.1 v4
+push $cut_paste_input
+Group {
+ name Smoke_Scatter_Merge1
+ selected true
+ xpos 9006
+ ypos -16156
+ addUserKnob {20 User}
+ addUserKnob {26 About l "" +STARTLINE T "To help integrate 2D smoke into a scene \nCreates some light scattering in the element from the plate. \nAlso Merges the element over "}
+ addUserKnob {26 ""}
+ addUserKnob {26 LumaKey l "" +STARTLINE T " - Use a Luminance Key to Contain Effect to Wanted Areas\n"}
+ addUserKnob {26 _10 l "" +STARTLINE T "Soft Clip Highlights if Needed"}
+ addUserKnob {41 maxValue l "Max Value" T WhiteSoftClip1.maxValue}
+ addUserKnob {26 _11 l "" +STARTLINE T " "}
+ addUserKnob {6 ViewKey l "View Key" +STARTLINE}
+ addUserKnob {26 _2 l "" -STARTLINE T "(View in Alpha to See Luma Key)"}
+ addUserKnob {41 range l "" +STARTLINE T Keyer19.range}
+ addUserKnob {26 _1 l "" +STARTLINE T "\n - Adjust Erode and Blur to Suit Needs and Change the Look\n"}
+ addUserKnob {6 ViewBG l "View Matte" +STARTLINE}
+ addUserKnob {26 _3 l "" -STARTLINE T "(View in Alpha to See Matte)"}
+ addUserKnob {41 size l "Erode BG/Plate" T ErodeBG.size}
+ addUserKnob {41 size_1 l "Blur BG/Plate" T BlurBG.size}
+ addUserKnob {26 ""}
+ addUserKnob {26 _4 l "" +STARTLINE T "\n-  Contain Effect to/and Around Smoke\n"}
+ addUserKnob {6 ViewElem l "View Matte" +STARTLINE}
+ addUserKnob {26 _6 l "" -STARTLINE T "(View in Alpha to See Matte)"}
+ addUserKnob {41 size_2 l "Erode Element" T ErodeElem.size}
+ addUserKnob {41 size_3 l "Blur Element" T BlurElem.size}
+ addUserKnob {26 ""}
+ addUserKnob {6 ViewMatte l "View Matte for Scatter Effect" +STARTLINE}
+ addUserKnob {26 _5 l "" -STARTLINE T "(View in Alpha to See Matte)"}
+ addUserKnob {26 ""}
+ addUserKnob {26 _7 l "" +STARTLINE T "\n - Denser Areas of Element Cutting the Scatter Matte\n"}
+ addUserKnob {6 DenseMatte l "View Matte" +STARTLINE}
+ addUserKnob {26 _8 l "" -STARTLINE T "(View in Alpha to See Matte)"}
+ addUserKnob {41 blackpoint l Blackpoint T DenseGrade.blackpoint}
+ addUserKnob {41 size_4 l Blur T DenseBlur.size}
+ addUserKnob {26 ""}
+ addUserKnob {6 SE l "View Matte for Scatter Effect with Dense Areas Held Out" +STARTLINE}
+ addUserKnob {26 _9 l "" +STARTLINE T "                                                      (View in Alpha to See Matte)"}
+ addUserKnob {26 ""}
+ addUserKnob {6 Over l "View Element As Regular Over" +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {20 Info}
+ addUserKnob {26 _12 l "" +STARTLINE T "Inspired by Jessica Francoeur-Ducharme\nPackaged by Nicole Glen\n\n- Alchemy 24"}
+}
+ Dot {
+  inputs 0
+  name Dot267
+  label "Using a luminance key to contain effect to wanted areas"
+  note_font_size 20
+  note_font_color 0xffffffff
+  xpos 975
+  ypos -248
+ }
+ Dot {
+  inputs 0
+  name Dot268
+  label "Contain effect to and around smoke"
+  note_font_size 20
+  note_font_color 0xffffffff
+  xpos 1065
+  ypos -65
+ }
+ Dot {
+  inputs 0
+  name Dot266
+  label "Denser areas cutting the scatter\nPlaying with alpha mask for definition"
+  note_font_size 20
+  note_font_color 0xffffffff
+  xpos 1083
+  ypos 136
+ }
+ Input {
+  inputs 0
+  name Element
+  xpos 126
+  ypos -450
+  number 1
+ }
+ Dot {
+  name Dot319
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 160
+  ypos -339
+ }
+ Dot {
+  name Dot255
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 160
+  ypos -146
+ }
+set N16849a30 [stack 0]
+ Crop {
+  box {0 0 4448 3096}
+  name Crop13
+  xpos 126
+  ypos 134
+ }
+set N1684ebe0 [stack 0]
+ Dot {
+  name Dot256
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 160
+  ypos 224
+ }
+ Input {
+  inputs 0
+  name BG
+  xpos 624
+  ypos -514
+ }
+ Dot {
+  name Dot318
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 658
+  ypos -459
+ }
+ Dot {
+  name Dot260
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 658
+  ypos -307
+ }
+set N16867f60 [stack 0]
+ Dot {
+  name Dot264
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 658
+  ypos 93
+ }
+ Merge2 {
+  inputs 2
+  name Merge136
+  label Asset
+  xpos 624
+  ypos 214
+ }
+set N168721c0 [stack 0]
+ Dot {
+  name Dot4
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 434
+  ypos 282
+ }
+ Dot {
+  name Dot3
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 434
+  ypos 849
+ }
+ Input {
+  inputs 0
+  name Stencil
+  xpos 1040
+  ypos 230
+  number 2
+ }
+ Dot {
+  name Dot8
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1074
+  ypos 295
+ }
+push $N1684ebe0
+ Grade {
+  channels alpha
+  blackpoint 0.58
+  name DenseGrade
+  xpos 250
+  ypos 128
+ }
+ Blur {
+  channels rgba
+  size 10
+  name DenseBlur
+  xpos 370
+  ypos 134
+ }
+set N168a7140 [stack 0]
+ Invert {
+  name Invert1
+  xpos 809
+  ypos 128
+ }
+push $N16867f60
+ Group {
+  name WhiteSoftClip1
+  tile_color 0xffffffff
+  label "(Max: \[value maxValue])"
+  note_font "Helvetica Bold"
+  note_font_color 0xff
+  xpos 706
+  ypos -316
+  addUserKnob {20 WhiteSoftClip}
+  addUserKnob {7 maxValue l "Max Value" R 0 25}
+  maxValue 16
+  addUserKnob {26 ""}
+  addUserKnob {41 output2 l operation T BlacksMatch.output2}
+  addUserKnob {41 soft l FallOff T BlacksMatch.soft}
+  addUserKnob {41 aboveBase l "Color Mult" T BlacksMatch.aboveBase}
+  addUserKnob {26 ""}
+  addUserKnob {41 mode l "luminance math" T Saturation30.mode}
+  addUserKnob {41 mixValue l "Restore Color" T Dissolve18.which}
+  addUserKnob {26 ""}
+  addUserKnob {41 maskChannelMask l mask -STARTLINE T MergeMix.maskChannelMask}
+  addUserKnob {41 inject -STARTLINE T MergeMix.inject}
+  addUserKnob {41 invert_mask l invert -STARTLINE T MergeMix.invert_mask}
+  addUserKnob {41 fringe -STARTLINE T MergeMix.fringe}
+  addUserKnob {41 mix T MergeMix.mix}
+  addUserKnob {20 info l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description t "Soft clips white point so that it does not exceed the maximum value.  \n\nAbility to control the soft falloff of whitepoint\n\nShift between preserving luminance and preserving hue\n\n" T WhiteSoftClip}
+  addUserKnob {26 ver l Version: T v05}
+ }
+  Input {
+   inputs 0
+   name Inputmask
+   xpos -213
+   ypos 870
+   number 1
+  }
+  Dot {
+   name Dot57
+   xpos -179
+   ypos 983
+  }
+  Input {
+   inputs 0
+   name Input
+   xpos -605
+   ypos -291
+  }
+  Dot {
+   name Dot7
+   note_font_size 41
+   xpos -571
+   ypos -172
+  }
+set N168db6e0 [stack 0]
+  Dot {
+   name Dot54
+   note_font_size 41
+   xpos -571
+   ypos -52
+  }
+set N168e0830 [stack 0]
+  Dot {
+   name Dot6
+   note_font_size 41
+   xpos -755
+   ypos -52
+  }
+  Expression {
+   expr0 r<0?r:0
+   expr1 g<0?g:0
+   expr2 b<0?b:0
+   expr3 min(r,g,b)<0?1:0
+   name Expression4
+   xpos -789
+   ypos 91
+  }
+  Premult {
+   name Premult1
+   xpos -789
+   ypos 115
+  }
+  Dot {
+   name Dot5
+   note_font_size 41
+   xpos -755
+   ypos 867
+  }
+push $N168e0830
+  Expression {
+   expr0 r<0?0:r
+   expr1 g<0?0:g
+   expr2 b<0?0:b
+   name Expression3
+   xpos -605
+   ypos 93
+  }
+  Add {
+   channels rgb
+   value 0.0001
+   name Add1
+   xpos -605
+   ypos 117
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -571
+   ypos 178
+  }
+set N16720e80 [stack 0]
+  Dot {
+   name Dot52
+   note_font_size 41
+   xpos -149
+   ypos 178
+  }
+set N16726090 [stack 0]
+  Dot {
+   name Dot53
+   note_font_size 41
+   xpos 9
+   ypos 178
+  }
+push $N16726090
+  Saturation {
+   saturation 0
+   mode Maximum
+   name Saturation30
+   xpos -183
+   ypos 233
+  }
+set N16730420 [stack 0]
+  Merge2 {
+   inputs 2
+   operation divide
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge553
+   xpos -25
+   ypos 233
+  }
+push $N16730420
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression8
+   xpos -183
+   ypos 360
+  }
+  Group {
+   name BlacksMatch2
+   knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"inputChange\":\n    nsd = nuke.toNode(\"SwitchDefault\")\n    n\[\"default_black\"].setEnabled(nsd\[\"which\"].getValue()==1)"
+   tile_color 0xff
+   label "<font color=lightgray><small>Fall Off: \[value soft]\nColor Mult: \[value aboveBase]"
+   note_font "Helvetica Bold"
+   xpos -183
+   ypos 424
+   addUserKnob {20 BlacksMatch}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {4 output1 l "         output" M {Final "Preview Channel Key" "" "" "" "" "" "" ""}}
+   addUserKnob {41 output2 l operation T Settings.operation}
+   addUserKnob {41 unpremultiplication l "Unpremult before operation?" T Settings.unpremult}
+   addUserKnob {26 ""}
+   addUserKnob {18 default_black l "default black"}
+   default_black {{1/maxValue}}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {26 ""}
+   addUserKnob {41 soft l FallOff T Settings.soft}
+   addUserKnob {41 aboveBase l "Black Color Mult" T Settings.aboveBase}
+   addUserKnob {26 ""}
+   addUserKnob {41 maskChannelMask l mask -STARTLINE T MergeKeymix.maskChannelMask}
+   addUserKnob {41 inject -STARTLINE T MergeKeymix.inject}
+   addUserKnob {41 invert_mask l invert -STARTLINE T MergeKeymix.invert_mask}
+   addUserKnob {41 fringe -STARTLINE T MergeKeymix.fringe}
+   addUserKnob {41 mix T MergeKeymix.mix}
+   addUserKnob {20 info l Info}
+   addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+   addUserKnob {26 desc l Description: t "Plug an image /constant you wish to be your blackpoint into BlackColor input.\n\nControl the falloff of Toe of the blackpoint and\nchoose between a screen, plus, and hypot\noperation" T BlacksMatch}
+   addUserKnob {1 ver l Version:}
+   ver v08
+   addUserKnob {1 operation l INVISIBLE +INVISIBLE}
+   operation "\[value output2]</font>)(<font color=yellow><small>\[value ver]</font>"
+  }
+   StickyNote {
+    inputs 0
+    name StickyNote2
+    tile_color 0xff
+    label green
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 177
+    ypos 466
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote1
+    tile_color 0xff
+    label red
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 188
+    ypos 350
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote3
+    tile_color 0xff
+    label blue
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 186
+    ypos 570
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote4
+    tile_color 0xff
+    label "min will be \nblack color"
+    note_font_size 31
+    note_font_color 0xffffffff
+    xpos 143
+    ypos 704
+   }
+   Input {
+    inputs 0
+    name Inputimg
+    xpos 322
+    ypos -550
+   }
+   Dot {
+    name Dot17
+    xpos 356
+    ypos -418
+   }
+set N167844e0 [stack 0]
+   AddChannels {
+    channels rgba
+    color 1
+    name AddChannels1
+    xpos 322
+    ypos -365
+   }
+   Dot {
+    name Dot5
+    note_font_size 41
+    xpos 356
+    ypos -288
+   }
+set N16792720 [stack 0]
+   Grade {
+    white 0
+    multiply 0
+    add {{parent.default_black} {parent.default_black} {parent.default_black} {parent.default_black}}
+    black_clamp false
+    name Grade1
+    label color
+    xpos 905
+    ypos -295
+   }
+   Input {
+    inputs 0
+    name InputBlackColor
+    xpos 1138
+    ypos -569
+    number 1
+   }
+   Switch {
+    inputs 2
+    which {{"!\[exists parent.input1]"}}
+    name SwitchDefault
+    xpos 1138
+    ypos -291
+   }
+   Dot {
+    name Dot26
+    label "Black Color"
+    note_font_size 41
+    xpos 1172
+    ypos -212
+   }
+   Dot {
+    name Dot4
+    note_font_size 41
+    xpos 1172
+    ypos -124
+   }
+set N167bba20 [stack 0]
+   Multiply {
+    channels rgb
+    value {{parent.Settings.aboveBase}}
+    name Multiply1
+    label "mult black color"
+    xpos 1138
+    ypos -29
+   }
+   Multiply {
+    channels rgb
+    value 4
+    name Multiply2
+    label "boosted for hypot"
+    xpos 1138
+    ypos 46
+    disable {{"Settings.operation == 3 ? 0 : 1"}}
+   }
+push $N16792720
+   Unpremult {
+    name Unpremult1
+    xpos 322
+    ypos -17
+    disable {{!parent.Settings.unpremult i}}
+   }
+   Dot {
+    name Dot18
+    xpos 356
+    ypos 145
+   }
+set N167e1af0 [stack 0]
+   MergeExpression {
+    inputs 2
+    expr0 Br/Ar
+    expr1 Bg/Ag
+    expr2 Bb/Ab
+    name MergeDivide
+    xpos 1138
+    ypos 142
+   }
+   Invert {
+    channels rgb
+    name Invert1
+    xpos 1138
+    ypos 209
+   }
+   Gamma {
+    channels rgb
+    value {{((1/Settings.aboveBase)*Settings.soft)+(Settings.soft)}}
+    name Gamma1
+    xpos 1138
+    ypos 264
+   }
+   Dot {
+    name Dot19
+    xpos 1172
+    ypos 364
+   }
+set N1660d090 [stack 0]
+   Dot {
+    name Dot20
+    xpos 1172
+    ypos 478
+   }
+set N16612260 [stack 0]
+   Dot {
+    name Dot21
+    xpos 1172
+    ypos 586
+   }
+set N166173f0 [stack 0]
+   Dot {
+    name Dot1
+    xpos 1172
+    ypos 1150
+   }
+   Input {
+    inputs 0
+    name Inputmask
+    xpos 864
+    ypos 836
+    number 2
+   }
+   Dot {
+    name Dot29
+    xpos 898
+    ypos 1015
+   }
+push $N167bba20
+   Dot {
+    name Dot23
+    xpos 706
+    ypos -124
+   }
+   Dot {
+    name Dot6
+    note_font_size 41
+    xpos 706
+    ypos 293
+   }
+set N16630870 [stack 0]
+   Dot {
+    name Dot2
+    note_font_size 41
+    xpos 706
+    ypos 404
+   }
+set N16635a90 [stack 0]
+   Dot {
+    name Dot3
+    note_font_size 41
+    xpos 706
+    ypos 523
+   }
+set N1663ac20 [stack 0]
+   Dot {
+    name Dot7
+    note_font_size 41
+    xpos 706
+    ypos 731
+   }
+push $N166173f0
+push $N1663ac20
+push $N16612260
+push $N16635a90
+push $N1660d090
+push $N16630870
+push $N167e1af0
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.red
+    maskChannelInput -rgba.red
+    name Merge3
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 357
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch x1 13}}
+    bbox B
+    Achannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.green
+    maskChannelInput -rgba.red
+    name Merge4
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 471
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    output {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    maskChannelMask rgba.blue
+    maskChannelInput -rgba.red
+    name Merge5
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 579
+   }
+   Merge2 {
+    inputs 2
+    operation max
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name Merge1
+    xpos 322
+    ypos 728
+   }
+   Premult {
+    name Premult4
+    xpos 322
+    ypos 881
+    disable {{!parent.Settings.unpremult i}}
+   }
+push $N167844e0
+   Dot {
+    name Dot28
+    xpos -146
+    ypos -418
+   }
+   Dot {
+    name Dot30
+    xpos -146
+    ypos 1015
+   }
+   Merge2 {
+    inputs 2+1
+    operation copy
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name MergeKeymix
+    label "\[ expr \{ \[value mix] == 1 ? \" \" : \[concat Mix: \[value mix]] \}]"
+    xpos 322
+    ypos 1012
+   }
+   Switch {
+    inputs 2
+    which {{output1 i x1067 0}}
+    name Switch1
+    xpos 322
+    ypos 1147
+   }
+   Output {
+    name Output1
+    xpos 322
+    ypos 1395
+   }
+   NoOp {
+    inputs 0
+    name Settings
+    note_font_size 51
+    xpos 43
+    ypos -286
+    addUserKnob {20 User}
+    addUserKnob {4 operation M {plus screen hypot ""}}
+    operation {{parent.parent.BlacksMatch.Settings.operation}}
+    addUserKnob {7 witch}
+    witch {{"Settings.operation == 0 ? 24 : Settings.operation == 1 ? 25 : 13"}}
+    addUserKnob {7 soft}
+    soft {{parent.parent.BlacksMatch.Settings.soft}}
+    addUserKnob {7 aboveBase R 1 5}
+    aboveBase {{parent.parent.BlacksMatch.Settings.aboveBase}}
+    addUserKnob {6 unpremult l "Unpremult before operation?" +STARTLINE}
+   }
+  end_group
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression9
+   xpos -183
+   ypos 509
+  }
+  Dot {
+   name Dot50
+   note_font_size 41
+   xpos -149
+   ypos 576
+  }
+  Merge2 {
+   inputs 2
+   operation multiply
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge554
+   xpos -25
+   ypos 572
+  }
+  Dot {
+   name Dot55
+   note_font_size 41
+   xpos 9
+   ypos 669
+  }
+  Dot {
+   name Dot56
+   note_font_size 41
+   xpos -404
+   ypos 669
+  }
+set N166ea550 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -404
+   ypos 745
+  }
+push $N166ea550
+push $N16720e80
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression10
+   xpos -605
+   ypos 353
+  }
+  Group {
+   name BlacksMatch
+   knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"inputChange\":\n    nsd = nuke.toNode(\"SwitchDefault\")\n    n\[\"default_black\"].setEnabled(nsd\[\"which\"].getValue()==1)"
+   tile_color 0xff
+   label "<font color=lightgray><small>Fall Off: \[value soft]\nColor Mult: \[value aboveBase]"
+   note_font "Helvetica Bold"
+   xpos -605
+   ypos 427
+   addUserKnob {20 BlacksMatch}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {4 output1 l "         output" M {Final "Preview Channel Key" "" "" "" "" "" "" ""}}
+   addUserKnob {41 output2 l operation T Settings.operation}
+   addUserKnob {41 unpremultiplication l "Unpremult before operation?" T Settings.unpremult}
+   addUserKnob {26 ""}
+   addUserKnob {18 default_black l "default black"}
+   default_black {{1/maxValue}}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {26 ""}
+   addUserKnob {41 soft l FallOff T Settings.soft}
+   addUserKnob {41 aboveBase l "Black Color Mult" T Settings.aboveBase}
+   addUserKnob {26 ""}
+   addUserKnob {41 maskChannelMask l mask -STARTLINE T MergeKeymix.maskChannelMask}
+   addUserKnob {41 inject -STARTLINE T MergeKeymix.inject}
+   addUserKnob {41 invert_mask l invert -STARTLINE T MergeKeymix.invert_mask}
+   addUserKnob {41 fringe -STARTLINE T MergeKeymix.fringe}
+   addUserKnob {41 mix T MergeKeymix.mix}
+   addUserKnob {20 info l Info}
+   addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+   addUserKnob {26 desc l Description: t "Plug an image /constant you wish to be your blackpoint into BlackColor input.\n\nControl the falloff of Toe of the blackpoint and\nchoose between a screen, plus, and hypot\noperation" T BlacksMatch}
+   addUserKnob {1 ver l Version:}
+   ver v08
+   addUserKnob {1 operation l INVISIBLE +INVISIBLE}
+   operation "\[value output2]</font>)(<font color=yellow><small>\[value ver]</font>"
+  }
+   StickyNote {
+    inputs 0
+    name StickyNote2
+    tile_color 0xff
+    label green
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 177
+    ypos 466
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote1
+    tile_color 0xff
+    label red
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 188
+    ypos 350
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote3
+    tile_color 0xff
+    label blue
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 186
+    ypos 570
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote4
+    tile_color 0xff
+    label "min will be \nblack color"
+    note_font_size 31
+    note_font_color 0xffffffff
+    xpos 143
+    ypos 704
+   }
+   Input {
+    inputs 0
+    name Inputimg
+    xpos 322
+    ypos -550
+   }
+   Dot {
+    name Dot17
+    xpos 356
+    ypos -418
+   }
+set N1652b9c0 [stack 0]
+   AddChannels {
+    channels rgba
+    color 1
+    name AddChannels1
+    xpos 322
+    ypos -365
+   }
+   Dot {
+    name Dot5
+    note_font_size 41
+    xpos 356
+    ypos -288
+   }
+set N16539c00 [stack 0]
+   Grade {
+    white 0
+    multiply 0
+    add {{parent.default_black} {parent.default_black} {parent.default_black} {parent.default_black}}
+    black_clamp false
+    name Grade1
+    label color
+    xpos 905
+    ypos -295
+   }
+   Input {
+    inputs 0
+    name InputBlackColor
+    xpos 1138
+    ypos -569
+    number 1
+   }
+   Switch {
+    inputs 2
+    which {{"!\[exists parent.input1]"}}
+    name SwitchDefault
+    xpos 1138
+    ypos -291
+   }
+   Dot {
+    name Dot26
+    label "Black Color"
+    note_font_size 41
+    xpos 1172
+    ypos -212
+   }
+   Dot {
+    name Dot4
+    note_font_size 41
+    xpos 1172
+    ypos -124
+   }
+set N16562f00 [stack 0]
+   Multiply {
+    channels rgb
+    value {{parent.Settings.aboveBase}}
+    name Multiply1
+    label "mult black color"
+    xpos 1138
+    ypos -29
+   }
+   Multiply {
+    channels rgb
+    value 4
+    name Multiply2
+    label "boosted for hypot"
+    xpos 1138
+    ypos 46
+    disable {{"Settings.operation == 3 ? 0 : 1"}}
+   }
+push $N16539c00
+   Unpremult {
+    name Unpremult1
+    xpos 322
+    ypos -17
+    disable {{!parent.Settings.unpremult i}}
+   }
+   Dot {
+    name Dot18
+    xpos 356
+    ypos 145
+   }
+set N16588fd0 [stack 0]
+   MergeExpression {
+    inputs 2
+    expr0 Br/Ar
+    expr1 Bg/Ag
+    expr2 Bb/Ab
+    name MergeDivide
+    xpos 1138
+    ypos 142
+   }
+   Invert {
+    channels rgb
+    name Invert1
+    xpos 1138
+    ypos 209
+   }
+   Gamma {
+    channels rgb
+    value {{((1/Settings.aboveBase)*Settings.soft)+(Settings.soft)}}
+    name Gamma1
+    xpos 1138
+    ypos 264
+   }
+   Dot {
+    name Dot19
+    xpos 1172
+    ypos 364
+   }
+set N165b4550 [stack 0]
+   Dot {
+    name Dot20
+    xpos 1172
+    ypos 478
+   }
+set N165b9720 [stack 0]
+   Dot {
+    name Dot21
+    xpos 1172
+    ypos 586
+   }
+set N165be8b0 [stack 0]
+   Dot {
+    name Dot1
+    xpos 1172
+    ypos 1150
+   }
+   Input {
+    inputs 0
+    name Inputmask
+    xpos 864
+    ypos 836
+    number 2
+   }
+   Dot {
+    name Dot29
+    xpos 898
+    ypos 1015
+   }
+push $N16562f00
+   Dot {
+    name Dot23
+    xpos 706
+    ypos -124
+   }
+   Dot {
+    name Dot6
+    note_font_size 41
+    xpos 706
+    ypos 293
+   }
+set N165d7d30 [stack 0]
+   Dot {
+    name Dot2
+    note_font_size 41
+    xpos 706
+    ypos 404
+   }
+set N165dcf50 [stack 0]
+   Dot {
+    name Dot3
+    note_font_size 41
+    xpos 706
+    ypos 523
+   }
+set N165e20e0 [stack 0]
+   Dot {
+    name Dot7
+    note_font_size 41
+    xpos 706
+    ypos 731
+   }
+push $N165be8b0
+push $N165e20e0
+push $N165b9720
+push $N165dcf50
+push $N165b4550
+push $N165d7d30
+push $N16588fd0
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.red
+    maskChannelInput -rgba.red
+    name Merge3
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 357
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch x1 13}}
+    bbox B
+    Achannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.green
+    maskChannelInput -rgba.red
+    name Merge4
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 471
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    output {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    maskChannelMask rgba.blue
+    maskChannelInput -rgba.red
+    name Merge5
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 579
+   }
+   Merge2 {
+    inputs 2
+    operation max
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name Merge1
+    xpos 322
+    ypos 728
+   }
+   Premult {
+    name Premult4
+    xpos 322
+    ypos 881
+    disable {{!parent.Settings.unpremult i}}
+   }
+push $N1652b9c0
+   Dot {
+    name Dot28
+    xpos -146
+    ypos -418
+   }
+   Dot {
+    name Dot30
+    xpos -146
+    ypos 1015
+   }
+   Merge2 {
+    inputs 2+1
+    operation copy
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name MergeKeymix
+    label "\[ expr \{ \[value mix] == 1 ? \" \" : \[concat Mix: \[value mix]] \}]"
+    xpos 322
+    ypos 1012
+   }
+   Switch {
+    inputs 2
+    which {{output1 i x1067 0}}
+    name Switch1
+    xpos 322
+    ypos 1147
+   }
+   Output {
+    name Output1
+    xpos 322
+    ypos 1395
+   }
+   NoOp {
+    inputs 0
+    name Settings
+    note_font_size 51
+    xpos 43
+    ypos -286
+    addUserKnob {20 User}
+    addUserKnob {4 operation M {plus screen hypot ""}}
+    addUserKnob {7 witch}
+    witch {{"Settings.operation == 0 ? 24 : Settings.operation == 1 ? 25 : 13"}}
+    addUserKnob {7 soft}
+    soft 0.4
+    addUserKnob {7 aboveBase R 1 5}
+    aboveBase 2
+    addUserKnob {6 unpremult l "Unpremult before operation?" +STARTLINE}
+   }
+  end_group
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression11
+   xpos -605
+   ypos 507
+  }
+  Dissolve {
+   inputs 2
+   channels rgb
+   which 0.5
+   name Dissolve18
+   label "\[value which]"
+   xpos -605
+   ypos 662
+  }
+  Switch {
+   inputs 2
+   which {{parent.Dissolve18.which}}
+   name Switch2
+   label "\[value which]"
+   xpos -605
+   ypos 738
+  }
+  Add {
+   channels rgb
+   value -0.0001
+   name Add2
+   xpos -605
+   ypos 808
+  }
+  Merge2 {
+   inputs 2
+   operation plus
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge1
+   xpos -605
+   ypos 864
+  }
+push $N168db6e0
+  Dot {
+   name Dot58
+   note_font_size 41
+   xpos -922
+   ypos -172
+  }
+  Dot {
+   name Dot60
+   note_font_size 41
+   xpos -922
+   ypos 983
+  }
+set N164ac360 [stack 0]
+  Merge2 {
+   inputs 2+1
+   operation copy
+   Achannels none
+   Bchannels none
+   output none
+   also_merge rgb
+   name MergeMix
+   xpos -605
+   ypos 976
+  }
+push $N164ac360
+  Dot {
+   name Dot3
+   note_font_size 41
+   xpos -922
+   ypos 1030
+  }
+  Switch {
+   inputs 2
+   which {{"parent.MergeMix.mix == 0 ? 0 : 1"}}
+   name Switch1
+   label "\[value which]"
+   xpos -605
+   ypos 1023
+  }
+  Output {
+   name Output1
+   xpos -605
+   ypos 1316
+  }
+ end_group
+ Dot {
+  name Dot259
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 831
+  ypos -307
+ }
+ Keyer {
+  operation "luminance key"
+  range {0.1497184414 0.273124416 1 1}
+  name Keyer19
+  xpos 797
+  ypos -280
+ }
+set N164d9df0 [stack 0]
+ FilterErode {
+  channels rgba
+  size -200
+  filter gaussian
+  name ErodeBG
+  xpos 797
+  ypos -226
+ }
+ Group {
+  name BBoxToFormat1
+  onCreate "n = nuke.thisNode()\ninputFormat = n.knob(\"inputFormat\")\ninputBBox = n.knob(\"inputBBox\")\ncrop = nuke.toNode(\"Crop6\")\ncropb = crop.knob('box')\noutputBBox = n.knob('outputBBox')\noutputBBoxCenter = n.knob(\"outputBBoxCenter\")\n\ninputFormat.setFlag(0x0000000000008000)\ninputBBox.setFlag(0x0000000000008000)\ncropb.setFlag(0x0000000000008000)\noutputBBox.setFlag(0x0000000000008000)\noutputBBoxCenter.setFlag(0x0000000000008000)\n\nn = nuke.thisNode()\nn.knob(\"overscan\").setRange(0,400)\nn.knob(\"overscanPercent\").setRange(1,4)"
+  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"overscanType\":\n    if n.knob(\"overscanType\").getValue() == 1:\n        n.knob(\"overscanPercent\").setVisible(True)\n        n.knob(\"overscan\").setVisible(False)\n    else:\n        n.knob(\"overscanPercent\").setVisible(False)\n        n.knob(\"overscan\").setVisible(True)"
+  tile_color 0xa57aaaff
+  note_font "Verdana Bold"
+  note_font_color 0xffffffff
+  xpos 797
+  ypos -178
+  addUserKnob {20 CropBBox}
+  addUserKnob {4 type l Type +INVISIBLE M {"To Format" "To BBox"}}
+  addUserKnob {41 intersect T Crop6.intersect}
+  addUserKnob {6 blackOutside l "Black Outside" -STARTLINE}
+  addUserKnob {4 overscanType l "Overscan Type:" M {Pixels Percentage}}
+  overscanType Percentage
+  addUserKnob {14 overscan l Overscan +HIDDEN R 0 400}
+  addUserKnob {14 overscanPercent l "Overscan Percent" R 1 4}
+  overscanPercent 1
+  addUserKnob {20 inputBbox l "BBox Data" n 1}
+  addUserKnob {15 inputFormat l "Input Format"}
+  inputFormat {0 0 {input.width} {input.height}}
+  addUserKnob {15 inputBBox l "Input BBox"}
+  inputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+  addUserKnob {12 outputBBoxCenter l OutputBBoxCenter}
+  outputBBoxCenter {{OutputBBox1.outputBBoxCenter.w} {OutputBBox1.outputBBoxCenter.h}}
+  addUserKnob {15 outputBBox l "Output BBox"}
+  outputBBox {{OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 info_1 l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description: t "crop to inputformat\n\ndisplays values of input bbox" T CropBBox}
+  addUserKnob {26 ver l Version: T v02}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 261
+   ypos 394
+  }
+  Dot {
+   name Dot2
+   note_font_size 41
+   xpos 295
+   ypos 462
+  }
+set N16304390 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -160
+   ypos 462
+  }
+set N16309230 [stack 0]
+push $N16304390
+  Crop {
+   box {{curve} {curve} {input.width} {input.height}}
+   crop {{parent.blackOutside}}
+   name Crop6
+   xpos 261
+   ypos 510
+   addUserKnob {20 User}
+   addUserKnob {22 cropToBbox l "Crop to Bounding Box" -STARTLINE T codeBBox()}
+  }
+set N1630e560 [stack 0]
+  Remove {
+   operation keep
+   channels none
+   name Remove1
+   xpos 120
+   ypos 504
+  }
+set N16319b50 [stack 0]
+  Transform {
+   scale {{parent.overscanPercent} {parent.overscanPercent}}
+   center {{input.bbox.r/2} {input.bbox.t/2}}
+   shutteroffset centred
+   name Transform1
+   xpos 120
+   ypos 555
+  }
+push $N16319b50
+  AdjBBox {
+   numpixels {{parent.overscan} {parent.overscan}}
+   name AdjBBox1
+   xpos -5
+   ypos 510
+  }
+  Switch {
+   inputs 2
+   which {{overscanType}}
+   name Switch2
+   label "\[value which]"
+   xpos -5
+   ypos 549
+  }
+  Merge2 {
+   inputs 2
+   bbox intersection
+   Achannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   Bchannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   name Merge1
+   xpos -5
+   ypos 647
+   disable {{!parent.Crop6.intersect}}
+  }
+push $N16309230
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -194
+   ypos 653
+  }
+  BlackOutside {
+   name BlackOutside1
+   xpos -194
+   ypos 692
+   disable {{!parent.blackOutside}}
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -160
+   ypos 769
+  }
+push $N1630e560
+  Switch {
+   inputs 2
+   which {{"overscanType == 0 ? overscan.w != 0 || overscan.h != 0 : overscanPercent.w != 1 || overscanPercent.h != 1 ? 1 : 0"}}
+   name Switch1
+   label "\[value which]"
+   xpos 261
+   ypos 759
+  }
+set N16368800 [stack 0]
+  Output {
+   name Output1
+   xpos 261
+   ypos 921
+  }
+push $N16368800
+  NoOp {
+   name OutputBBox1
+   selected true
+   xpos 378
+   ypos 821
+   addUserKnob {20 User}
+   addUserKnob {15 OutputBBox l "Output BBox"}
+   OutputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+   addUserKnob {14 outputBBoxCenter l "Output BBox Center" R 0 100}
+   outputBBoxCenter {{OutputBBox.x+(OutputBBox.r-OutputBBox.x)/2} {OutputBBox.y+(OutputBBox.t-OutputBBox.y)/2}}
+  }
+ end_group
+ Blur {
+  channels rgba
+  size 200
+  name BlurBG
+  xpos 797
+  ypos -82
+ }
+ Group {
+  name BBoxToFormat
+  onCreate "n = nuke.thisNode()\ninputFormat = n.knob(\"inputFormat\")\ninputBBox = n.knob(\"inputBBox\")\ncrop = nuke.toNode(\"Crop6\")\ncropb = crop.knob('box')\noutputBBox = n.knob('outputBBox')\noutputBBoxCenter = n.knob(\"outputBBoxCenter\")\n\ninputFormat.setFlag(0x0000000000008000)\ninputBBox.setFlag(0x0000000000008000)\ncropb.setFlag(0x0000000000008000)\noutputBBox.setFlag(0x0000000000008000)\noutputBBoxCenter.setFlag(0x0000000000008000)\n\nn = nuke.thisNode()\nn.knob(\"overscan\").setRange(0,400)\nn.knob(\"overscanPercent\").setRange(1,4)"
+  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"overscanType\":\n    if n.knob(\"overscanType\").getValue() == 1:\n        n.knob(\"overscanPercent\").setVisible(True)\n        n.knob(\"overscan\").setVisible(False)\n    else:\n        n.knob(\"overscanPercent\").setVisible(False)\n        n.knob(\"overscan\").setVisible(True)"
+  tile_color 0xa57aaaff
+  note_font "Verdana Bold"
+  note_font_color 0xffffffff
+  xpos 797
+  ypos -46
+  addUserKnob {20 CropBBox}
+  addUserKnob {4 type l Type +INVISIBLE M {"To Format" "To BBox"}}
+  addUserKnob {41 intersect T Crop6.intersect}
+  addUserKnob {6 blackOutside l "Black Outside" -STARTLINE}
+  addUserKnob {4 overscanType l "Overscan Type:" M {Pixels Percentage}}
+  overscanType Percentage
+  addUserKnob {14 overscan l Overscan +HIDDEN R 0 400}
+  addUserKnob {14 overscanPercent l "Overscan Percent" R 1 4}
+  overscanPercent 1
+  addUserKnob {20 inputBbox l "BBox Data" n 1}
+  addUserKnob {15 inputFormat l "Input Format"}
+  inputFormat {0 0 {input.width} {input.height}}
+  addUserKnob {15 inputBBox l "Input BBox"}
+  inputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+  addUserKnob {12 outputBBoxCenter l OutputBBoxCenter}
+  outputBBoxCenter {{OutputBBox1.outputBBoxCenter.w} {OutputBBox1.outputBBoxCenter.h}}
+  addUserKnob {15 outputBBox l "Output BBox"}
+  outputBBox {{OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 info_1 l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description: t "crop to inputformat\n\ndisplays values of input bbox" T CropBBox}
+  addUserKnob {26 ver l Version: T v02}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 261
+   ypos 394
+  }
+  Dot {
+   name Dot2
+   note_font_size 41
+   xpos 295
+   ypos 462
+  }
+set N1639e780 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -160
+   ypos 462
+  }
+set N163a3620 [stack 0]
+push $N1639e780
+  Crop {
+   box {{curve} {curve} {input.width} {input.height}}
+   crop {{parent.blackOutside}}
+   name Crop6
+   xpos 261
+   ypos 510
+   addUserKnob {20 User}
+   addUserKnob {22 cropToBbox l "Crop to Bounding Box" -STARTLINE T codeBBox()}
+  }
+set N163a8950 [stack 0]
+  Remove {
+   operation keep
+   channels none
+   name Remove1
+   xpos 120
+   ypos 504
+  }
+set N163b5210 [stack 0]
+  Transform {
+   scale {{parent.overscanPercent} {parent.overscanPercent}}
+   center {{input.bbox.r/2} {input.bbox.t/2}}
+   shutteroffset centred
+   name Transform1
+   xpos 120
+   ypos 555
+  }
+push $N163b5210
+  AdjBBox {
+   numpixels {{parent.overscan} {parent.overscan}}
+   name AdjBBox1
+   xpos -5
+   ypos 510
+  }
+  Switch {
+   inputs 2
+   which {{overscanType}}
+   name Switch2
+   label "\[value which]"
+   xpos -5
+   ypos 549
+  }
+  Merge2 {
+   inputs 2
+   bbox intersection
+   Achannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   Bchannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   name Merge1
+   xpos -5
+   ypos 647
+   disable {{!parent.Crop6.intersect}}
+  }
+push $N163a3620
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -194
+   ypos 653
+  }
+  BlackOutside {
+   name BlackOutside1
+   xpos -194
+   ypos 692
+   disable {{!parent.blackOutside}}
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -160
+   ypos 769
+  }
+push $N163a8950
+  Switch {
+   inputs 2
+   which {{"overscanType == 0 ? overscan.w != 0 || overscan.h != 0 : overscanPercent.w != 1 || overscanPercent.h != 1 ? 1 : 0"}}
+   name Switch1
+   label "\[value which]"
+   xpos 261
+   ypos 759
+  }
+set N16203fb0 [stack 0]
+  Output {
+   name Output1
+   xpos 261
+   ypos 921
+  }
+push $N16203fb0
+  NoOp {
+   name OutputBBox1
+   selected true
+   xpos 378
+   ypos 821
+   addUserKnob {20 User}
+   addUserKnob {15 OutputBBox l "Output BBox"}
+   OutputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+   addUserKnob {14 outputBBoxCenter l "Output BBox Center" R 0 100}
+   outputBBoxCenter {{OutputBBox.x+(OutputBBox.r-OutputBBox.x)/2} {OutputBBox.y+(OutputBBox.t-OutputBBox.y)/2}}
+  }
+ end_group
+ Dot {
+  name Dot261
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 831
+  ypos 23
+ }
+set N162189f0 [stack 0]
+push $N16849a30
+ FilterErode {
+  channels rgba
+  size -200
+  filter gaussian
+  name ErodeElem
+  xpos 950
+  ypos -150
+ }
+ Group {
+  name BBoxToFormat2
+  onCreate "n = nuke.thisNode()\ninputFormat = n.knob(\"inputFormat\")\ninputBBox = n.knob(\"inputBBox\")\ncrop = nuke.toNode(\"Crop6\")\ncropb = crop.knob('box')\noutputBBox = n.knob('outputBBox')\noutputBBoxCenter = n.knob(\"outputBBoxCenter\")\n\ninputFormat.setFlag(0x0000000000008000)\ninputBBox.setFlag(0x0000000000008000)\ncropb.setFlag(0x0000000000008000)\noutputBBox.setFlag(0x0000000000008000)\noutputBBoxCenter.setFlag(0x0000000000008000)\n\nn = nuke.thisNode()\nn.knob(\"overscan\").setRange(0,400)\nn.knob(\"overscanPercent\").setRange(1,4)"
+  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"overscanType\":\n    if n.knob(\"overscanType\").getValue() == 1:\n        n.knob(\"overscanPercent\").setVisible(True)\n        n.knob(\"overscan\").setVisible(False)\n    else:\n        n.knob(\"overscanPercent\").setVisible(False)\n        n.knob(\"overscan\").setVisible(True)"
+  tile_color 0xa57aaaff
+  note_font "Verdana Bold"
+  note_font_color 0xffffffff
+  xpos 950
+  ypos -106
+  addUserKnob {20 CropBBox}
+  addUserKnob {4 type l Type +INVISIBLE M {"To Format" "To BBox"}}
+  addUserKnob {41 intersect T Crop6.intersect}
+  addUserKnob {6 blackOutside l "Black Outside" -STARTLINE}
+  addUserKnob {4 overscanType l "Overscan Type:" M {Pixels Percentage}}
+  overscanType Percentage
+  addUserKnob {14 overscan l Overscan +HIDDEN R 0 400}
+  addUserKnob {14 overscanPercent l "Overscan Percent" R 1 4}
+  overscanPercent 1
+  addUserKnob {20 inputBbox l "BBox Data" n 1}
+  addUserKnob {15 inputFormat l "Input Format"}
+  inputFormat {0 0 {input.width} {input.height}}
+  addUserKnob {15 inputBBox l "Input BBox"}
+  inputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+  addUserKnob {12 outputBBoxCenter l OutputBBoxCenter}
+  outputBBoxCenter {{OutputBBox1.outputBBoxCenter.w} {OutputBBox1.outputBBoxCenter.h}}
+  addUserKnob {15 outputBBox l "Output BBox"}
+  outputBBox {{OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 info_1 l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description: t "crop to inputformat\n\ndisplays values of input bbox" T CropBBox}
+  addUserKnob {26 ver l Version: T v02}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 261
+   ypos 394
+  }
+  Dot {
+   name Dot2
+   note_font_size 41
+   xpos 295
+   ypos 462
+  }
+set N1623d690 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -160
+   ypos 462
+  }
+set N16242530 [stack 0]
+push $N1623d690
+  Crop {
+   box {{curve} {curve} {input.width} {input.height}}
+   crop {{parent.blackOutside}}
+   name Crop6
+   xpos 261
+   ypos 510
+   addUserKnob {20 User}
+   addUserKnob {22 cropToBbox l "Crop to Bounding Box" -STARTLINE T codeBBox()}
+  }
+set N16247860 [stack 0]
+  Remove {
+   operation keep
+   channels none
+   name Remove1
+   xpos 120
+   ypos 504
+  }
+set N16252e50 [stack 0]
+  Transform {
+   scale {{parent.overscanPercent} {parent.overscanPercent}}
+   center {{input.bbox.r/2} {input.bbox.t/2}}
+   shutteroffset centred
+   name Transform1
+   xpos 120
+   ypos 555
+  }
+push $N16252e50
+  AdjBBox {
+   numpixels {{parent.overscan} {parent.overscan}}
+   name AdjBBox1
+   xpos -5
+   ypos 510
+  }
+  Switch {
+   inputs 2
+   which {{overscanType}}
+   name Switch2
+   label "\[value which]"
+   xpos -5
+   ypos 549
+  }
+  Merge2 {
+   inputs 2
+   bbox intersection
+   Achannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   Bchannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   name Merge1
+   xpos -5
+   ypos 647
+   disable {{!parent.Crop6.intersect}}
+  }
+push $N16242530
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -194
+   ypos 653
+  }
+  BlackOutside {
+   name BlackOutside1
+   xpos -194
+   ypos 692
+   disable {{!parent.blackOutside}}
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -160
+   ypos 769
+  }
+push $N16247860
+  Switch {
+   inputs 2
+   which {{"overscanType == 0 ? overscan.w != 0 || overscan.h != 0 : overscanPercent.w != 1 || overscanPercent.h != 1 ? 1 : 0"}}
+   name Switch1
+   label "\[value which]"
+   xpos 261
+   ypos 759
+  }
+set N162a2190 [stack 0]
+  Output {
+   name Output1
+   xpos 261
+   ypos 921
+  }
+push $N162a2190
+  NoOp {
+   name OutputBBox1
+   selected true
+   xpos 378
+   ypos 821
+   addUserKnob {20 User}
+   addUserKnob {15 OutputBBox l "Output BBox"}
+   OutputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+   addUserKnob {14 outputBBoxCenter l "Output BBox Center" R 0 100}
+   outputBBoxCenter {{OutputBBox.x+(OutputBBox.r-OutputBBox.x)/2} {OutputBBox.y+(OutputBBox.t-OutputBBox.y)/2}}
+  }
+ end_group
+ Blur {
+  channels rgba
+  size 300
+  name BlurElem
+  xpos 950
+  ypos -68
+ }
+ Group {
+  name BBoxToFormat3
+  onCreate "n = nuke.thisNode()\ninputFormat = n.knob(\"inputFormat\")\ninputBBox = n.knob(\"inputBBox\")\ncrop = nuke.toNode(\"Crop6\")\ncropb = crop.knob('box')\noutputBBox = n.knob('outputBBox')\noutputBBoxCenter = n.knob(\"outputBBoxCenter\")\n\ninputFormat.setFlag(0x0000000000008000)\ninputBBox.setFlag(0x0000000000008000)\ncropb.setFlag(0x0000000000008000)\noutputBBox.setFlag(0x0000000000008000)\noutputBBoxCenter.setFlag(0x0000000000008000)\n\nn = nuke.thisNode()\nn.knob(\"overscan\").setRange(0,400)\nn.knob(\"overscanPercent\").setRange(1,4)"
+  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"overscanType\":\n    if n.knob(\"overscanType\").getValue() == 1:\n        n.knob(\"overscanPercent\").setVisible(True)\n        n.knob(\"overscan\").setVisible(False)\n    else:\n        n.knob(\"overscanPercent\").setVisible(False)\n        n.knob(\"overscan\").setVisible(True)"
+  tile_color 0xa57aaaff
+  note_font "Verdana Bold"
+  note_font_color 0xffffffff
+  xpos 950
+  ypos -28
+  addUserKnob {20 CropBBox}
+  addUserKnob {4 type l Type +INVISIBLE M {"To Format" "To BBox"}}
+  addUserKnob {41 intersect T Crop6.intersect}
+  addUserKnob {6 blackOutside l "Black Outside" -STARTLINE}
+  addUserKnob {4 overscanType l "Overscan Type:" M {Pixels Percentage}}
+  overscanType Percentage
+  addUserKnob {14 overscan l Overscan +HIDDEN R 0 400}
+  addUserKnob {14 overscanPercent l "Overscan Percent" R 1 4}
+  overscanPercent 1
+  addUserKnob {20 inputBbox l "BBox Data" n 1}
+  addUserKnob {15 inputFormat l "Input Format"}
+  inputFormat {0 0 {input.width} {input.height}}
+  addUserKnob {15 inputBBox l "Input BBox"}
+  inputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+  addUserKnob {12 outputBBoxCenter l OutputBBoxCenter}
+  outputBBoxCenter {{OutputBBox1.outputBBoxCenter.w} {OutputBBox1.outputBBoxCenter.h}}
+  addUserKnob {15 outputBBox l "Output BBox"}
+  outputBBox {{OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 info_1 l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description: t "crop to inputformat\n\ndisplays values of input bbox" T CropBBox}
+  addUserKnob {26 ver l Version: T v02}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 261
+   ypos 394
+  }
+  Dot {
+   name Dot2
+   note_font_size 41
+   xpos 295
+   ypos 462
+  }
+set N162d80e0 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -160
+   ypos 462
+  }
+set N162dcf80 [stack 0]
+push $N162d80e0
+  Crop {
+   box {{curve} {curve} {input.width} {input.height}}
+   crop {{parent.blackOutside}}
+   name Crop6
+   xpos 261
+   ypos 510
+   addUserKnob {20 User}
+   addUserKnob {22 cropToBbox l "Crop to Bounding Box" -STARTLINE T codeBBox()}
+  }
+set N162e22b0 [stack 0]
+  Remove {
+   operation keep
+   channels none
+   name Remove1
+   xpos 120
+   ypos 504
+  }
+set N162ed8a0 [stack 0]
+  Transform {
+   scale {{parent.overscanPercent} {parent.overscanPercent}}
+   center {{input.bbox.r/2} {input.bbox.t/2}}
+   shutteroffset centred
+   name Transform1
+   xpos 120
+   ypos 555
+  }
+push $N162ed8a0
+  AdjBBox {
+   numpixels {{parent.overscan} {parent.overscan}}
+   name AdjBBox1
+   xpos -5
+   ypos 510
+  }
+  Switch {
+   inputs 2
+   which {{overscanType}}
+   name Switch2
+   label "\[value which]"
+   xpos -5
+   ypos 549
+  }
+  Merge2 {
+   inputs 2
+   bbox intersection
+   Achannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   Bchannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   name Merge1
+   xpos -5
+   ypos 647
+   disable {{!parent.Crop6.intersect}}
+  }
+push $N162dcf80
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -194
+   ypos 653
+  }
+  BlackOutside {
+   name BlackOutside1
+   xpos -194
+   ypos 692
+   disable {{!parent.blackOutside}}
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -160
+   ypos 769
+  }
+push $N162e22b0
+  Switch {
+   inputs 2
+   which {{"overscanType == 0 ? overscan.w != 0 || overscan.h != 0 : overscanPercent.w != 1 || overscanPercent.h != 1 ? 1 : 0"}}
+   name Switch1
+   label "\[value which]"
+   xpos 261
+   ypos 759
+  }
+set N1613cc00 [stack 0]
+  Output {
+   name Output1
+   xpos 261
+   ypos 921
+  }
+push $N1613cc00
+  NoOp {
+   name OutputBBox1
+   selected true
+   xpos 378
+   ypos 821
+   addUserKnob {20 User}
+   addUserKnob {15 OutputBBox l "Output BBox"}
+   OutputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+   addUserKnob {14 outputBBoxCenter l "Output BBox Center" R 0 100}
+   outputBBoxCenter {{OutputBBox.x+(OutputBBox.r-OutputBBox.x)/2} {OutputBBox.y+(OutputBBox.t-OutputBBox.y)/2}}
+  }
+ end_group
+set N162c4a50 [stack 0]
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge140
+  xpos 950
+  ypos 19
+ }
+set N16151660 [stack 0]
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge142
+  xpos 950
+  ypos 134
+ }
+ Merge2 {
+  inputs 2
+  operation stencil
+  name Merge145
+  xpos 950
+  ypos 291
+ }
+ Crop {
+  box {0 0 4448 3096}
+  name Crop24
+  xpos 950
+  ypos 350
+ }
+ Dot {
+  name Dot263
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 984
+  ypos 438
+ }
+set N1618da00 [stack 0]
+ Dot {
+  name Dot12
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 984
+  ypos 801
+ }
+push $N168a7140
+ Dot {
+  name Dot11
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 404
+  ypos 738
+ }
+push $N16151660
+ Dot {
+  name Dot10
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1262
+  ypos 23
+ }
+ Dot {
+  name Dot9
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1262
+  ypos 690
+ }
+push $N162c4a50
+ Dot {
+  name Dot7
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1176
+  ypos -24
+ }
+ Dot {
+  name Dot6
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1176
+  ypos 642
+ }
+push $N162189f0
+ Dot {
+  name Dot5
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 831
+  ypos 594
+ }
+push $N164d9df0
+ Dot {
+  name Dot2
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1314
+  ypos -270
+ }
+ Dot {
+  name Dot1
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 1314
+  ypos 522
+ }
+push $N1618da00
+push $N16867f60
+ Dot {
+  name Dot258
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 535
+  ypos -307
+ }
+ Group {
+  name WhiteSoftClip
+  tile_color 0xffffffff
+  label "(Max: \[value maxValue])"
+  note_font "Helvetica Bold"
+  note_font_color 0xff
+  xpos 501
+  ypos -231
+  addUserKnob {20 WhiteSoftClip}
+  addUserKnob {7 maxValue l "Max Value" R 0 25}
+  maxValue {{parent.WhiteSoftClip1.maxValue}}
+  addUserKnob {26 ""}
+  addUserKnob {41 output2 l operation T BlacksMatch.output2}
+  addUserKnob {41 soft l FallOff T BlacksMatch.soft}
+  addUserKnob {41 aboveBase l "Color Mult" T BlacksMatch.aboveBase}
+  addUserKnob {26 ""}
+  addUserKnob {41 mode l "luminance math" T Saturation30.mode}
+  addUserKnob {41 mixValue l "Restore Color" T Dissolve18.which}
+  addUserKnob {26 ""}
+  addUserKnob {41 maskChannelMask l mask -STARTLINE T MergeMix.maskChannelMask}
+  addUserKnob {41 inject -STARTLINE T MergeMix.inject}
+  addUserKnob {41 invert_mask l invert -STARTLINE T MergeMix.invert_mask}
+  addUserKnob {41 fringe -STARTLINE T MergeMix.fringe}
+  addUserKnob {41 mix T MergeMix.mix}
+  addUserKnob {20 info l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description t "Soft clips white point so that it does not exceed the maximum value.  \n\nAbility to control the soft falloff of whitepoint\n\nShift between preserving luminance and preserving hue\n\n" T WhiteSoftClip}
+  addUserKnob {26 ver l Version: T v05}
+ }
+  Input {
+   inputs 0
+   name Inputmask
+   xpos -213
+   ypos 870
+   number 1
+  }
+  Dot {
+   name Dot57
+   xpos -179
+   ypos 983
+  }
+  Input {
+   inputs 0
+   name Input
+   xpos -605
+   ypos -291
+  }
+  Dot {
+   name Dot7
+   note_font_size 41
+   xpos -571
+   ypos -172
+  }
+set N161e0a10 [stack 0]
+  Dot {
+   name Dot54
+   note_font_size 41
+   xpos -571
+   ypos -52
+  }
+set N161e5b60 [stack 0]
+  Dot {
+   name Dot6
+   note_font_size 41
+   xpos -755
+   ypos -52
+  }
+  Expression {
+   expr0 r<0?r:0
+   expr1 g<0?g:0
+   expr2 b<0?b:0
+   expr3 min(r,g,b)<0?1:0
+   name Expression4
+   xpos -789
+   ypos 91
+  }
+  Premult {
+   name Premult1
+   xpos -789
+   ypos 115
+  }
+  Dot {
+   name Dot5
+   note_font_size 41
+   xpos -755
+   ypos 867
+  }
+push $N161e5b60
+  Expression {
+   expr0 r<0?0:r
+   expr1 g<0?0:g
+   expr2 b<0?0:b
+   name Expression3
+   xpos -605
+   ypos 93
+  }
+  Add {
+   channels rgb
+   value 0.0001
+   name Add1
+   xpos -605
+   ypos 117
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -571
+   ypos 178
+  }
+set N160263f0 [stack 0]
+  Dot {
+   name Dot52
+   note_font_size 41
+   xpos -149
+   ypos 178
+  }
+set N1602b600 [stack 0]
+  Dot {
+   name Dot53
+   note_font_size 41
+   xpos 9
+   ypos 178
+  }
+push $N1602b600
+  Saturation {
+   saturation 0
+   mode Maximum
+   name Saturation30
+   xpos -183
+   ypos 233
+  }
+set N16035990 [stack 0]
+  Merge2 {
+   inputs 2
+   operation divide
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge553
+   xpos -25
+   ypos 233
+  }
+push $N16035990
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression8
+   xpos -183
+   ypos 360
+  }
+  Group {
+   name BlacksMatch2
+   knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"inputChange\":\n    nsd = nuke.toNode(\"SwitchDefault\")\n    n\[\"default_black\"].setEnabled(nsd\[\"which\"].getValue()==1)"
+   tile_color 0xff
+   label "<font color=lightgray><small>Fall Off: \[value soft]\nColor Mult: \[value aboveBase]"
+   note_font "Helvetica Bold"
+   xpos -183
+   ypos 424
+   addUserKnob {20 BlacksMatch}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {4 output1 l "         output" M {Final "Preview Channel Key" "" "" "" "" "" "" ""}}
+   addUserKnob {41 output2 l operation T Settings.operation}
+   addUserKnob {41 unpremultiplication l "Unpremult before operation?" T Settings.unpremult}
+   addUserKnob {26 ""}
+   addUserKnob {18 default_black l "default black"}
+   default_black {{1/maxValue}}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {26 ""}
+   addUserKnob {41 soft l FallOff T Settings.soft}
+   addUserKnob {41 aboveBase l "Black Color Mult" T Settings.aboveBase}
+   addUserKnob {26 ""}
+   addUserKnob {41 maskChannelMask l mask -STARTLINE T MergeKeymix.maskChannelMask}
+   addUserKnob {41 inject -STARTLINE T MergeKeymix.inject}
+   addUserKnob {41 invert_mask l invert -STARTLINE T MergeKeymix.invert_mask}
+   addUserKnob {41 fringe -STARTLINE T MergeKeymix.fringe}
+   addUserKnob {41 mix T MergeKeymix.mix}
+   addUserKnob {20 info l Info}
+   addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+   addUserKnob {26 desc l Description: t "Plug an image /constant you wish to be your blackpoint into BlackColor input.\n\nControl the falloff of Toe of the blackpoint and\nchoose between a screen, plus, and hypot\noperation" T BlacksMatch}
+   addUserKnob {1 ver l Version:}
+   ver v08
+   addUserKnob {1 operation l INVISIBLE +INVISIBLE}
+   operation "\[value output2]</font>)(<font color=yellow><small>\[value ver]</font>"
+  }
+   StickyNote {
+    inputs 0
+    name StickyNote2
+    tile_color 0xff
+    label green
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 177
+    ypos 466
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote1
+    tile_color 0xff
+    label red
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 188
+    ypos 350
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote3
+    tile_color 0xff
+    label blue
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 186
+    ypos 570
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote4
+    tile_color 0xff
+    label "min will be \nblack color"
+    note_font_size 31
+    note_font_color 0xffffffff
+    xpos 143
+    ypos 704
+   }
+   Input {
+    inputs 0
+    name Inputimg
+    xpos 322
+    ypos -550
+   }
+   Dot {
+    name Dot17
+    xpos 356
+    ypos -418
+   }
+set N1608a0d0 [stack 0]
+   AddChannels {
+    channels rgba
+    color 1
+    name AddChannels1
+    xpos 322
+    ypos -365
+   }
+   Dot {
+    name Dot5
+    note_font_size 41
+    xpos 356
+    ypos -288
+   }
+set N16098310 [stack 0]
+   Grade {
+    white 0
+    multiply 0
+    add {{parent.default_black} {parent.default_black} {parent.default_black} {parent.default_black}}
+    black_clamp false
+    name Grade1
+    label color
+    xpos 905
+    ypos -295
+   }
+   Input {
+    inputs 0
+    name InputBlackColor
+    xpos 1138
+    ypos -569
+    number 1
+   }
+   Switch {
+    inputs 2
+    which {{"!\[exists parent.input1]"}}
+    name SwitchDefault
+    xpos 1138
+    ypos -291
+   }
+   Dot {
+    name Dot26
+    label "Black Color"
+    note_font_size 41
+    xpos 1172
+    ypos -212
+   }
+   Dot {
+    name Dot4
+    note_font_size 41
+    xpos 1172
+    ypos -124
+   }
+set N160c1610 [stack 0]
+   Multiply {
+    channels rgb
+    value {{parent.Settings.aboveBase}}
+    name Multiply1
+    label "mult black color"
+    xpos 1138
+    ypos -29
+   }
+   Multiply {
+    channels rgb
+    value 4
+    name Multiply2
+    label "boosted for hypot"
+    xpos 1138
+    ypos 46
+    disable {{"Settings.operation == 3 ? 0 : 1"}}
+   }
+push $N16098310
+   Unpremult {
+    name Unpremult1
+    xpos 322
+    ypos -17
+    disable {{!parent.Settings.unpremult i}}
+   }
+   Dot {
+    name Dot18
+    xpos 356
+    ypos 145
+   }
+set N160e76e0 [stack 0]
+   MergeExpression {
+    inputs 2
+    expr0 Br/Ar
+    expr1 Bg/Ag
+    expr2 Bb/Ab
+    name MergeDivide
+    xpos 1138
+    ypos 142
+   }
+   Invert {
+    channels rgb
+    name Invert1
+    xpos 1138
+    ypos 209
+   }
+   Gamma {
+    channels rgb
+    value {{((1/Settings.aboveBase)*Settings.soft)+(Settings.soft)}}
+    name Gamma1
+    xpos 1138
+    ypos 264
+   }
+   Dot {
+    name Dot19
+    xpos 1172
+    ypos 364
+   }
+set N15f12c80 [stack 0]
+   Dot {
+    name Dot20
+    xpos 1172
+    ypos 478
+   }
+set N15f17e50 [stack 0]
+   Dot {
+    name Dot21
+    xpos 1172
+    ypos 586
+   }
+set N15f1cfe0 [stack 0]
+   Dot {
+    name Dot1
+    xpos 1172
+    ypos 1150
+   }
+   Input {
+    inputs 0
+    name Inputmask
+    xpos 864
+    ypos 836
+    number 2
+   }
+   Dot {
+    name Dot29
+    xpos 898
+    ypos 1015
+   }
+push $N160c1610
+   Dot {
+    name Dot23
+    xpos 706
+    ypos -124
+   }
+   Dot {
+    name Dot6
+    note_font_size 41
+    xpos 706
+    ypos 293
+   }
+set N15f36460 [stack 0]
+   Dot {
+    name Dot2
+    note_font_size 41
+    xpos 706
+    ypos 404
+   }
+set N15f3b680 [stack 0]
+   Dot {
+    name Dot3
+    note_font_size 41
+    xpos 706
+    ypos 523
+   }
+set N15f40810 [stack 0]
+   Dot {
+    name Dot7
+    note_font_size 41
+    xpos 706
+    ypos 731
+   }
+push $N15f1cfe0
+push $N15f40810
+push $N15f17e50
+push $N15f3b680
+push $N15f12c80
+push $N15f36460
+push $N160e76e0
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.red
+    maskChannelInput -rgba.red
+    name Merge3
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 357
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch x1 13}}
+    bbox B
+    Achannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.green
+    maskChannelInput -rgba.red
+    name Merge4
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 471
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    output {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    maskChannelMask rgba.blue
+    maskChannelInput -rgba.red
+    name Merge5
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 579
+   }
+   Merge2 {
+    inputs 2
+    operation max
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name Merge1
+    xpos 322
+    ypos 728
+   }
+   Premult {
+    name Premult4
+    xpos 322
+    ypos 881
+    disable {{!parent.Settings.unpremult i}}
+   }
+push $N1608a0d0
+   Dot {
+    name Dot28
+    xpos -146
+    ypos -418
+   }
+   Dot {
+    name Dot30
+    xpos -146
+    ypos 1015
+   }
+   Merge2 {
+    inputs 2+1
+    operation copy
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name MergeKeymix
+    label "\[ expr \{ \[value mix] == 1 ? \" \" : \[concat Mix: \[value mix]] \}]"
+    xpos 322
+    ypos 1012
+   }
+   Switch {
+    inputs 2
+    which {{output1 i x1067 0}}
+    name Switch1
+    xpos 322
+    ypos 1147
+   }
+   Output {
+    name Output1
+    xpos 322
+    ypos 1395
+   }
+   NoOp {
+    inputs 0
+    name Settings
+    note_font_size 51
+    xpos 43
+    ypos -286
+    addUserKnob {20 User}
+    addUserKnob {4 operation M {plus screen hypot ""}}
+    operation {{parent.parent.BlacksMatch.Settings.operation}}
+    addUserKnob {7 witch}
+    witch {{"Settings.operation == 0 ? 24 : Settings.operation == 1 ? 25 : 13"}}
+    addUserKnob {7 soft}
+    soft {{parent.parent.BlacksMatch.Settings.soft}}
+    addUserKnob {7 aboveBase R 1 5}
+    aboveBase {{parent.parent.BlacksMatch.Settings.aboveBase}}
+    addUserKnob {6 unpremult l "Unpremult before operation?" +STARTLINE}
+   }
+  end_group
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression9
+   xpos -183
+   ypos 509
+  }
+  Dot {
+   name Dot50
+   note_font_size 41
+   xpos -149
+   ypos 576
+  }
+  Merge2 {
+   inputs 2
+   operation multiply
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge554
+   xpos -25
+   ypos 572
+  }
+  Dot {
+   name Dot55
+   note_font_size 41
+   xpos 9
+   ypos 669
+  }
+  Dot {
+   name Dot56
+   note_font_size 41
+   xpos -404
+   ypos 669
+  }
+set N15ff0400 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -404
+   ypos 745
+  }
+push $N15ff0400
+push $N160263f0
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression10
+   xpos -605
+   ypos 353
+  }
+  Group {
+   name BlacksMatch
+   knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"inputChange\":\n    nsd = nuke.toNode(\"SwitchDefault\")\n    n\[\"default_black\"].setEnabled(nsd\[\"which\"].getValue()==1)"
+   tile_color 0xff
+   label "<font color=lightgray><small>Fall Off: \[value soft]\nColor Mult: \[value aboveBase]"
+   note_font "Helvetica Bold"
+   xpos -605
+   ypos 427
+   addUserKnob {20 BlacksMatch}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {4 output1 l "         output" M {Final "Preview Channel Key" "" "" "" "" "" "" ""}}
+   addUserKnob {41 output2 l operation T Settings.operation}
+   addUserKnob {41 unpremultiplication l "Unpremult before operation?" T Settings.unpremult}
+   addUserKnob {26 ""}
+   addUserKnob {18 default_black l "default black"}
+   default_black {{1/maxValue}}
+   addUserKnob {6 default_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {6 default_black_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+   addUserKnob {26 ""}
+   addUserKnob {41 soft l FallOff T Settings.soft}
+   addUserKnob {41 aboveBase l "Black Color Mult" T Settings.aboveBase}
+   addUserKnob {26 ""}
+   addUserKnob {41 maskChannelMask l mask -STARTLINE T MergeKeymix.maskChannelMask}
+   addUserKnob {41 inject -STARTLINE T MergeKeymix.inject}
+   addUserKnob {41 invert_mask l invert -STARTLINE T MergeKeymix.invert_mask}
+   addUserKnob {41 fringe -STARTLINE T MergeKeymix.fringe}
+   addUserKnob {41 mix T MergeKeymix.mix}
+   addUserKnob {20 info l Info}
+   addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+   addUserKnob {26 desc l Description: t "Plug an image /constant you wish to be your blackpoint into BlackColor input.\n\nControl the falloff of Toe of the blackpoint and\nchoose between a screen, plus, and hypot\noperation" T BlacksMatch}
+   addUserKnob {1 ver l Version:}
+   ver v08
+   addUserKnob {1 operation l INVISIBLE +INVISIBLE}
+   operation "\[value output2]</font>)(<font color=yellow><small>\[value ver]</font>"
+  }
+   StickyNote {
+    inputs 0
+    name StickyNote2
+    tile_color 0xff
+    label green
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 177
+    ypos 466
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote1
+    tile_color 0xff
+    label red
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 188
+    ypos 350
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote3
+    tile_color 0xff
+    label blue
+    note_font_size 41
+    note_font_color 0xffffffff
+    xpos 186
+    ypos 570
+   }
+   StickyNote {
+    inputs 0
+    name StickyNote4
+    tile_color 0xff
+    label "min will be \nblack color"
+    note_font_size 31
+    note_font_color 0xffffffff
+    xpos 143
+    ypos 704
+   }
+   Input {
+    inputs 0
+    name Inputimg
+    xpos 322
+    ypos -550
+   }
+   Dot {
+    name Dot17
+    xpos 356
+    ypos -418
+   }
+set N15e319c0 [stack 0]
+   AddChannels {
+    channels rgba
+    color 1
+    name AddChannels1
+    xpos 322
+    ypos -365
+   }
+   Dot {
+    name Dot5
+    note_font_size 41
+    xpos 356
+    ypos -288
+   }
+set N15e3fc00 [stack 0]
+   Grade {
+    white 0
+    multiply 0
+    add {{parent.default_black} {parent.default_black} {parent.default_black} {parent.default_black}}
+    black_clamp false
+    name Grade1
+    label color
+    xpos 905
+    ypos -295
+   }
+   Input {
+    inputs 0
+    name InputBlackColor
+    xpos 1138
+    ypos -569
+    number 1
+   }
+   Switch {
+    inputs 2
+    which {{"!\[exists parent.input1]"}}
+    name SwitchDefault
+    xpos 1138
+    ypos -291
+   }
+   Dot {
+    name Dot26
+    label "Black Color"
+    note_font_size 41
+    xpos 1172
+    ypos -212
+   }
+   Dot {
+    name Dot4
+    note_font_size 41
+    xpos 1172
+    ypos -124
+   }
+set N15e68f00 [stack 0]
+   Multiply {
+    channels rgb
+    value {{parent.Settings.aboveBase}}
+    name Multiply1
+    label "mult black color"
+    xpos 1138
+    ypos -29
+   }
+   Multiply {
+    channels rgb
+    value 4
+    name Multiply2
+    label "boosted for hypot"
+    xpos 1138
+    ypos 46
+    disable {{"Settings.operation == 3 ? 0 : 1"}}
+   }
+push $N15e3fc00
+   Unpremult {
+    name Unpremult1
+    xpos 322
+    ypos -17
+    disable {{!parent.Settings.unpremult i}}
+   }
+   Dot {
+    name Dot18
+    xpos 356
+    ypos 145
+   }
+set N15e8efd0 [stack 0]
+   MergeExpression {
+    inputs 2
+    expr0 Br/Ar
+    expr1 Bg/Ag
+    expr2 Bb/Ab
+    name MergeDivide
+    xpos 1138
+    ypos 142
+   }
+   Invert {
+    channels rgb
+    name Invert1
+    xpos 1138
+    ypos 209
+   }
+   Gamma {
+    channels rgb
+    value {{((1/Settings.aboveBase)*Settings.soft)+(Settings.soft)}}
+    name Gamma1
+    xpos 1138
+    ypos 264
+   }
+   Dot {
+    name Dot19
+    xpos 1172
+    ypos 364
+   }
+set N15eba550 [stack 0]
+   Dot {
+    name Dot20
+    xpos 1172
+    ypos 478
+   }
+set N15ebf720 [stack 0]
+   Dot {
+    name Dot21
+    xpos 1172
+    ypos 586
+   }
+set N15ec48b0 [stack 0]
+   Dot {
+    name Dot1
+    xpos 1172
+    ypos 1150
+   }
+   Input {
+    inputs 0
+    name Inputmask
+    xpos 864
+    ypos 836
+    number 2
+   }
+   Dot {
+    name Dot29
+    xpos 898
+    ypos 1015
+   }
+push $N15e68f00
+   Dot {
+    name Dot23
+    xpos 706
+    ypos -124
+   }
+   Dot {
+    name Dot6
+    note_font_size 41
+    xpos 706
+    ypos 293
+   }
+set N15eddd30 [stack 0]
+   Dot {
+    name Dot2
+    note_font_size 41
+    xpos 706
+    ypos 404
+   }
+set N15ee2f50 [stack 0]
+   Dot {
+    name Dot3
+    note_font_size 41
+    xpos 706
+    ypos 523
+   }
+set N15ee80e0 [stack 0]
+   Dot {
+    name Dot7
+    note_font_size 41
+    xpos 706
+    ypos 731
+   }
+push $N15ec48b0
+push $N15ee80e0
+push $N15ebf720
+push $N15ee2f50
+push $N15eba550
+push $N15eddd30
+push $N15e8efd0
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.red
+    maskChannelInput -rgba.red
+    name Merge3
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 357
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch x1 13}}
+    bbox B
+    Achannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+    maskChannelMask rgba.green
+    maskChannelInput -rgba.red
+    name Merge4
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 471
+   }
+   Merge2 {
+    inputs 2+1
+    operation {{parent.Settings.witch}}
+    bbox B
+    Achannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    Bchannels {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    output {-rgba.red -rgba.green rgba.blue -rgba.alpha}
+    maskChannelMask rgba.blue
+    maskChannelInput -rgba.red
+    name Merge5
+    label "\[value maskChannelMask]"
+    xpos 322
+    ypos 579
+   }
+   Merge2 {
+    inputs 2
+    operation max
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name Merge1
+    xpos 322
+    ypos 728
+   }
+   Premult {
+    name Premult4
+    xpos 322
+    ypos 881
+    disable {{!parent.Settings.unpremult i}}
+   }
+push $N15e319c0
+   Dot {
+    name Dot28
+    xpos -146
+    ypos -418
+   }
+   Dot {
+    name Dot30
+    xpos -146
+    ypos 1015
+   }
+   Merge2 {
+    inputs 2+1
+    operation copy
+    bbox B
+    Achannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    Bchannels {rgba.red rgba.green rgba.blue -rgba.alpha}
+    output {rgba.red rgba.green rgba.blue -rgba.alpha}
+    name MergeKeymix
+    label "\[ expr \{ \[value mix] == 1 ? \" \" : \[concat Mix: \[value mix]] \}]"
+    xpos 322
+    ypos 1012
+   }
+   Switch {
+    inputs 2
+    which {{output1 i x1067 0}}
+    name Switch1
+    xpos 322
+    ypos 1147
+   }
+   Output {
+    name Output1
+    xpos 322
+    ypos 1395
+   }
+   NoOp {
+    inputs 0
+    name Settings
+    note_font_size 51
+    xpos 43
+    ypos -286
+    addUserKnob {20 User}
+    addUserKnob {4 operation M {plus screen hypot ""}}
+    addUserKnob {7 witch}
+    witch {{"Settings.operation == 0 ? 24 : Settings.operation == 1 ? 25 : 13"}}
+    addUserKnob {7 soft}
+    soft 0.4
+    addUserKnob {7 aboveBase R 1 5}
+    aboveBase 2
+    addUserKnob {6 unpremult l "Unpremult before operation?" +STARTLINE}
+   }
+  end_group
+  Expression {
+   expr0 1/r
+   expr1 1/g
+   expr2 1/b
+   name Expression11
+   xpos -605
+   ypos 507
+  }
+  Dissolve {
+   inputs 2
+   channels rgb
+   which 0.5
+   name Dissolve18
+   label "\[value which]"
+   xpos -605
+   ypos 662
+  }
+  Switch {
+   inputs 2
+   which {{parent.Dissolve18.which}}
+   name Switch2
+   label "\[value which]"
+   xpos -605
+   ypos 738
+  }
+  Add {
+   channels rgb
+   value -0.0001
+   name Add2
+   xpos -605
+   ypos 808
+  }
+  Merge2 {
+   inputs 2
+   operation plus
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge1
+   xpos -605
+   ypos 864
+  }
+push $N161e0a10
+  Dot {
+   name Dot58
+   note_font_size 41
+   xpos -922
+   ypos -172
+  }
+  Dot {
+   name Dot60
+   note_font_size 41
+   xpos -922
+   ypos 983
+  }
+set N15db2350 [stack 0]
+  Merge2 {
+   inputs 2+1
+   operation copy
+   Achannels none
+   Bchannels none
+   output none
+   also_merge rgb
+   name MergeMix
+   xpos -605
+   ypos 976
+  }
+push $N15db2350
+  Dot {
+   name Dot3
+   note_font_size 41
+   xpos -922
+   ypos 1030
+  }
+  Switch {
+   inputs 2
+   which {{"parent.MergeMix.mix == 0 ? 0 : 1"}}
+   name Switch1
+   label "\[value which]"
+   xpos -605
+   ypos 1023
+  }
+  Output {
+   name Output1
+   xpos -605
+   ypos 1316
+  }
+ end_group
+ FilterErode {
+  channels rgba
+  size {{parent.ErodeBG.size}}
+  filter gaussian
+  name FilterErode6
+  xpos 501
+  ypos -82
+ }
+ Group {
+  name BBoxToFormat4
+  onCreate "n = nuke.thisNode()\ninputFormat = n.knob(\"inputFormat\")\ninputBBox = n.knob(\"inputBBox\")\ncrop = nuke.toNode(\"Crop6\")\ncropb = crop.knob('box')\noutputBBox = n.knob('outputBBox')\noutputBBoxCenter = n.knob(\"outputBBoxCenter\")\n\ninputFormat.setFlag(0x0000000000008000)\ninputBBox.setFlag(0x0000000000008000)\ncropb.setFlag(0x0000000000008000)\noutputBBox.setFlag(0x0000000000008000)\noutputBBoxCenter.setFlag(0x0000000000008000)\n\nn = nuke.thisNode()\nn.knob(\"overscan\").setRange(0,400)\nn.knob(\"overscanPercent\").setRange(1,4)"
+  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"overscanType\":\n    if n.knob(\"overscanType\").getValue() == 1:\n        n.knob(\"overscanPercent\").setVisible(True)\n        n.knob(\"overscan\").setVisible(False)\n    else:\n        n.knob(\"overscanPercent\").setVisible(False)\n        n.knob(\"overscan\").setVisible(True)"
+  tile_color 0xa57aaaff
+  note_font "Verdana Bold"
+  note_font_color 0xffffffff
+  xpos 501
+  ypos -43
+  addUserKnob {20 CropBBox}
+  addUserKnob {4 type l Type +INVISIBLE M {"To Format" "To BBox"}}
+  addUserKnob {41 intersect T Crop6.intersect}
+  addUserKnob {6 blackOutside l "Black Outside" -STARTLINE}
+  addUserKnob {4 overscanType l "Overscan Type:" M {Pixels Percentage}}
+  overscanType Percentage
+  addUserKnob {14 overscan l Overscan +HIDDEN R 0 400}
+  addUserKnob {14 overscanPercent l "Overscan Percent" R 1 4}
+  overscanPercent 1
+  addUserKnob {20 inputBbox l "BBox Data" n 1}
+  addUserKnob {15 inputFormat l "Input Format"}
+  inputFormat {0 0 {input.width} {input.height}}
+  addUserKnob {15 inputBBox l "Input BBox"}
+  inputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+  addUserKnob {12 outputBBoxCenter l OutputBBoxCenter}
+  outputBBoxCenter {{OutputBBox1.outputBBoxCenter.w} {OutputBBox1.outputBBoxCenter.h}}
+  addUserKnob {15 outputBBox l "Output BBox"}
+  outputBBox {{OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 info_1 l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description: t "crop to inputformat\n\ndisplays values of input bbox" T CropBBox}
+  addUserKnob {26 ver l Version: T v02}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 261
+   ypos 394
+  }
+  Dot {
+   name Dot2
+   note_font_size 41
+   xpos 295
+   ypos 462
+  }
+set N15dfb1a0 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -160
+   ypos 462
+  }
+set N15c00070 [stack 0]
+push $N15dfb1a0
+  Crop {
+   box {{curve} {curve} {input.width} {input.height}}
+   crop {{parent.blackOutside}}
+   name Crop6
+   xpos 261
+   ypos 510
+   addUserKnob {20 User}
+   addUserKnob {22 cropToBbox l "Crop to Bounding Box" -STARTLINE T codeBBox()}
+  }
+set N15c053a0 [stack 0]
+  Remove {
+   operation keep
+   channels none
+   name Remove1
+   xpos 120
+   ypos 504
+  }
+set N15c10990 [stack 0]
+  Transform {
+   scale {{parent.overscanPercent} {parent.overscanPercent}}
+   center {{input.bbox.r/2} {input.bbox.t/2}}
+   shutteroffset centred
+   name Transform1
+   xpos 120
+   ypos 555
+  }
+push $N15c10990
+  AdjBBox {
+   numpixels {{parent.overscan} {parent.overscan}}
+   name AdjBBox1
+   xpos -5
+   ypos 510
+  }
+  Switch {
+   inputs 2
+   which {{overscanType}}
+   name Switch2
+   label "\[value which]"
+   xpos -5
+   ypos 549
+  }
+  Merge2 {
+   inputs 2
+   bbox intersection
+   Achannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   Bchannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   name Merge1
+   xpos -5
+   ypos 647
+   disable {{!parent.Crop6.intersect}}
+  }
+push $N15c00070
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -194
+   ypos 653
+  }
+  BlackOutside {
+   name BlackOutside1
+   xpos -194
+   ypos 692
+   disable {{!parent.blackOutside}}
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -160
+   ypos 769
+  }
+push $N15c053a0
+  Switch {
+   inputs 2
+   which {{"overscanType == 0 ? overscan.w != 0 || overscan.h != 0 : overscanPercent.w != 1 || overscanPercent.h != 1 ? 1 : 0"}}
+   name Switch1
+   label "\[value which]"
+   xpos 261
+   ypos 759
+  }
+set N15c5f800 [stack 0]
+  Output {
+   name Output1
+   xpos 261
+   ypos 921
+  }
+push $N15c5f800
+  NoOp {
+   name OutputBBox1
+   selected true
+   xpos 378
+   ypos 821
+   addUserKnob {20 User}
+   addUserKnob {15 OutputBBox l "Output BBox"}
+   OutputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+   addUserKnob {14 outputBBoxCenter l "Output BBox Center" R 0 100}
+   outputBBoxCenter {{OutputBBox.x+(OutputBBox.r-OutputBBox.x)/2} {OutputBBox.y+(OutputBBox.t-OutputBBox.y)/2}}
+  }
+ end_group
+ Blur {
+  channels rgba
+  size {{parent.BlurBG.size}}
+  name Blur3
+  xpos 501
+  ypos 18
+ }
+ Group {
+  name BBoxToFormat5
+  onCreate "n = nuke.thisNode()\ninputFormat = n.knob(\"inputFormat\")\ninputBBox = n.knob(\"inputBBox\")\ncrop = nuke.toNode(\"Crop6\")\ncropb = crop.knob('box')\noutputBBox = n.knob('outputBBox')\noutputBBoxCenter = n.knob(\"outputBBoxCenter\")\n\ninputFormat.setFlag(0x0000000000008000)\ninputBBox.setFlag(0x0000000000008000)\ncropb.setFlag(0x0000000000008000)\noutputBBox.setFlag(0x0000000000008000)\noutputBBoxCenter.setFlag(0x0000000000008000)\n\nn = nuke.thisNode()\nn.knob(\"overscan\").setRange(0,400)\nn.knob(\"overscanPercent\").setRange(1,4)"
+  knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == \"overscanType\":\n    if n.knob(\"overscanType\").getValue() == 1:\n        n.knob(\"overscanPercent\").setVisible(True)\n        n.knob(\"overscan\").setVisible(False)\n    else:\n        n.knob(\"overscanPercent\").setVisible(False)\n        n.knob(\"overscan\").setVisible(True)"
+  tile_color 0xa57aaaff
+  note_font "Verdana Bold"
+  note_font_color 0xffffffff
+  xpos 501
+  ypos 62
+  addUserKnob {20 CropBBox}
+  addUserKnob {4 type l Type +INVISIBLE M {"To Format" "To BBox"}}
+  addUserKnob {41 intersect T Crop6.intersect}
+  addUserKnob {6 blackOutside l "Black Outside" -STARTLINE}
+  addUserKnob {4 overscanType l "Overscan Type:" M {Pixels Percentage}}
+  overscanType Percentage
+  addUserKnob {14 overscan l Overscan +HIDDEN R 0 400}
+  addUserKnob {14 overscanPercent l "Overscan Percent" R 1 4}
+  overscanPercent 1
+  addUserKnob {20 inputBbox l "BBox Data" n 1}
+  addUserKnob {15 inputFormat l "Input Format"}
+  inputFormat {0 0 {input.width} {input.height}}
+  addUserKnob {15 inputBBox l "Input BBox"}
+  inputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+  addUserKnob {12 outputBBoxCenter l OutputBBoxCenter}
+  outputBBoxCenter {{OutputBBox1.outputBBoxCenter.w} {OutputBBox1.outputBBoxCenter.h}}
+  addUserKnob {15 outputBBox l "Output BBox"}
+  outputBBox {{OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox} {OutputBBox1.OutputBBox}}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 info_1 l Info}
+  addUserKnob {26 creator l Creator: T "<b><big>Tony Lyons"}
+  addUserKnob {26 desc l Description: t "crop to inputformat\n\ndisplays values of input bbox" T CropBBox}
+  addUserKnob {26 ver l Version: T v02}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 261
+   ypos 394
+  }
+  Dot {
+   name Dot2
+   note_font_size 41
+   xpos 295
+   ypos 462
+  }
+set N15c95a10 [stack 0]
+  Dot {
+   name Dot1
+   note_font_size 41
+   xpos -160
+   ypos 462
+  }
+set N15c9a8b0 [stack 0]
+push $N15c95a10
+  Crop {
+   box {{curve} {curve} {input.width} {input.height}}
+   crop {{parent.blackOutside}}
+   name Crop6
+   xpos 261
+   ypos 510
+   addUserKnob {20 User}
+   addUserKnob {22 cropToBbox l "Crop to Bounding Box" -STARTLINE T codeBBox()}
+  }
+set N15c9fbe0 [stack 0]
+  Remove {
+   operation keep
+   channels none
+   name Remove1
+   xpos 120
+   ypos 504
+  }
+set N15cab1d0 [stack 0]
+  Transform {
+   scale {{parent.overscanPercent} {parent.overscanPercent}}
+   center {{input.bbox.r/2} {input.bbox.t/2}}
+   shutteroffset centred
+   name Transform1
+   xpos 120
+   ypos 555
+  }
+push $N15cab1d0
+  AdjBBox {
+   numpixels {{parent.overscan} {parent.overscan}}
+   name AdjBBox1
+   xpos -5
+   ypos 510
+  }
+  Switch {
+   inputs 2
+   which {{overscanType}}
+   name Switch2
+   label "\[value which]"
+   xpos -5
+   ypos 549
+  }
+  Merge2 {
+   inputs 2
+   bbox intersection
+   Achannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   Bchannels {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+   name Merge1
+   xpos -5
+   ypos 647
+   disable {{!parent.Crop6.intersect}}
+  }
+push $N15c9a8b0
+  CopyBBox {
+   inputs 2
+   name CopyBBox1
+   xpos -194
+   ypos 653
+  }
+  BlackOutside {
+   name BlackOutside1
+   xpos -194
+   ypos 692
+   disable {{!parent.blackOutside}}
+  }
+  Dot {
+   name Dot4
+   note_font_size 41
+   xpos -160
+   ypos 769
+  }
+push $N15c9fbe0
+  Switch {
+   inputs 2
+   which {{"overscanType == 0 ? overscan.w != 0 || overscan.h != 0 : overscanPercent.w != 1 || overscanPercent.h != 1 ? 1 : 0"}}
+   name Switch1
+   label "\[value which]"
+   xpos 261
+   ypos 759
+  }
+set N15cfa510 [stack 0]
+  Output {
+   name Output1
+   xpos 261
+   ypos 921
+  }
+push $N15cfa510
+  NoOp {
+   name OutputBBox1
+   selected true
+   xpos 378
+   ypos 821
+   addUserKnob {20 User}
+   addUserKnob {15 OutputBBox l "Output BBox"}
+   OutputBBox {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t}}
+   addUserKnob {14 outputBBoxCenter l "Output BBox Center" R 0 100}
+   outputBBoxCenter {{OutputBBox.x+(OutputBBox.r-OutputBBox.x)/2} {OutputBBox.y+(OutputBBox.t-OutputBBox.y)/2}}
+  }
+ end_group
+ Dot {
+  name Dot262
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 535
+  ypos 438
+ }
+push $N168721c0
+ Merge2 {
+  inputs 2+1
+  operation max
+  name Merge141
+  label Scattering
+  xpos 624
+  ypos 428
+ }
+ Switch {
+  inputs 2
+  which {{ViewKey}}
+  name Switch1
+  xpos 624
+  ypos 518
+ }
+ Switch {
+  inputs 2
+  which {{ViewBG}}
+  name Switch3
+  xpos 624
+  ypos 590
+ }
+ Switch {
+  inputs 2
+  which {{ViewElem}}
+  name Switch4
+  xpos 624
+  ypos 638
+ }
+ Switch {
+  inputs 2
+  which {{ViewMatte}}
+  name Switch5
+  xpos 624
+  ypos 686
+ }
+ Switch {
+  inputs 2
+  which {{DenseMatte}}
+  name Switch6
+  xpos 624
+  ypos 734
+ }
+ Switch {
+  inputs 2
+  which {{SE}}
+  name Switch7
+  xpos 624
+  ypos 797
+ }
+ Switch {
+  inputs 2
+  which {{Over}}
+  name Switch2
+  xpos 624
+  ypos 845
+ }
+ Output {
+  name Output1
+  xpos 624
+  ypos 893
+ }
+end_group
