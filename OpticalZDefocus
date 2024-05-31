@@ -1,13 +1,13 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name OpticalZDefocus
+ name OpticalZDefocus1
  help "<b>OpticalZDefocus</b> is a physically accurate ZDefocus, which controls circle of confusion (coc) size based on lens geometry using the depth of field equation. \n\nSet your lens and film-back characteristics, your focus distance, and adjust the size of your bokeh with the aperture size, just like a real lens."
  tile_color 0xcc804eef
  selected true
- xpos 473
- ypos -14
+ xpos 9782
+ ypos -15994
  addUserKnob {20 OpticalZDefocus}
  addUserKnob {41 channels T _ZDEFOCUS_.channels}
  addUserKnob {41 useGPUIfAvailable l "Use GPU if available" T _ZDEFOCUS_.useGPUIfAvailable}
@@ -94,7 +94,7 @@ Group {
   addUserKnob {6 constant_defocus t "Disables depth-varying defocus. \nBokeh size is directly controlled by max defocus." +STARTLINE}
   addUserKnob {6 use_camera_input l "use camera input" t "Creates a camera input pipe instead so that no user action is required." +STARTLINE}
  }
-set N14b00340 [stack 0]
+set N241c2260 [stack 0]
  Dot {
   name Dot7
   note_font_size 42
@@ -109,8 +109,8 @@ set N14b00340 [stack 0]
   xpos -576
   ypos 144
  }
-set N14b0aad0 [stack 0]
-push $N14b0aad0
+set N241cce10 [stack 0]
+push $N241cce10
  Copy {
   inputs 2
   from0 {{{CHANNEL_CHOOSER_DEPTH.Zchan}}}
@@ -140,7 +140,7 @@ push $N14b0aad0
   ypos 350
   disable {{!parent.invert_depth}}
  }
-set N14b29f70 [stack 0]
+set N241ecd30 [stack 0]
  Multiply {
   channels rgb
   value {{"parent.depth_unit == 1 ? 10 : parent.depth_unit == 2 ? 100 : parent.depth_unit == 3 ? 1000 : parent.depth_unit == 4 ? 25.4 : parent.depth_unit == 5 ? 304.8 : 1"}}
@@ -183,7 +183,7 @@ set N14b29f70 [stack 0]
   xpos -542
   ypos 514
  }
-set N14b523b0 [stack 0]
+set N242160e0 [stack 0]
  Dot {
   name Dot2
   note_font_size 42
@@ -261,8 +261,8 @@ set N14b523b0 [stack 0]
   xpos 128
   ypos 594
  }
-push $N14b523b0
-push $N14b00340
+push $N242160e0
+push $N241c2260
  Dot {
   name Dot4
   label " "
@@ -320,7 +320,7 @@ add_layer {opticalzdefocus opticalzdefocus.Z}
   xpos -308
   ypos 1230
  }
-push $N14b29f70
+push $N241ecd30
  NoOp {
   name DepthSampler
   xpos -710
