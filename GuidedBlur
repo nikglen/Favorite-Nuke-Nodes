@@ -1,10 +1,12 @@
+set cut_paste_input [stack 0]
+version 14.1 v4
+push $cut_paste_input
 Group {
- inputs 2
- name rs_GuidedBlur
+ name rs_GuidedBlur2
  help "Description:\n\nThe guided filter is an edge-preserving blur,\nuseful to add details to the edges of a roto/matte\nusing a second image as a guide. \n\nHow to use:\n\nConnect the alpha to the 'matte' input\nand the 'guide' image to the 'img' input.\n\nControl the amount of detail using\nthe 'edge detail' slider.\n\n---\n\nThe filter is an implementation of the\n 'Guided Image Filtering', by Kaiming He. \nMore details at http://kaiminghe.com/eccv10/\n"
  selected true
- xpos 294
- ypos 152
+ xpos 8922
+ ypos -16365
  addUserKnob {20 GuidedBlur}
  addUserKnob {41 blur_size l "blur size" T Blur1.size}
  addUserKnob {41 tolerance l "edge detail" t "Control the amount of detail that will be preserved. \n\nA value close to 0 makes the filter behave like a regular blur. \n\nValues close to 6 or 7 can introduce artifacts, identifying grain \"as edges\". \n\nRecommended values are between 2.5 and 4." T Constant_eps.multiplier}
@@ -26,37 +28,37 @@ Group {
   xpos -6
   ypos 330
  }
-set N9df99a0 [stack 0]
+set N133320a0 [stack 0]
  Dot {
   name Dot4
   xpos 544
   ypos 498
  }
-set N9dfe7e0 [stack 0]
+set N1331dc80 [stack 0]
  Dot {
   name Dot6
   xpos 654
   ypos 498
  }
-set N9e03610 [stack 0]
+set N13213990 [stack 0]
  Dot {
   name Dot7
   xpos 874
   ypos 498
  }
-set N9e08430 [stack 0]
+set N13213e40 [stack 0]
  Dot {
   name Dot8
   xpos 984
   ypos 498
  }
-set N9e0d220 [stack 0]
+set Nb107b140 [stack 0]
  Dot {
   name Dot15
   xpos 2194
   ypos 498
  }
-set N9e12090 [stack 0]
+set Nb107b5f0 [stack 0]
  Dot {
   name Dot3
   xpos 2744
@@ -83,8 +85,8 @@ set N9e12090 [stack 0]
   xpos 2050
   ypos 543
  }
-set N9e258d0 [stack 0]
-push $N9e12090
+set Naae004f0 [stack 0]
+push $Nb107b5f0
  Merge {
   inputs 2
   operation mult
@@ -99,14 +101,14 @@ push $N9e12090
   xpos 2160
   ypos 635
  }
- set C9e458c0 [stack 0]
+ set C13323950 [stack 0]
  NoOp {
   name mean_Ip
   xpos 2160
   ypos 711
  }
-push $N9dfe7e0
-clone $C9e458c0 {
+push $N1331dc80
+clone $C13323950 {
   xpos 510
   ypos 659
   selected false
@@ -121,21 +123,21 @@ clone $C9e458c0 {
   xpos 544
   ypos 786
  }
-set N9e6ad40 [stack 0]
+set N1321ccc0 [stack 0]
  Dot {
   name Dot13
   xpos 874
   ypos 810
  }
-set N9e6fb60 [stack 0]
+set N13221720 [stack 0]
  Dot {
   name Dot14
   xpos 1424
   ypos 834
  }
-set N9e74a90 [stack 0]
-push $N9e258d0
-clone $C9e458c0 {
+set N134bf7a0 [stack 0]
+push $Naae004f0
+clone $C13323950 {
   xpos 2050
   ypos 635
   selected false
@@ -145,7 +147,7 @@ clone $C9e458c0 {
   xpos 2050
   ypos 687
  }
-set N9e872d0 [stack 0]
+set N134d09c0 [stack 0]
  Merge {
   inputs 2
   operation mult
@@ -165,7 +167,7 @@ set N9e872d0 [stack 0]
   xpos 1940
   ypos 1095
  }
-set N9eab1f0 [stack 0]
+set N132975b0 [stack 0]
  Constant {
   inputs 0
   channels rgb
@@ -177,9 +179,9 @@ set N9eab1f0 [stack 0]
   addUserKnob {7 multiplier R 1 6}
   multiplier 3.5
  }
-set N9eb0050 [stack 0]
-push $N9e03610
-push $N9e08430
+set N1329c190 [stack 0]
+push $N13213990
+push $N13213e40
  Merge2 {
   inputs 2
   operation multiply
@@ -188,12 +190,12 @@ push $N9e08430
   xpos 730
   ypos 611
  }
-clone $C9e458c0 {
+clone $C13323950 {
   xpos 730
   ypos 683
   selected false
  }
-set N9eca140 [stack 0]
+set Nab584e90 [stack 0]
  Dot {
   name Dot5
   xpos 2634
@@ -204,14 +206,14 @@ set N9eca140 [stack 0]
   xpos 2600
   ypos 1023
  }
-push $N9e74a90
+push $N134bf7a0
  Dot {
   name Dot1
   xpos 2524
   ypos 882
  }
-set N9ee1a50 [stack 0]
-push $N9ee1a50
+set Nab59d490 [stack 0]
+push $Nab59d490
  Merge2 {
   inputs 2
   operation multiply
@@ -254,8 +256,8 @@ push $N9ee1a50
   xpos 2490
   ypos 1475
  }
-set N9f2b2f0 [stack 0]
-clone $C9e458c0 {
+set Nb17ccea0 [stack 0]
+clone $C13323950 {
   xpos 2600
   ypos 1691
   selected false
@@ -268,15 +270,15 @@ clone $C9e458c0 {
   xpos 2600
   ypos 1815
  }
-push $N9e872d0
+push $N134d09c0
  Dot {
   name Dot19
   xpos 2084
   ypos 1410
  }
-set N9f4d770 [stack 0]
-push $N9e74a90
-push $N9f2b2f0
+set Nfaff6a0 [stack 0]
+push $N134bf7a0
+push $Nb17ccea0
  Merge {
   inputs 2
   operation mult
@@ -298,7 +300,7 @@ push $N9f2b2f0
   xpos 2490
   ypos 1743
  }
-clone $C9e458c0 {
+clone $C13323950 {
   xpos 2490
   ypos 1811
   selected false
@@ -321,7 +323,7 @@ clone $C9e458c0 {
   xpos 2524
   ypos 2922
  }
-push $N9f4d770
+push $Nfaff6a0
  Dot {
   name Dot10
   xpos 1314
@@ -332,9 +334,9 @@ push $N9f4d770
   xpos 1314
   ypos 2562
  }
-push $N9eb0050
-push $N9eca140
-push $N9e6ad40
+push $N1329c190
+push $Nab584e90
+push $N1321ccc0
  Expression {
   expr0 r*r
   expr1 g*g
@@ -365,8 +367,8 @@ push $N9e6ad40
   xpos 730
   ypos 1283
  }
-set N9fd40e0 [stack 0]
-push $N9e0d220
+set N13357100 [stack 0]
+push $Nb107b140
  Expression {
   expr0 r*g
   expr1 r*b
@@ -376,12 +378,12 @@ push $N9e0d220
   xpos 950
   ypos 611
  }
-clone $C9e458c0 {
+clone $C13323950 {
   xpos 950
   ypos 683
   selected false
  }
-push $N9e6fb60
+push $N13221720
  Expression {
   expr0 r*g
   expr1 r*b
@@ -404,7 +406,7 @@ push $N9e6fb60
   xpos 950
   ypos 1283
  }
-set Na013190 [stack 0]
+set N12ef7540 [stack 0]
  MergeExpression {
   inputs 2
   expr0 Ar*Ab-Bg*Bg
@@ -415,8 +417,8 @@ set Na013190 [stack 0]
   xpos 730
   ypos 1691
  }
-push $N9fd40e0
-push $Na013190
+push $N13357100
+push $N12ef7540
  MergeExpression {
   inputs 2
   expr0 Ag*Ab-Bb*Bb
@@ -427,8 +429,8 @@ push $Na013190
   xpos 510
   ypos 1403
  }
-set Na0256e0 [stack 0]
-push $Na013190
+set N12f0a170 [stack 0]
+push $N12ef7540
  MergeExpression {
   inputs 2
   expr0 Ab*Bg
@@ -448,8 +450,8 @@ push $Na013190
   ypos 1551
  }
 push 0
-push $Na0256e0
-push $N9fd40e0
+push $N12f0a170
+push $N13357100
  MergeExpression {
   inputs 2
   expr0 Ar*Br
@@ -468,8 +470,8 @@ push $N9fd40e0
   xpos 620
   ypos 1527
  }
-push $Na0256e0
-push $Na013190
+push $N12f0a170
+push $N12ef7540
  MergeExpression {
   inputs 2
   expr0 Ag*Br
@@ -496,7 +498,7 @@ push $Na013190
   xpos 950
   ypos 1691
  }
-set Na08d1d0 [stack 0]
+set N13479d50 [stack 0]
  MergeExpression {
   inputs 2
   expr0 Ar/Br
@@ -508,9 +510,9 @@ set Na08d1d0 [stack 0]
   xpos 730
   ypos 1883
  }
-set Na09db00 [stack 0]
-push $Na0256e0
-push $Na08d1d0
+set N1348a3b0 [stack 0]
+push $N12f0a170
+push $N13479d50
  MergeExpression {
   inputs 2
   expr0 Ar/Br
@@ -522,7 +524,7 @@ push $Na08d1d0
   xpos 510
   ypos 1883
  }
-set Na0ab2b0 [stack 0]
+set N134981c0 [stack 0]
  ShuffleCopy {
   inputs 2
   red blue2
@@ -534,7 +536,7 @@ set Na0ab2b0 [stack 0]
   xpos 840
   ypos 2099
  }
-push $N9eab1f0
+push $N132975b0
  NoOp {
   name cov_Ip1
   xpos 950
@@ -545,7 +547,7 @@ push $N9eab1f0
   xpos 984
   ypos 1986
  }
-set Na0ce050 [stack 0]
+set N134bbfd0 [stack 0]
  MergeExpression {
   inputs 2
   expr0 Ar*Bb
@@ -556,8 +558,8 @@ set Na0ce050 [stack 0]
   ypos 2175
  }
 push 0
-push $Na0ab2b0
-push $Na0ce050
+push $N134981c0
+push $N134bbfd0
  MergeExpression {
   inputs 2
   expr0 Ar*Br
@@ -567,8 +569,8 @@ push $Na0ce050
   xpos 620
   ypos 2175
  }
-push $Na09db00
-push $Na0ab2b0
+push $N1348a3b0
+push $N134981c0
  ShuffleCopy {
   inputs 2
   red green2
@@ -580,7 +582,7 @@ push $Na0ab2b0
   xpos 730
   ypos 2099
  }
-push $Na0ce050
+push $N134bbfd0
  MergeExpression {
   inputs 2
   expr0 Ar*Bg
@@ -598,8 +600,8 @@ push $Na0ce050
   xpos 730
   ypos 2262
  }
-set Na10c0c0 [stack 0]
-push $N9e74a90
+set Naaca7990 [stack 0]
+push $N134bf7a0
  NoOp {
   name NoOp2
   label mean_I
@@ -613,7 +615,7 @@ push $N9e74a90
   xpos 1390
   ypos 2487
  }
-set Na121940 [stack 0]
+set Naacbd300 [stack 0]
  Shuffle {
   green red
   blue red
@@ -629,7 +631,7 @@ set Na121940 [stack 0]
   xpos 1390
   ypos 2679
  }
-push $Na121940
+push $Naacbd300
  Shuffle {
   red green
   blue green
@@ -645,7 +647,7 @@ push $Na121940
   xpos 1500
   ypos 2727
  }
-push $Na121940
+push $Naacbd300
  Shuffle {
   red blue
   green blue
@@ -667,7 +669,7 @@ push $Na121940
   xpos 1610
   ypos 2819
  }
-clone $C9e458c0 {
+clone $C13323950 {
   xpos 1610
   ypos 2915
   selected false
@@ -678,13 +680,13 @@ clone $C9e458c0 {
   xpos 1610
   ypos 2987
  }
-push $Na10c0c0
-clone $C9e458c0 {
+push $Naaca7990
+clone $C13323950 {
   xpos 730
   ypos 2363
   selected false
  }
-push $N9df99a0
+push $N133320a0
  Merge2 {
   inputs 2
   operation multiply
@@ -698,7 +700,7 @@ push $N9df99a0
   xpos -40
   ypos 3227
  }
-set Na1cab90 [stack 0]
+set N1316af90 [stack 0]
  Shuffle {
   red blue
   green blue
@@ -708,7 +710,7 @@ set Na1cab90 [stack 0]
   ypos 3327
  }
 push 0
-push $Na1cab90
+push $N1316af90
  Shuffle {
   green red
   blue red
@@ -718,7 +720,7 @@ push $Na1cab90
   xpos -40
   ypos 3323
  }
-push $Na1cab90
+push $N1316af90
  Shuffle {
   red green
   blue green
@@ -745,7 +747,7 @@ push $Na1cab90
   xpos -40
   ypos 3615
  }
-push $N9df99a0
+push $N133320a0
  Dot {
   name Dot12
   xpos -172
