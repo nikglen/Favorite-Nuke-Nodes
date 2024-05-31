@@ -1,26 +1,26 @@
 set cut_paste_input [stack 0]
-version 13.2 v8
+version 14.1 v4
 BackdropNode {
  inputs 0
- name BackdropNode5
+ name BackdropNode43
  tile_color 0x7171c600
  label "Low\nLighting"
  note_font_size 42
  selected true
- xpos -3518
- ypos -3782
+ xpos 9763
+ ypos -16946
  bdwidth 439
  bdheight 483
 }
 BackdropNode {
  inputs 0
- name BackdropNode9
+ name BackdropNode60
  tile_color 0x388e8e00
  label "High\nTexture"
  note_font_size 42
  selected true
- xpos -2906
- ypos -3710
+ xpos 10375
+ ypos -16874
  bdwidth 251
  bdheight 401
 }
@@ -30,77 +30,77 @@ Dot {
  note_font_size 42
  note_font_color 0xffffffff
  selected true
- xpos -2813
- ypos -3748
+ xpos 10468
+ ypos -16912
 }
-set N364a31d0 [stack 0]
+set N263ca900 [stack 0]
 Dot {
- name Dot19
+ name Dot17
  note_font_size 42
  note_font_color 0xffffffff
  selected true
- xpos -3001
- ypos -3748
+ xpos 10280
+ ypos -16912
 }
-set N37832d70 [stack 0]
+set N263cf820 [stack 0]
 Dot {
  name Dot36
  note_font_size 42
  note_font_color 0xffffffff
  selected true
- xpos -3235
- ypos -3748
+ xpos 10046
+ ypos -16912
 }
 Blur {
  channels rgba
  size 7
  name Blur9
  selected true
- xpos -3271
- ypos -3587
+ xpos 10010
+ ypos -16751
 }
 Dot {
- name Dot38
+ name Dot18
  note_font_size 42
  note_font_color 0xffffffff
  selected true
- xpos -3235
- ypos -3270
+ xpos 10046
+ ypos -16434
 }
-push $N364a31d0
-push $N37832d70
+push $N263ca900
+push $N263cf820
 Blur {
  channels rgba
  size {{parent.Blur9.size}}
  name Blur12
  selected true
- xpos -3035
- ypos -3587
+ xpos 10246
+ ypos -16751
 }
 Merge2 {
  inputs 2
  operation divide
  name Merge12
  selected true
- xpos -2847
- ypos -3587
+ xpos 10434
+ ypos -16751
 }
 Merge2 {
  inputs 2
  operation multiply
  name Merge14
  selected true
- xpos -2847
- ypos -3274
+ xpos 10434
+ ypos -16438
 }
-push $N364a31d0
+push $N263ca900
 Group {
- name PxF_Bandpass
+ name PxF_Bandpass1
  help "Extract detail from an image by subtracting the original image from a blur of itself.\nUseful to enhance an image for easier tracking."
  tile_color 0x733520ff
  selected true
- xpos -2923
- ypos -3629
+ xpos 10358
+ ypos -16793
  addUserKnob {20 PxF_Bandpass}
  addUserKnob {41 colorspace_out l Colorspace t "Pixel values will be converted from linear to this colorspace before processing." T Colorspace1.colorspace_out}
  addUserKnob {41 blur_1 l blurAmount1 T Blur1.size}
@@ -135,7 +135,7 @@ Group {
   xpos 171
   ypos -273
  }
-set Na30c2f0 [stack 0]
+set N25b8b6d0 [stack 0]
  Clamp {
   minimum_enable {{parent.pre_bc}}
   maximum_enable {{parent.pre_wc}}
@@ -143,28 +143,28 @@ set Na30c2f0 [stack 0]
   xpos 171
   ypos -219
  }
-set N2aba92a0 [stack 0]
+set N25b90570 [stack 0]
  Dot {
   name Dot1
   xpos 405
   ypos 31
  }
-set N2450ae70 [stack 0]
-push $N2450ae70
-push $N2aba92a0
+set N25b9f2e0 [stack 0]
+push $N25b9f2e0
+push $N25b90570
  Colorspace {
   colorspace_out Cineon
   name Colorspace1
   xpos 171
   ypos -163
  }
-set N3e6574a0 [stack 0]
+set N25ba48f0 [stack 0]
  Blur {
   name Blur1
   xpos 132
   ypos -126
  }
-push $N3e6574a0
+push $N25ba48f0
  Blur {
   size 20
   name Blur2
@@ -208,7 +208,7 @@ push $N3e6574a0
   ypos 229
   disable {{"\[exists parent.input1] ? 0 : 1" x1 0}}
  }
-push $Na30c2f0
+push $N25b8b6d0
  Dot {
   name Dot3
   note_font_size 22
