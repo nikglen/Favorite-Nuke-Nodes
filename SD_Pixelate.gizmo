@@ -1,15 +1,12 @@
-#! /londonfs/engStuff/Foundry/Nuke_network/Nuke_linux_network_11.2v1/libnuke-11.2.1.so -nx
-version 11.2 v1
+set cut_paste_input [stack 0]
+version 14.1 v4
+push $cut_paste_input
 Gizmo {
-name SD_Pixelate
- lock_connections true
- addUserKnob {20 User}
- addUserKnob {7 Pixelate t "Amount of pixel reducing you want (Can't be zero!)." R 1 1500}
+ name SD_Pixelate
+ selected true
+ xpos 9222
+ ypos -15998
  Pixelate 1
- addUserKnob {41 Pixel_type l "Pixel type" t "Pick the pixel filter you prefer to use (generally Impulse)." T Reformat_to_original.filter}
- addUserKnob {6 Affect_alpha l "Affect alpha" t "Choose to pixelate the alpha channel or not." +STARTLINE}
- addUserKnob {26 "" +STARTLINE}
- addUserKnob {26 Author l "" +STARTLINE T "Author - Sacha Danjou - Glassworks"}
 }
  Input {
   inputs 0
@@ -17,7 +14,7 @@ name SD_Pixelate
   xpos -588
   ypos -173
  }
-set N10446820 [stack 0]
+set Nf9d13a20 [stack 0]
  Dot {
   name Dot1
   xpos -554
@@ -28,7 +25,7 @@ set N10446820 [stack 0]
   box_width {{Input1.width/parent.Pixelate}}
   box_height {{Input1.height/parent.Pixelate}}
   box_fixed true
-  filter Impulse
+  filter impulse
   black_outside true
   name Reformat_pixelate
   xpos -588
@@ -46,14 +43,14 @@ set N10446820 [stack 0]
   box_height {{Input1.height}}
   box_fixed true
   resize distort
-  filter Impulse
+  filter impulse
   black_outside true
   name Reformat_to_original
   xpos -588
   ypos 79
  }
-set Nb464cf40 [stack 0]
-push $N10446820
+set N29de4190 [stack 0]
+push $Nf9d13a20
  Dot {
   name Dot2
   xpos -704
@@ -66,7 +63,7 @@ push $N10446820
   xpos -738
   ypos 175
  }
-push $Nb464cf40
+push $N29de4190
  ShuffleCopy {
   inputs 2
   name ShuffleCopy1
@@ -82,7 +79,7 @@ push $Nb464cf40
   frame 1122
   frame_range 1001-1233
   fps 25
-  viewerProcess sRGB
+  viewerProcess "sRGB (default)"
   name Viewer1
   xpos -833
   ypos 243
