@@ -1,5 +1,5 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
  name End_Of_Comp
@@ -7,8 +7,8 @@ Group {
  note_font "Bitstream Vera Sans Bold"
  note_font_size 20
  selected true
- xpos 371
- ypos -110
+ xpos 8770
+ ypos -15830
  addUserKnob {20 EOC}
  addUserKnob {26 _1 l "" +STARTLINE T "End Of The Line\n\nCrops BBOX\nMakes Alpha Black\nRemove's Any Channel's Other Than RGBA"}
 }
@@ -31,6 +31,7 @@ Group {
   reformat true
   name Crop5
   label "ROOT FORMAT"
+  selected true
   xpos -635
   ypos 481
  }
