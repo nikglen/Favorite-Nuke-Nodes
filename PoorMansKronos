@@ -1,11 +1,11 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name PoorMansKronos
+ name PoorMansKronos1
  selected true
- xpos 46
- ypos 56
+ xpos 9769
+ ypos -15912
  addUserKnob {20 Kronos}
  addUserKnob {41 start T Kronos_CTRL.start}
  addUserKnob {41 end -STARTLINE T Kronos_CTRL.end}
