@@ -1,13 +1,13 @@
 set cut_paste_input [stack 0]
-version 13.2 v8
+version 14.1 v4
 push $cut_paste_input
 Group {
- name TC_Tool
+ name TC_Tool1
  tile_color 0xf8ff00ff
  label "\[value mode]"
  selected true
- xpos -3835
- ypos -3520
+ xpos 9768
+ ypos -16312
  addUserKnob {20 fxT_compQCTAB l compQC}
  addUserKnob {1 meName l "" +STARTLINE +INVISIBLE}
  meName Group2
@@ -17,12 +17,14 @@ Group {
  addUserKnob {26 ""}
  addUserKnob {41 multiply l "Comp Difference Brightness" T Grade5.multiply}
  addUserKnob {41 multiply_1 l "Grain Brightness" T Grade6.multiply}
+ addUserKnob {41 GraincomPlate l "Grain Comp/Plate" T Switch2.which}
  addUserKnob {7 clippingValue l "Clipping Value"}
  clippingValue 10
  addUserKnob {41 size l "NAN || INF Size" T Dilate1.size}
  addUserKnob {41 gamma l "Gamma Up" T Grade2.gamma}
  addUserKnob {41 gamma_1 l "Gamma Down" T Grade3.gamma}
  addUserKnob {41 saturation l Saturation T Saturation1.saturation}
+ addUserKnob {26 ""}
  addUserKnob {20 endGroup n -1}
  addUserKnob {20 aboutTAB l about}
  addUserKnob {26 ""}
@@ -43,6 +45,21 @@ Group {
   bookmark false
   bdwidth 506
   bdheight 629
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name BackdropNode10
+  tile_color 0x505a6101
+  label "grain check"
+  note_font Verdana
+  note_font_size 50
+  note_font_color 0xffffff01
+  xpos 438
+  ypos 20
+  bookmark false
+  bdwidth 420
+  bdheight 492
   z_order 1
  }
  BackdropNode {
@@ -121,21 +138,6 @@ Group {
  }
  BackdropNode {
   inputs 0
-  name BackdropNode7
-  tile_color 0x5b4b7100
-  label "FLOP COMP"
-  note_font "Arial Black"
-  note_font_size 20
-  note_font_color 0xffffff01
-  xpos 283
-  ypos -429
-  bookmark false
-  bdwidth 1050
-  bdheight 219
-  z_order 1
- }
- BackdropNode {
-  inputs 0
   name BackdropNode8
   tile_color 0x505a6101
   label "grain check"
@@ -160,15 +162,15 @@ Group {
   xpos -3040
   ypos 2201
   bookmark false
-  bdwidth 4359
-  bdheight 1053
+  bdwidth 5443
+  bdheight 1276
   z_order 1
  }
  Input {
   inputs 0
   name comp
   label "\[value number]"
-  xpos 1039
+  xpos 1911
   ypos -640
  }
  Remove {
@@ -176,24 +178,24 @@ Group {
   channels rgba
   name Remove1
   label "rgba only"
-  xpos 1039
+  xpos 1911
   ypos -535
  }
  Dot {
   name Dot26
   label comp
   note_font_size 40
-  xpos 1073
+  xpos 1945
   ypos -346
  }
  Dot {
   name Dot79
   label comp
   note_font_size 40
-  xpos 1073
+  xpos 1945
   ypos -99
  }
-set N34aec170 [stack 0]
+set N15a75db0 [stack 0]
  Dot {
   name Dot57
   label "\n\ncomp"
@@ -201,7 +203,7 @@ set N34aec170 [stack 0]
   xpos 72
   ypos -99
  }
-set N34af0770 [stack 0]
+set N15a7af90 [stack 0]
  Dot {
   name Dot4
   label "\n\ncomp"
@@ -209,7 +211,7 @@ set N34af0770 [stack 0]
   xpos -386
   ypos -99
  }
-set N34af4d70 [stack 0]
+set N15a80100 [stack 0]
  Dot {
   name Dot21
   label "\n\ncomp"
@@ -217,7 +219,7 @@ set N34af4d70 [stack 0]
   xpos -753
   ypos -99
  }
-set N34af9370 [stack 0]
+set N15a852c0 [stack 0]
  Dot {
   name Dot23
   label "\n\ncomp"
@@ -225,7 +227,7 @@ set N34af9370 [stack 0]
   xpos -1417
   ypos -99
  }
-set N3557f9e0 [stack 0]
+set N15a8a480 [stack 0]
  Dot {
   name Dot20
   note_font_size 50
@@ -239,7 +241,7 @@ set N3557f9e0 [stack 0]
   xpos -2831
   ypos -99
  }
-set N35588450 [stack 0]
+set N15a94780 [stack 0]
  Dot {
   name Dot6
   label "\n\ncomp"
@@ -247,7 +249,7 @@ set N35588450 [stack 0]
   xpos -3597
   ypos -99
  }
-set N2fdf5a40 [stack 0]
+set N15a998e0 [stack 0]
  Dot {
   name Dot56
   label "\n\ncomp"
@@ -255,7 +257,7 @@ set N2fdf5a40 [stack 0]
   xpos -5098
   ypos -97
  }
-set N2fdfa040 [stack 0]
+set N15a9eaa0 [stack 0]
  Dot {
   name Dot1
   label "\n\ncomp"
@@ -284,9 +286,9 @@ set N2fdfa040 [stack 0]
   xpos -2471
   ypos 2952
  }
-push $N34af9370
+push $N15a852c0
  Saturation {
-  saturation 3
+  saturation 2
   name Saturation1
   label "Value:\[value saturation]"
   xpos -787
@@ -306,7 +308,7 @@ push $N34af9370
   xpos -1240
   ypos 2382
  }
-push $N35588450
+push $N15a94780
  Grade {
   gamma 0.2
   name Grade3
@@ -327,9 +329,9 @@ push $N35588450
   xpos -1785
   ypos 2337
  }
-push $N2fdf5a40
+push $N15a998e0
  Grade {
-  gamma 3
+  gamma 2
   name Grade2
   xpos -3633
   ypos 578
@@ -354,13 +356,13 @@ push $N2fdf5a40
   xpos -2008
   ypos 2488
  }
-push $N2fdfa040
+push $N15a9eaa0
  Dot {
   name Dot9
   xpos -5098
   ypos 210
  }
-set N38e26a10 [stack 0]
+set N1591af40 [stack 0]
  Expression {
   expr0 (isnan(r)||isinf(r))?400:0
   expr1 (isnan(g)||isinf(g))?400:0
@@ -384,7 +386,7 @@ set N38e26a10 [stack 0]
   xpos -4950
   ypos 344
  }
-push $N38e26a10
+push $N1591af40
  Expression {
   channel0 rgb
   expr0 "(floor(x/10)+floor(y/10)) % 2 == 0 ? 0.05 : 0.5"
@@ -409,7 +411,7 @@ push $N38e26a10
   xpos -5237
   ypos 347
  }
-push $N38e26a10
+push $N1591af40
  Keymix {
   inputs 3
   bbox B
@@ -430,14 +432,14 @@ push $N38e26a10
   xpos -2320
   ypos 2632
  }
-push $N3557f9e0
+push $N15a8a480
  Dot {
   name Dot75
   note_font_size 50
   xpos -1417
   ypos 106
  }
-set N3b296b50 [stack 0]
+set N159805d0 [stack 0]
  Dot {
   name Dot76
   note_font_size 50
@@ -462,14 +464,14 @@ set N3b296b50 [stack 0]
   xpos -1201
   ypos 289
  }
-set N35a4a380 [stack 0]
+set N15998e90 [stack 0]
  Position {
   translate {2 2}
   name Position1
   xpos -1235
   ypos 362
  }
-push $N3b296b50
+push $N159805d0
  Dot {
   name Dot77
   note_font_size 50
@@ -494,7 +496,7 @@ push $N3b296b50
   xpos -1686
   ypos 292
  }
-set N34ac55e0 [stack 0]
+set N159c5530 [stack 0]
  Dot {
   name Dot27
   note_font_size 50
@@ -508,8 +510,8 @@ set N34ac55e0 [stack 0]
   xpos -1595
   ypos 356
  }
-push $N35a4a380
-push $N34ac55e0
+push $N15998e90
+push $N159c5530
  Add {
   value {1 0 0 1}
   name Add1
@@ -517,7 +519,7 @@ push $N34ac55e0
   xpos -1594
   ypos 282
  }
-push $N3b296b50
+push $N159805d0
  Multiply {
   value 0.3
   name Multiply1
@@ -546,7 +548,7 @@ push $N3b296b50
   xpos -1417
   ypos 2317
  }
-push $N34af4d70
+push $N15a80100
  Dot {
   name Dot31
   note_font "Verdana Bold"
@@ -554,7 +556,7 @@ push $N34af4d70
   xpos -386
   ypos -1
  }
-set N2e5f6d40 [stack 0]
+set N1581b470 [stack 0]
  Expression {
   temp_name0 negDisplay
   temp_expr0 1
@@ -588,8 +590,7 @@ set N2e5f6d40 [stack 0]
   xpos -386
   ypos 328
  }
-set N359904b0 [stack 0]
-push $N2e5f6d40
+push $N1581b470
  Dot {
   name Dot35
   note_font "Arial Black"
@@ -613,15 +614,6 @@ push $N2e5f6d40
   xpos -207
   ypos 506
  }
-push $N359904b0
- Switch {
-  inputs 2
-  which {{parent.negative_values_over}}
-  name Switch3
-  label "diplay negative values over input\n(option when negative values are chosen in dropdown)\n"
-  xpos -420
-  ypos 491
- }
  Dot {
   name Dot17
   label "negative values"
@@ -636,13 +628,111 @@ push $N359904b0
   xpos -897
   ypos 2483
  }
-push $N34af0770
+ Input {
+  inputs 0
+  name plate
+  label "\[value number]"
+  xpos 1319
+  ypos -621
+  number 1
+ }
+ Remove {
+  operation keep
+  channels rgba
+  name Remove4
+  label "rgba only"
+  xpos 1319
+  ypos -518
+ }
+ Dot {
+  name Dot37
+  label plate
+  note_font_size 40
+  xpos 1360
+  ypos -333
+ }
+set N15884bd0 [stack 0]
+ Dot {
+  name Dot43
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 584
+  ypos -333
+ }
+ Dot {
+  name Dot7
+  xpos 584
+  ypos 167
+ }
+set N1588efd0 [stack 0]
+ Dot {
+  name Dot15
+  xpos 495
+  ypos 167
+ }
+ Blur {
+  channels rgba
+  size 1
+  name Blur1
+  xpos 461
+  ypos 207
+ }
+ Dot {
+  name Dot22
+  xpos 489
+  ypos 248
+ }
+push $N1588efd0
+ Merge2 {
+  inputs 2
+  operation from
+  bbox B
+  output rgb
+  name Merge2
+  xpos 550
+  ypos 251
+ }
+ Grade {
+  white 140
+  multiply 3
+  name Grade8
+  xpos 550
+  ypos 316
+ }
+ Dot {
+  name Dot41
+  xpos 584
+  ypos 389
+ }
+push $N1588efd0
+ Dot {
+  name Dot42
+  xpos 676
+  ypos 167
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  bbox B
+  output rgb
+  name Merge5
+  xpos 642
+  ypos 386
+ }
+ Dot {
+  name Dot5
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 676
+  ypos 510
+ }
+push $N15a7af90
  Dot {
   name Dot47
   xpos 72
   ypos 169
  }
-set N326ca320 [stack 0]
+set N158edff0 [stack 0]
  Dot {
   name Dot48
   xpos -17
@@ -657,10 +747,10 @@ set N326ca320 [stack 0]
  }
  Dot {
   name Dot51
-  xpos -23
-  ypos 250
+  xpos -17
+  ypos 257
  }
-push $N326ca320
+push $N158edff0
  Merge2 {
   inputs 2
   operation from
@@ -682,7 +772,7 @@ push $N326ca320
   xpos 72
   ypos 391
  }
-push $N326ca320
+push $N158edff0
  Dot {
   name Dot55
   xpos 164
@@ -696,6 +786,12 @@ push $N326ca320
   name Merge6
   xpos 130
   ypos 388
+ }
+ Switch {
+  inputs 2
+  name Switch2
+  xpos 130
+  ypos 506
  }
  Dot {
   name Dot30
@@ -711,50 +807,28 @@ push $N326ca320
   xpos -588
   ypos 2612
  }
-push $N34aec170
+push $N15a75db0
  Dot {
   name Dot39
   label comp
   note_font_size 40
-  xpos 1082
+  xpos 1954
   ypos 2343
  }
-set N3102f400 [stack 0]
- Input {
-  inputs 0
-  name plate
-  label "\[value number]"
-  xpos 447
-  ypos -621
-  number 1
- }
- Remove {
-  operation keep
-  channels rgba
-  name Remove4
-  label "rgba only"
-  xpos 447
-  ypos -518
- }
- Dot {
-  name Dot37
-  label plate
-  note_font_size 40
-  xpos 488
-  ypos -333
- }
+set N1575a440 [stack 0]
+push $N15884bd0
  Dot {
   name Dot80
   label plate
   note_font_size 40
-  xpos 488
+  xpos 1360
   ypos 2250
  }
  MergeExpression {
   inputs 2
   expr3 (abs(Ar-Br)+abs(Ag-Bg)+abs(Ab-Bb))/3
   name MergeExpression1
-  xpos 454
+  xpos 1326
   ypos 2530
   addUserKnob {20 User}
  }
@@ -765,69 +839,80 @@ set N3102f400 [stack 0]
   name Shuffle4
   tile_color 0xffffffff
   label allToAlpha
-  xpos 454
+  xpos 1326
   ypos 2575
  }
  Clamp {
   name Clamp4
-  xpos 454
+  xpos 1326
   ypos 2636
  }
-set N37f14530 [stack 0]
-push $N3102f400
+set N15784c80 [stack 0]
+push $N15784c80
+push $N1575a440
  Dot {
   name Dot13
   note_font_size 42
   note_font_color 0xffffffff
-  xpos 31
+  xpos 903
   ypos 2343
  }
  Grade {
   inputs 1+1
   white {4 1 1 2}
   name Grade4
-  xpos -3
+  xpos 869
   ypos 2642
  }
  Grade {
-  name Grade5
-  xpos -3
-  ypos 2712
+  inputs 1+1
+  channels {rgba.red -rgba.green -rgba.blue none}
+  multiply {{parent.Grade5.multiply}}
+  name Grade7
+  xpos 869
+  ypos 2701
  }
  Dot {
   name Dot24
   label "\ncomp difference with plate"
   note_font_size 25
-  xpos 31
+  xpos 903
   ypos 2793
  }
-push $N37f14530
+push $N15784c80
+ Grade {
+  multiply 5
+  name Grade5
+  xpos 1326
+  ypos 2714
+ }
  Dot {
   name Dot8
   label "\ncomp difference "
   note_font_size 25
-  xpos 488
+  xpos 1360
   ypos 2867
  }
-push $N3102f400
+push $N1575a440
  Dot {
   name Dot38
   label comp
   note_font_size 25
-  xpos 1082
+  xpos 1954
   ypos 3201
  }
  Dot {
   name Dot36
   label "\n\ncomp"
   note_font_size 25
-  xpos 148
+  xpos 1020
   ypos 3201
  }
  Switch {
   inputs 11
   which {{parent.mode}}
   name Switch1
+  selected true
   xpos -1451
   ypos 3197
  }
