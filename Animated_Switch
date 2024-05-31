@@ -1,13 +1,13 @@
 set cut_paste_input [stack 0]
-version 13.2 v8
+version 14.1 v4
 push $cut_paste_input
 Switch {
  which {{int(((frame-Start)/Pace))%(input)}}
  name Animated_Switch
  label "Switch Run By an Expression"
  selected true
- xpos 82
- ypos -124
+ xpos 8980
+ ypos -16336
  addUserKnob {20 User}
  addUserKnob {3 input l inputs}
  input 8
