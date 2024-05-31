@@ -1,5 +1,5 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
  name AdditiveKeyerPro
@@ -7,8 +7,8 @@ Group {
  note_font "Verdana Bold"
  note_font_color 0xffffffff
  selected true
- xpos 518
- ypos -53
+ xpos 8825
+ ypos -16258
  addUserKnob {20 AdditiveKeyer}
  addUserKnob {6 useSC l "Use Screen Color as CleanPlate" +STARTLINE}
  addUserKnob {41 screenColor l "Screen Color" T Keylight1.screenColour}
@@ -122,7 +122,7 @@ Group {
   xpos -466
   ypos 5
  }
-set N125fca40 [stack 0]
+set Nb4a33d70 [stack 0]
  OFXuk.co.thefoundry.keylight.keylight_v201 {
   show "Final Result"
   unPreMultiply false
@@ -168,8 +168,8 @@ set N125fca40 [stack 0]
   xpos -500
   ypos 73
  }
-set N12193fa0 [stack 0]
-push $N125fca40
+set Ncc754a70 [stack 0]
+push $Nb4a33d70
  Dot {
   name Dot27
   note_font_size 41
@@ -196,7 +196,7 @@ push $N125fca40
   xpos -390
   ypos 125
  }
-push $N12193fa0
+push $Ncc754a70
  Merge2 {
   inputs 2
   operation plus
@@ -205,7 +205,7 @@ push $N12193fa0
   xpos -500
   ypos 125
  }
-push $N125fca40
+push $Nb4a33d70
  Dot {
   name Dot30
   note_font_size 41
@@ -231,7 +231,7 @@ push $N125fca40
   xpos -466
   ypos 373
  }
-set N1276f200 [stack 0]
+set Nae83a840 [stack 0]
  Input {
   inputs 0
   name clean
@@ -266,7 +266,7 @@ set N1276f200 [stack 0]
   xpos 160
   ypos 50
  }
-set N11eea150 [stack 0]
+set Nafc457b0 [stack 0]
  OFXuk.co.thefoundry.keylight.keylight_v201 {
   show "Final Result"
   unPreMultiply false
@@ -313,8 +313,8 @@ set N11eea150 [stack 0]
   xpos 126
   ypos 118
  }
-set N124a8810 [stack 0]
-push $N11eea150
+set Nb4fd8610 [stack 0]
+push $Nafc457b0
  Dot {
   name Dot29
   note_font_size 41
@@ -341,7 +341,7 @@ push $N11eea150
   xpos 354
   ypos -65
  }
-push $N124a8810
+push $Nb4fd8610
  Merge2 {
   inputs 2
   operation plus
@@ -350,7 +350,7 @@ push $N124a8810
   xpos 126
   ypos 170
  }
-push $N11eea150
+push $Nafc457b0
  Dot {
   name Dot33
   note_font_size 41
@@ -377,7 +377,7 @@ push $N11eea150
   xpos 160
   ypos 320
  }
-set N12603720 [stack 0]
+set Ncc73c6d0 [stack 0]
  Dot {
   name Dot6
   xpos 412
@@ -424,7 +424,7 @@ set N12603720 [stack 0]
    xpos 558
    ypos -668
   }
-set N11e6af90 [stack 0]
+set Nae91b020 [stack 0]
   Shuffle {
    green red
    blue red
@@ -440,7 +440,7 @@ set N11e6af90 [stack 0]
    xpos 386
    ypos -492
   }
-push $N11e6af90
+push $Nae91b020
   Shuffle {
    red green
    blue green
@@ -463,8 +463,8 @@ push $N11e6af90
    xpos 411
    ypos -428
   }
-  set C124bf840 [stack 0]
-push $N11e6af90
+  set Cae5e0220 [stack 0]
+push $Nae91b020
   Shuffle {
    red blue
    green blue
@@ -480,13 +480,13 @@ push $N11e6af90
    xpos 610
    ypos -494
   }
-clone $C124bf840 {
+clone $Cae5e0220 {
    inputs 2
    xpos 486
    ypos -369
    selected false
   }
-push $N11e6af90
+push $Nae91b020
   Shuffle {
    red alpha
    green alpha
@@ -503,7 +503,7 @@ push $N11e6af90
    xpos 725
    ypos -494
   }
-clone $C124bf840 {
+clone $Cae5e0220 {
    inputs 2
    xpos 580
    ypos -307
@@ -545,29 +545,29 @@ clone $C124bf840 {
   xpos -811
   ypos 1449
  }
-set N11d9fa00 [stack 0]
+set Nae4e3870 [stack 0]
  Dot {
   name Dot13
   note_font_size 41
   xpos -811
   ypos 1688
  }
-set N11d64950 [stack 0]
-push $N1276f200
+set Nae4e89c0 [stack 0]
+push $Nae83a840
  Dot {
   name Dot2
   note_font_size 41
   xpos -466
   ypos 421
  }
-set N11d8a410 [stack 0]
+set Nae4edcd0 [stack 0]
  Saturation {
   saturation {{parent.satDarks}}
   name Saturation9
   xpos -378
   ypos 418
  }
-push $N12603720
+push $Ncc73c6d0
  Saturation {
   saturation {{parent.satDarks}}
   name Saturation8
@@ -630,7 +630,7 @@ push $N12603720
   xpos -181
   ypos 1257
  }
-push $N11d8a410
+push $Nae4edcd0
  Dot {
   name Dot36
   note_font_size 41
@@ -643,15 +643,15 @@ push $N11d8a410
   xpos -101
   ypos 574
  }
-set N124ce070 [stack 0]
-push $N12603720
+set Nad981020 [stack 0]
+push $Ncc73c6d0
  Saturation {
   saturation {{parent.satLights}}
   name Saturation6
   xpos 126
   ypos 500
  }
-set N11dad150 [stack 0]
+set Nad98e2d0 [stack 0]
  Merge2 {
   inputs 2
   operation divide
@@ -712,7 +712,7 @@ set N11dad150 [stack 0]
   xpos 162
   ypos 1354
  }
-set N11c034f0 [stack 0]
+set Nadb53ef0 [stack 0]
  Dot {
   name Dot3
   xpos -8
@@ -724,14 +724,14 @@ set N11c034f0 [stack 0]
   xpos -8
   ypos 1611
  }
-push $N11dad150
+push $Nad98e2d0
  Dot {
   name Dot7
   note_font_size 41
   xpos 310
   ypos 503
  }
-push $N124ce070
+push $Nad981020
  Dot {
   name Dot5
   note_font_size 41
@@ -774,14 +774,14 @@ push $N124ce070
   xpos 310
   ypos 1513
  }
-push $N11c034f0
+push $Nadb53ef0
  Dot {
   name Dot1
   note_font_size 41
   xpos 162
   ypos 1449
  }
-push $N11d9fa00
+push $Nae4e3870
  Merge2 {
   inputs 2
   operation multiply
@@ -834,7 +834,7 @@ push $N11d9fa00
   xpos 162
   ypos 1910
  }
-push $N11d64950
+push $Nae4e89c0
  Dot {
   name Dot18
   label B
