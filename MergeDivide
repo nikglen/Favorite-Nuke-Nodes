@@ -1,5 +1,5 @@
 set cut_paste_input [stack 0]
-version 13.2 v8
+version 14.1 v4
 push $cut_paste_input
 push 0
 MergeExpression {
@@ -11,6 +11,6 @@ MergeExpression {
  name MergeDivide
  label B/A
  selected true
- xpos -4493
- ypos -3664
+ xpos 9769
+ ypos -16048
 }
