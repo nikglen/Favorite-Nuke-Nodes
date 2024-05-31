@@ -1,13 +1,13 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name IBK_Color
+ name IBK_Clean
  help "This node provides IBKGizmo a color reference in which to base its keying algorithm on a per pixel basis.\nThe idea is to remove the foreground image and only leave the shades and hues of the original blue/greenscreen.\nAttach the output of this node to the 'c' input of a default IBKGizmo. Attach the input of this node along with the 'fg' input of the IBKGizmo to the original screen.\nPick which color your screen type is in both nodes and then while viewing the alpha output from the IBKGizmo lower the darks.b (if a bluescreen - adjust darks.g if a greenscreen) in this node \nuntil you see a change in the garbage area of the matte. Once you see a change then you have gone too far -back off a step. If you are still left with discolored edges you can use the other colors in the lights and darks to eliminate them. Remember the idea is \nto be left with the original shades of the screen and the foreground blacked out. While swapping between viewing the matte from the IBKGizmo and the RGB output of this IBKColor adjust the other colors \nuntil you see a change in the garbage area of the matte. Simple rule of thumb - if you have a light red discolored area increase the lights.r - if you have a dark green discolored area increase darks.g. If your screen does not have a very saturated hue you may still be left\n with areas of discoloration after the above process. The 'erode' slider can help with this - while viewing the RGB output adjust the erode until those areas disappear.\nThe 'patch black' slider allows you to fill in the black areas with screen color. This is not always necessary but if you see blue squares in your composite increase this value and it'll fix it.\nThe above is the only real workflow for this node - working from the top parameter to the bottom parameter- going back to tweak darks/lights with 'erode' and 'patch black' activated isn't really gonna work."
  tile_color 0x990000
  selected true
- xpos 533
- ypos -151
+ xpos 9098
+ ypos -16354
  addUserKnob {20 "" l Parameters}
  addUserKnob {41 screen_type l "screen type" T IBK2.screen_type}
  addUserKnob {18 off l darks t "adjust the color values to get the best separation between black and the screen type color.\nYou want to be left with only shades of the screen color and black. \nIf a green screen is selected start by bringing down darks->green\nIf a blue screen is selected start by bringing down darks->blue" R -1 1}
@@ -61,7 +61,7 @@ Group {
   xpos 3
   ypos -21
  }
-set N140d6d40 [stack 0]
+set N248c5ff0 [stack 0]
  Dot {
   name Dot1
   tile_color 0x9597bf00
@@ -82,9 +82,9 @@ set N140d6d40 [stack 0]
   xpos -473
   ypos 88
  }
-set N140f1b70 [stack 0]
-push $N140f1b70
-push $N140f1b70
+set N248e20f0 [stack 0]
+push $N248e20f0
+push $N248e20f0
  IBK {
   inputs 3
   blue_green_weight 1
@@ -121,7 +121,7 @@ push $N140f1b70
   xpos -18
   ypos 222
  }
-push $N140d6d40
+push $N248c5ff0
  Dot {
   name Dot17
   xpos 126
@@ -142,13 +142,13 @@ push $N140d6d40
   xpos 126
   ypos 402
  }
-set N1415de60 [stack 0]
+set N2494c360 [stack 0]
  Dot {
   name Dot3
   xpos 126
   ypos 462
  }
-set N14163090 [stack 0]
+set N24951550 [stack 0]
  FilterErode {
   size {{parent.inpaintErode} {parent.erodeY}}
   name FilterErode1
@@ -161,7 +161,7 @@ set N14163090 [stack 0]
   xpos -40
   ypos 502
  }
-push $N1415de60
+push $N2494c360
  Inpaint2 {
   fillRegion "Source Inverted Alpha"
   skewY -0.2173913717
@@ -178,7 +178,7 @@ push $N1415de60
   ypos 502
   disable {{!parent.matteOn}}
  }
-push $N14163090
+push $N24951550
  Premult {
   name Premult3
   xpos 92
