@@ -1,16 +1,16 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 push 0
 Group {
  inputs 2
- name MergeAtmos
+ name MergeAtmos3
  tile_color 0x4b5ec6ff
  note_font "Verdana Bold"
  note_font_color 0xffffffff
  selected true
- xpos 507
- ypos -105
+ xpos 9115
+ ypos -15665
  addUserKnob {20 MergeAtmos}
  addUserKnob {41 channels T MergeKeymix.also_merge}
  addUserKnob {41 size l "blur size" T Blur1.size}
@@ -67,21 +67,21 @@ Group {
   xpos 392
   ypos 377
  }
-set N14a788a0 [stack 0]
+set N670faef0 [stack 0]
  Dot {
   name Dot8
   note_font_size 41
   xpos 392
   ypos 452
  }
-set N14a7da40 [stack 0]
+set Nab622a40 [stack 0]
  Dot {
   name Dot1
   xpos 392
   ypos 522
  }
-push $N14a7da40
-push $N14a788a0
+push $Nab622a40
+push $N670faef0
  Input {
   inputs 0
   name InputB
@@ -93,7 +93,7 @@ push $N14a788a0
   xpos 189
   ypos 250
  }
-set N14a8cdf0 [stack 0]
+set Ne61f94a0 [stack 0]
  Blur {
   inputs 1+1
   size 10
@@ -123,7 +123,7 @@ set N14a8cdf0 [stack 0]
   xpos 155
   ypos 519
  }
-push $N14a8cdf0
+push $Ne61f94a0
  Dot {
   name Dot5
   xpos 34
