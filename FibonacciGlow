@@ -1,13 +1,13 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
- name FibonacciGlow
+ name FibonacciGlow1
  help "Nukepedia download\nNice big atmospheric type glow"
  tile_color 0xcc804eff
  selected true
- xpos 554
- ypos -121
+ xpos 8739
+ ypos -16328
  addUserKnob {20 eFibonacciGlow}
  addUserKnob {68 type M {Fibonacci Tribonacci}}
  type Tribonacci
@@ -57,13 +57,13 @@ Group {
   xpos 532
   ypos -156
  }
-set Nea20040 [stack 0]
+set N29b02690 [stack 0]
  Dot {
   name Dot2
   xpos 180
   ypos -156
  }
-set N11d06300 [stack 0]
+set Nab7fa4c0 [stack 0]
  Dot {
   name Dot4
   xpos -118
@@ -79,7 +79,7 @@ set N11d06300 [stack 0]
   xpos -118
   ypos 240
  }
-push $N11d06300
+push $Nab7fa4c0
  Switch {
   inputs 2
   which {{parent.CONTROL.effect_only}}
@@ -92,14 +92,14 @@ push $N11d06300
   xpos 180
   ypos 1797
  }
-set N11edd220 [stack 0]
+set N104a4750 [stack 0]
  Shuffle {
   alpha white
   name Shuffle1
   xpos 323
   ypos 1723
  }
-push $Nea20040
+push $N29b02690
  Dot {
   name Dot10
   xpos 983
@@ -131,43 +131,43 @@ push $Nea20040
   xpos 949
   ypos 324
  }
-set N12185310 [stack 0]
+set N4d13b850 [stack 0]
  Dot {
   name Dot11
   xpos 983
   ypos 507
  }
-set Ndbd6080 [stack 0]
+set N9564c60 [stack 0]
  Dot {
   name Dot12
   xpos 983
   ypos 700
  }
-set N1261cc50 [stack 0]
+set Nfe35c10 [stack 0]
  Dot {
   name Dot13
   xpos 983
   ypos 880
  }
-set N1214a6e0 [stack 0]
+set Nab66d6e0 [stack 0]
  Dot {
   name Dot14
   xpos 983
   ypos 1075
  }
-set N124f6c60 [stack 0]
+set Nb8f7d5f0 [stack 0]
  Dot {
   name Dot15
   xpos 983
   ypos 1271
  }
-set N12197860 [stack 0]
+set Nab651610 [stack 0]
  Dot {
   name Dot16
   xpos 983
   ypos 1466
  }
-set Ndbdcbe0 [stack 0]
+set N12dcfdb0 [stack 0]
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur10.size+Blur11.size+Blur12.size}}
@@ -176,7 +176,7 @@ set Ndbdcbe0 [stack 0]
   xpos 825
   ypos 1456
  }
-push $Ndbdcbe0
+push $N12dcfdb0
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur5.size+Blur4.size}}
@@ -192,14 +192,14 @@ push $Ndbdcbe0
   xpos 825
   ypos 1502
  }
- set C12310c00 [stack 0]
+ set Cb8bc2590 [stack 0]
  Multiply {
   value {{parent.Multiply9.value/CONTROL.expansion}}
   name Multiply8
   xpos 669
   ypos 1456
  }
-push $N12197860
+push $Nab651610
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur11.size+Blur12.size+Blur13.size}}
@@ -208,7 +208,7 @@ push $N12197860
   xpos 815
   ypos 1261
  }
-push $N12197860
+push $Nab651610
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur4.size+Blur3.size}}
@@ -217,7 +217,7 @@ push $N12197860
   xpos 1068
   ypos 1261
  }
-clone $C12310c00 {
+clone $Cb8bc2590 {
   inputs 2
   xpos 815
   ypos 1333
@@ -229,7 +229,7 @@ clone $C12310c00 {
   xpos 670
   ypos 1261
  }
-push $N124f6c60
+push $Nb8f7d5f0
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur12.size+Blur13.size+Blur14.size}}
@@ -238,7 +238,7 @@ push $N124f6c60
   xpos 829
   ypos 1065
  }
-push $N124f6c60
+push $Nb8f7d5f0
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur3.size+Blur2.size}}
@@ -247,7 +247,7 @@ push $N124f6c60
   xpos 1068
   ypos 1065
  }
-clone $C12310c00 {
+clone $Cb8bc2590 {
   inputs 2
   xpos 816
   ypos 1133
@@ -259,7 +259,7 @@ clone $C12310c00 {
   xpos 669
   ypos 1065
  }
-push $N1214a6e0
+push $Nab66d6e0
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur13.size+Blur14.size+Blur15.size}}
@@ -268,7 +268,7 @@ push $N1214a6e0
   xpos 834
   ypos 870
  }
-push $N1214a6e0
+push $Nab66d6e0
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur2.size+Blur1.size}}
@@ -277,7 +277,7 @@ push $N1214a6e0
   xpos 1070
   ypos 870
  }
-clone $C12310c00 {
+clone $Cb8bc2590 {
   inputs 2
   xpos 834
   ypos 931
@@ -289,7 +289,7 @@ clone $C12310c00 {
   xpos 667
   ypos 870
  }
-push $N1261cc50
+push $Nfe35c10
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur14.size+Blur15.size}}
@@ -298,7 +298,7 @@ push $N1261cc50
   xpos 832
   ypos 690
  }
-push $N1261cc50
+push $Nfe35c10
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{Blur1.size+Blur7.size}}
@@ -307,7 +307,7 @@ push $N1261cc50
   xpos 1069
   ypos 690
  }
-clone $C12310c00 {
+clone $Cb8bc2590 {
   inputs 2
   xpos 832
   ypos 753
@@ -319,7 +319,7 @@ clone $C12310c00 {
   xpos 668
   ypos 690
  }
-push $Ndbd6080
+push $N9564c60
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{parent.Blur15.size}}
@@ -328,7 +328,7 @@ push $Ndbd6080
   xpos 830
   ypos 497
  }
-push $Ndbd6080
+push $N9564c60
  Blur {
   channels {{{parent.Blur15.channels}}}
   size {{parent.Blur7.size}}
@@ -337,7 +337,7 @@ push $Ndbd6080
   xpos 1071
   ypos 497
  }
-clone $C12310c00 {
+clone $Cb8bc2590 {
   inputs 2
   xpos 830
   ypos 594
@@ -349,22 +349,22 @@ clone $C12310c00 {
   xpos 667
   ypos 497
  }
-push $Nea20040
-push $N12185310
+push $N29b02690
+push $N4d13b850
  Blur {
   size {{parent.CONTROL.fibo_blur}}
   name Blur15
   xpos 839
   ypos 318
  }
-push $N12185310
+push $N4d13b850
  Blur {
   size {{parent.CONTROL.fibo_blur}}
   name Blur7
   xpos 1071
   ypos 318
  }
-clone $C12310c00 {
+clone $Cb8bc2590 {
   inputs 2
   xpos 839
   ypos 423
@@ -432,7 +432,7 @@ clone $C12310c00 {
   ypos 1619
   disable {{!parent.CONTROL.crop_to_format}}
  }
-push $N11edd220
+push $N104a4750
  Keymix {
   inputs 3
   name Keymix1
