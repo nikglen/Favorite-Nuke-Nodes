@@ -1,12 +1,12 @@
 set cut_paste_input [stack 0]
-version 14.1 v2
+version 14.1 v4
 push $cut_paste_input
 Group {
  name RoughenEdges
  note_font Verdana
  selected true
- xpos 600
- ypos -56
+ xpos 9177
+ ypos -15866
  mapsize {0.15 0.15}
  addUserKnob {20 User}
  addUserKnob {16 Border}
@@ -28,20 +28,20 @@ Group {
   xpos -466
   ypos -364
  }
-set N15cbc790 [stack 0]
+set N23f602c0 [stack 0]
  Unpremult {
   name Unpremult1
   xpos -466
   ypos -305
  }
-set N15cbaea0 [stack 0]
+set N23f64eb0 [stack 0]
  Blur {
   channels alpha
   name Blur9
   xpos -466
   ypos -258
  }
-set N15cc0750 [stack 0]
+set N23f6d250 [stack 0]
  Dilate {
   channels alpha
   size {{-parent.Border*30 i}}
@@ -49,9 +49,9 @@ set N15cc0750 [stack 0]
   xpos -466
   ypos -164
  }
-set N15cce230 [stack 0]
-push $N15cce230
-push $N15cc0750
+set N23f7b190 [stack 0]
+push $N23f7b190
+push $N23f6d250
  Merge2 {
   inputs 2
   operation stencil
@@ -59,7 +59,7 @@ push $N15cc0750
   xpos -356
   ypos -158
  }
-push $N15cc0750
+push $N23f6d250
  Shuffle {
   alpha black
   name Shuffle1
@@ -112,7 +112,7 @@ push $N15cc0750
   xpos -466
   ypos 68
  }
-push $N15cbaea0
+push $N23f64eb0
  Dot {
   name Dot2
   xpos -506
@@ -139,7 +139,7 @@ push $N15cbaea0
   xpos -466
   ypos 243
  }
-push $N15cbc790
+push $N23f602c0
  Viewer {
   inputs 2
   frame 16
