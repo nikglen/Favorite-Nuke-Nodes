@@ -1,0 +1,20 @@
+set cut_paste_input [stack 0]
+version 14.1 v4
+push $cut_paste_input
+Text {
+ cliptype none
+ message "\[metadata input/timecode]"
+ font /fileserver/library/fonts/arial.ttf
+ size 80
+ xjustify center
+ yjustify bottom
+ Transform 1
+ box {0 0 1920 1080}
+ center {960 540}
+ name TimeCode_Text
+ note_font "DejaVu Sans Bold Italic"
+ note_font_size 17
+ selected true
+ xpos -2080
+ ypos 1307
+}
