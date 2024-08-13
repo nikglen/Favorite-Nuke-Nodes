@@ -1,0 +1,178 @@
+set cut_paste_input [stack 0]
+version 14.1 v4
+push $cut_paste_input
+Group {
+ name NOVO_REPO
+ tile_color 0x513dafff
+ selected true
+ xpos -2084
+ ypos 1213
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 509
+  ypos 53
+ }
+ Dot {
+  name Dot9
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 543
+  ypos 93
+ }
+set N1160f060 [stack 0]
+ Switch {
+  which {{"input.format.r == 5148 ? 0 : ( input.format.r == 4096 ? 1 :2)"}}
+  name Switch1
+  xpos 389
+  ypos 89
+ }
+push $N1160f060
+ Dot {
+  name Dot10
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 704
+  ypos 93
+ }
+set N1161c7a0 [stack 0]
+ Dot {
+  name Dot13
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 854
+  ypos 93
+ }
+ Dot {
+  name Dot12
+  note_font_size 42
+  note_font_color 0xffffffff
+  xpos 854
+  ypos 276
+ }
+push $N1161c7a0
+ Group {
+  name NOVO_077_0010_plate_repo1
+  tile_color 0xffff
+  xpos 670
+  ypos 180
+  addUserKnob {20 User}
+  addUserKnob {41 translate T Transform2.translate}
+  addUserKnob {41 scale T Transform2.scale}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 604
+   ypos 388
+  }
+  Reformat {
+   format "1920 1080 0 0 1920 1080 1 HD_1080"
+   filter Lanczos4
+   name Reformat1
+   tile_color 0xffff
+   xpos 604
+   ypos 428
+   postage_stamp_frame 9
+  }
+  Transform {
+   center {960 540}
+   shutteroffset centred
+   name Transform2
+   xpos 604
+   ypos 470
+  }
+  Crop {
+   box {0 137 1920 943}
+   name Crop1
+   selected true
+   xpos 604
+   ypos 496
+  }
+  Reformat {
+   format "1920 1080 0 0 1920 1080 1 HD_1080"
+   filter Lanczos4
+   black_outside true
+   name Reformat18
+   tile_color 0xffff
+   xpos 604
+   ypos 536
+   postage_stamp_frame 9
+  }
+  Output {
+   name Output1
+   xpos 600
+   ypos 592
+  }
+ end_group
+push $N1160f060
+ Group {
+  name NOVO_077_0005_repo1
+  tile_color 0xff00
+  xpos 509
+  ypos 181
+  addUserKnob {20 User}
+  addUserKnob {41 translate T Transform2.translate}
+  addUserKnob {41 scale T Transform2.scale}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 309
+   ypos 68
+  }
+  Reformat {
+   format "1920 1080 0 0 1920 1080 1 HD_1080"
+   filter Lanczos4
+   name Reformat1
+   tile_color 0xffff
+   xpos 309
+   ypos 108
+   postage_stamp_frame 9
+  }
+  Transform {
+   center {960 540}
+   shutteroffset centred
+   name Transform2
+   xpos 309
+   ypos 146
+  }
+  Transform {
+   scale 1.257
+   center {960 540}
+   shutteroffset centred
+   name Transform1
+   xpos 309
+   ypos 172
+  }
+  Reformat {
+   format "1920 1080 0 0 1920 1080 1 HD_1080"
+   filter Lanczos4
+   black_outside true
+   name Reformat18
+   tile_color 0xffff
+   selected true
+   xpos 309
+   ypos 198
+   postage_stamp_frame 9
+  }
+  Output {
+   name Output1
+   xpos 309
+   ypos 298
+  }
+ end_group
+ Switch {
+  inputs 3
+  which {{parent.Switch1.which}}
+  name Switch2
+  xpos 509
+  ypos 272
+ }
+ Output {
+  name Output1
+  xpos 509
+  ypos 372
+ }
+end_group
