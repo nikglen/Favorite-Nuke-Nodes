@@ -1,0 +1,100 @@
+set cut_paste_input [stack 0]
+version 14.1 v8
+push $cut_paste_input
+Group {
+ name SmartVector_NoX
+ label "(\[value SVcontrol.Output]"
+ selected true
+ xpos 7974
+ ypos 2480
+ addUserKnob {20 SmartVector_NoX}
+ addUserKnob {41 GPU l "Use GPU if available" T SVcontrol.GPU}
+ addUserKnob {41 VectorDetail T SVcontrol.VectorDetail}
+ addUserKnob {41 Strength T SVcontrol.Strength}
+ addUserKnob {41 Matte T SVcontrol.Matte}
+ addUserKnob {41 Output T SVcontrol.Output}
+ addUserKnob {41 inpaint l "Inpaint Matte Region" T SVcontrol.inpaint}
+ addUserKnob {41 matteDilation l "Matte Dilation" T SVcontrol.matteDilation}
+ addUserKnob {26 ""}
+ addUserKnob {20 Advanced n 1}
+ Advanced 0
+ addUserKnob {41 flickerCompensation l "Flicker Compensation" T SVcontrol.flickerCompensation}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {20 Tolerances l Tolerences n 1}
+ Tolerances 0
+ addUserKnob {41 wRed l "Weight Red" T SVcontrol.wRed}
+ addUserKnob {41 wGreen l "Weight Green" T SVcontrol.wGreen}
+ addUserKnob {41 wBlue l "Weight Blue" T SVcontrol.wBlue}
+ addUserKnob {20 endGroup_1 n -1}
+ addUserKnob {20 _1 l -}
+ addUserKnob {26 _2 l "" +STARTLINE T "SmartVector_NoX\nv2.0"}
+}
+ Input {
+  inputs 0
+  name Matte
+  xpos -756
+  ypos 164
+  number 1
+ }
+ Input {
+  inputs 0
+  name Source
+  xpos -592
+  ypos 64
+ }
+ SmartVector {
+  inputs 2
+  useGPUIfAvailable {{parent.SVcontrol.GPU}}
+  vectorDetailReg {{parent.SVcontrol.VectorDetail}}
+  strengthReg {{parent.SVcontrol.Strength}}
+  matteChannel {{parent.SVcontrol.Matte x1 1}}
+  output {{parent.SVcontrol.Output}}
+  inpainting {{parent.SVcontrol.inpaint}}
+  matteDilation {{parent.SVcontrol.matteDilation}}
+  flickerCompensation {{parent.SVcontrol.flickerCompensation}}
+  weightRed {{parent.SVcontrol.wRed}}
+  weightGreen {{parent.SVcontrol.wGreen}}
+  weightBlue {{parent.SVcontrol.wBlue}}
+  name SmartVector3
+  xpos -592
+  ypos 158
+ }
+ Output {
+  name Output1
+  xpos -592
+  ypos 282
+ }
+ NoOp {
+  inputs 0
+  name SVcontrol
+  tile_color 0xaaaaaaff
+  label "(\[value Output])"
+  xpos -416
+  ypos 156
+  addUserKnob {20 SVcontrol l "SV control"}
+  addUserKnob {6 GPU l "Use GPU if available" +STARTLINE}
+  GPU true
+  addUserKnob {7 VectorDetail t "Sets the vector quality. The default value of 0.3 is sufficient for sequences with low detail and movement, but you may want to increase the detail to improve the vector quality in some cases."}
+  VectorDetail 0.3
+  addUserKnob {7 Strength t "Sets the strength in matching pixels between frames. Higher values allow you to accurately match similar pixels in one frame to another, concentrating on detail matching even if the resulting motion field is jagged. Lower values may miss local detail, but are less likely to provide you with the odd spurious vector, producing smoother results." R 0 1.5}
+  Strength 1.5
+  addUserKnob {4 Matte t "Where to get the optional foreground mask to use when estimating motion:\n\n• None - do not use a matte.\n\n• Source Alpha - use the alpha of the Source input.\n\n• Source Inverted Alpha - use the inverted alpha of the Source input.\n\n• Matte Luminance - use the luminance of the Matte input.\n\n• Matte Inverted Luminance - use the inverted luminance of the Matte input.\n\n• Matte Alpha - use the alpha of the Matte input.\n\n• Matte Inverted Alpha - use the inverted alpha of the Matte input." M {None "Source Alpha" "Source Inverted Alpha" "Matte Luminance" "Matte Inverted Luminance" "Matte Alpha" "Matte Inverted Alpha" ""}}
+  addUserKnob {4 Output t "When Matte Channel is set to anything other than None, the Output control determines whether Foreground or Background vectors are passed down stream or written to file." M {Foreground Background ""}}
+  Output Background
+  addUserKnob {6 inpaint l "Inpaint Matte Region" t "When enabled, any areas where vectors are absent are infilled using the nearest available vectors." +STARTLINE}
+  addUserKnob {7 matteDilation l "Matte Dilation" t "Controls the amount of dilation applied to the matte before inpainting the matte region." R 0 100}
+  matteDilation 50
+  addUserKnob {26 ""}
+  addUserKnob {20 Advanced n 1}
+  addUserKnob {6 flickerCompensation l "Flicker Compensation" t "When enabled, SmartVector takes into account variations in luminance and overall flickering, which can cause problems with your output. Examples of variable luminance include highlights on metal surfaces, like vehicle bodies, or bodies of water within a layer that reflect light in unpredictable ways." +STARTLINE}
+  addUserKnob {20 endGroup n -1}
+  addUserKnob {20 Tolerances l Tolerences n 1}
+  addUserKnob {7 wRed l "Weight Red" t "For efficiency, much of the motion estimation is done on luminance only - that is, using monochrome images. The tolerances allow you to tune the weight of each color channel when calculating the image luminance. These parameters rarely need tuning. However, you may, for example, wish to increase the Weight Red to allow the algorithm to concentrate on getting the motion of a primarily red object correct, at the cost of the rest of the items in a shot."}
+  wRed 0.3
+  addUserKnob {7 wGreen l "Weight Green" t "For efficiency, much of the motion estimation is done on luminance only - that is, using monochrome images. The tolerances allow you to tune the weight of each color channel when calculating the image luminance. These parameters rarely need tuning. However, you may, for example, wish to increase the Weight Red to allow the algorithm to concentrate on getting the motion of a primarily red object correct, at the cost of the rest of the items in a shot."}
+  wGreen 0.6
+  addUserKnob {7 wBlue l "Weight Blue" t "For efficiency, much of the motion estimation is done on luminance only - that is, using monochrome images. The tolerances allow you to tune the weight of each color channel when calculating the image luminance. These parameters rarely need tuning. However, you may, for example, wish to increase the Weight Red to allow the algorithm to concentrate on getting the motion of a primarily red object correct, at the cost of the rest of the items in a shot."}
+  wBlue 0.1
+  addUserKnob {20 endGroup_1 n -1}
+ }
+end_group
