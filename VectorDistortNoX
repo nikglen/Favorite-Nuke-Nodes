@@ -1,0 +1,75 @@
+set cut_paste_input [stack 0]
+version 14.1 v8
+push $cut_paste_input
+Group {
+ name VectorDistort_NoX
+ tile_color 0xec72ffff
+ selected true
+ xpos 8125
+ ypos 2483
+ addUserKnob {20 VectorDistort_NoX}
+ addUserKnob {41 frame_to_hold l Frame T VDcontrol.frame_to_hold}
+ addUserKnob {41 set_to_current_frame l "Set to Current Frame" T VDcontrol.set_to_current_frame}
+ addUserKnob {41 holdFrame l "Hold Frame" T VDcontrol.holdFrame}
+ addUserKnob {41 frameDistance l "Frame Distance" T VDcontrol.frameDistance}
+ addUserKnob {26 ""}
+ addUserKnob {41 output l Output T VDcontrol.output}
+ addUserKnob {41 blurSize l "Blur Size" T VDcontrol.blurSize}
+ addUserKnob {41 filter l Filter T VDcontrol.filter}
+ addUserKnob {20 _1 l -}
+ addUserKnob {26 _2 l "" +STARTLINE T "VectorDistort_NoX\nv2.0"}
+}
+ Input {
+  inputs 0
+  name Source
+  xpos -593
+  ypos 337
+ }
+ Input {
+  inputs 0
+  name SmartVector
+  xpos -879
+  ypos 469
+  number 1
+ }
+ VectorDistort {
+  inputs 2
+  useGPUIfAvailable {{parent.VDcontrol.GPU}}
+  referenceFrame {{VDcontrol.frame_to_hold}}
+  reference_frame_set true
+  holdFrame {{VDcontrol.holdFrame}}
+  frameDistance {{parent.VDcontrol.frameDistance}}
+  outputMode {{parent.VDcontrol.output x13 1}}
+  blurSize {{parent.VDcontrol.blurSize}}
+  imageFilter {{parent.VDcontrol.filter}}
+  name VectorDistort4
+  xpos -593
+  ypos 469
+ }
+ Output {
+  name Output1
+  xpos -593
+  ypos 568
+ }
+ NoOp {
+  inputs 0
+  name VDcontrol
+  selected true
+  xpos -378
+  ypos 461
+  addUserKnob {20 User}
+  addUserKnob {6 GPU l "Use GPU if available" +STARTLINE}
+  GPU true
+  addUserKnob {3 frame_to_hold l Frame t "Sets the frame used to calculate the warp at every other frame in the sequence."}
+  frame_to_hold 1001
+  addUserKnob {22 set_to_current_frame l "Set to Current Frame" -STARTLINE T "nuke.thisNode()\['frame_to_hold'].setValue(int(nuke.frame()))"}
+  addUserKnob {6 holdFrame l "Hold Frame" t "this_node = nuke.thisNode()\nnode = nuke.toNode(this_node\['vectordistort_node'].getValue())\nnode\['holdFrame'].setValue(holdFrame)" -STARTLINE}
+  holdFrame true
+  addUserKnob {68 frameDistance l "Frame Distance" M {"1 frame" "2 frames" "4 frames" "8 frames" "16 frames" "32 frames" "64 frames" "" ""}}
+  addUserKnob {26 ""}
+  addUserKnob {4 output l Output t "Sets the type of output produced by VectorDistort:\n\n• warped src - output the warped Src input using the reference frame as a template for warping the rest of the sequence.\n\n• st-map - output the st-map for the warp from the reference frame to the current frame. This is useful if you want to bake the results of the node for later.\n\n• st-map inverse - output the inverse st-map for the warp, that is, the warp from the current frame to the reference frame." M {"warped src" st-map "st-map inverse" ""}}
+  addUserKnob {7 blurSize l "Blur Size" t "Controls the amount of blur applied to the internally calculated STMap. Increasing the blur size can remove local distortions in the warped result, particularly in longer sequences." R 0 32}
+  addUserKnob {68 filter l Filter t "Select the filtering algorithm to apply the warp to the image, similar to that of the filters used in the IDistort and STMap nodes.\n\n• Impulse - remapped pixels carry their original values.\n\n• Cubic - remapped pixels receive some smoothing.\n\n• Keys - remapped pixels receive some smoothing, plus minor sharpening (as shown by the negative -y portions of the curve).\n\n• Simon - remapped pixels receive some smoothing, plus medium sharpening (as shown by the negative -y portions of the curve).\n\n• Rifman - remapped pixels receive some smoothing, plus significant sharpening (as shown by the negative -y portions of the curve).\n\n• Mitchell - remapped pixels receive some smoothing, plus blurring to hide pixelation.\n\n• Parzen - remapped pixels receive the greatest smoothing of all filters.\n\n• Notch - remapped pixels receive flat smoothing (which tends to hide moire patterns).\n\n• Lanczos4, Lanczos6, and Sinc4 - remapped pixels receive sharpening which can be useful for scaling down. Lanczos4 provides the least sharpening and Sinc4 the most." M {Impulse Cubic Keys Simon Riftman Mitchell Parzen Notch Lanczos4 Lanczos6 Sinc4 ""}}
+  filter Cubic
+ }
+end_group
